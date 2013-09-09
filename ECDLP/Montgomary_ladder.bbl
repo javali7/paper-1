@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{mont87}
+P.~L. Montgomery.
+\newblock Speeding the pollard and elliptic curve methods of factorization.
+\newblock {\em Mathematics of Computation}, 48:243--264, 1987.
+
+\bibitem{fips}
+National~Institute of~Standards and Technology.
+\newblock Fips pub 186-4 digital signature standard (dss).
+\newblock pages 26--30, 2013.
+
+\end{thebibliography}
