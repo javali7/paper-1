@@ -5,6 +5,7 @@
 \usepackage{array}
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{amsfonts}
 
 \usepackage{url}
 \newcommand{\starpar}[1]{\par{\footnotesize $\star$ \hl{#1}\par}}
@@ -21,6 +22,31 @@
 \end{abstract}
 
 \section{Introduction}
+Elliptic curves cryptography~\cite{miller85use,koblitz87elliptic} is a collection of public key cryptographic methods that rely on the computational
+intractability of the elliptic curves discreet logarithm problem.
+In a nutshell, given an elliptic curve over a finite field and two points on the curve~$G$ and~$H$,
+the discreet logarithm problem is finding a scalar $k$ such that $H=kG$.
+
+Elliptic curve cryptography offers a higher encryption strength per key-bit than similar methods based on 
+discreet logarithms over finite field or on number factoring.
+Consequently, elliptic curves cryptography uses significantly shorter keys and offers faster operations
+than otehr methods, contributing to the rising popularity of elliptic curves cryptography.
+
+The Elliptic Curve Digital Signature Algorithm (ECDSA)~\cite{johnson01elliptic,fips186,ansi962} is a standard
+digital signature algorithm based on elliptic curves.
+The core operation of the ECDSA algorithm is multiplying a point on the elliptic curve by a randomly
+or pseudo-randomly chosen secret nonce.
+The confidentiality of the nonce is paramount for the security of the algorithm.
+Past research indicates that partial exposure of nonce bits can be exploited for efficient attacks on the secret key~\cite{nguyen03insecurity,brumley11remote}.
+
+OpenSSL~\cite{openssl} is a cryptographic software package that implements ECDSA.
+When using elliptic curves over a binary field $\mathbb{F}_{2^m}$, OpenSSL uses the 
+Montgomery Ladder~\cite{montgomery87speeding,joye03montgomery} algorithm for multiplying the point by the nonce.
+
+
+
+
+
 
 \starpar{Contributions:}
 \starpar{Demonstrate that the \textsc{Flush+Reload} attack is generic}
@@ -127,9 +153,21 @@ the processor may start processing both line~275 and line~280, triggering memory
 
 
 \section{Results}
+
+\starpar{Test architecture}
+\starpar{Curve - sect571k1}
+\starpar{Opertion times}
+\starpar{Choice of slot size}
+\starpar{Example of results}
+\starpar{Number of lost bits}
 \section{Discussion}
+\starpar{LLL attack}
+\starpar{Expected number of observed signatures to break key}
+\starpar{Smaller keys are more resilient}~\cite{walter04longer}
 \section{Related Work}
 \section{Conclusions}
+
+%\starpar{Bitcoin uses ECDSA}~\cite{nakamoto--bitcoin}
 
 \bibliographystyle{splncs}
 \bibliography{Euro2014}
