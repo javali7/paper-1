@@ -30,7 +30,7 @@ the discreet logarithm problem is finding a scalar $k$ such that $H=kG$.
 Elliptic curve cryptography offers a higher encryption strength per key-bit than similar methods based on 
 discreet logarithms over finite field or on number factoring.
 Consequently, elliptic curves cryptography uses significantly shorter keys and offers faster operations
-than otehr methods, contributing to the rising popularity of elliptic curves cryptography.
+than other methods, contributing to the rising popularity of elliptic curves cryptography.
 
 The Elliptic Curve Digital Signature Algorithm (ECDSA)~\cite{johnson01elliptic,fips186,ansi962} is a standard
 digital signature algorithm based on elliptic curves.
@@ -41,23 +41,40 @@ Past research indicates that partial exposure of nonce bits can be exploited for
 
 OpenSSL~\cite{openssl} is a cryptographic software package that implements ECDSA.
 When using elliptic curves over a binary field $\mathbb{F}_{2^m}$, OpenSSL uses the 
-Montgomery Ladder~\cite{montgomery87speeding,joye03montgomery} algorithm for multiplying the point by the nonce.
+Montgomery ladder~\cite{montgomery87speeding,joye03montgomery} algorithm for multiplying the point by the nonce.
+One of the advantages of the Montgomery ladder is that it has a very regular behaviour performing
+the same sequence of operations for each nonce bit, irrespective of the value of the bit.
+This regular behaviour makes it more resilient to side-channel attacks~\cite{joye03montgomery,okeya00elliptic}.
 
+While the operations performed by the algorithm are regular, their targets depend on the value of the bits of the nonce.
+To apply the operations to the respective targets, the OpenSSL implementation uses a conditional branch based on the value of the bit.
+By tracing this branch an attacker can recover the values of the nonce bits and, consequently, break the cryptosystem.
 
+In this paper we present our 
+use the \textsc{Flush+Reload} cache side-channel attack~\cite{yarom13flush}
+to trace the branch in the OpenSSL implementation.
+\textsc{Flush+Reload} relies on a security weakness in the IA-32 and X86-64 architectures that allows processes
+to monitor other processes read and execute access to shared memory pages.
+Our attack program monitors access to both arms of the conditional branch and uses the information
+collected from these probes to reconstruct the nonce.
 
+The paper also presents new information on the limitation of the \textsc{Flush+Reload} attack.
+We discuss spatial limitations, affecting the distance between multiple probes, and 
+temporal limitations, affecting the probe resolution.
 
-
-
-\starpar{Contributions:}
-\starpar{Demonstrate that the \textsc{Flush+Reload} attack is generic}
-\starpar{Show a weakness in the Montgomery Ladder implementation of group multiplication}
-\starpar{Show that even minor branch dependence on secret data is vulnerable}
 \starpar{Analysis of partial nonce exposure?}
-\section{Preliminaries}
+
+The rest of this paper is organised as follows.
+The next section presents background information on elliptic curves, ECDSA, the Montgomery ladder and the \textsc{Flush+Reload} attack.
+Section~\ref{sec:attack} describes our attack on the OpenSSL implementation of ECDSA.
+The results of the attack are analysed in Section~\ref{sec:results}.
+We discuss the implications of the attack and suggest techniques for mitigation in Section~\ref{sec:discussion}.
+Section~\ref{sec:related} presents related research.
+\section{Preliminaries}\label{sec:background}
 \subsection{ECDSA}
 \subsection{The Montgomery Ladder}
 \subsection{The \textsc{Flush+Reload} attack}
-\section{Attacking OpenSSL ECDSA}
+\section{Attacking OpenSSL ECDSA}\label{sec:attack}
 OpenSSL is one of the most common open-source cryptographic libraries.
 It provides a set of cryptographic services, including public and shared key encryption 
 algorithms and public key signature algorithms.
@@ -152,19 +169,20 @@ the processor may start processing both line~275 and line~280, triggering memory
 
 
 
-\section{Results}
+\section{Results}\label{sec:results}
 
 \starpar{Test architecture}
 \starpar{Curve - sect571k1}
-\starpar{Opertion times}
+\starpar{Operation times}
 \starpar{Choice of slot size}
 \starpar{Example of results}
 \starpar{Number of lost bits}
-\section{Discussion}
+\section{Discussion}\label{sec:discussion}
 \starpar{LLL attack}
 \starpar{Expected number of observed signatures to break key}
 \starpar{Smaller keys are more resilient}~\cite{walter04longer}
-\section{Related Work}
+\starpar{Mitigation, Dan Bernstein NaCL}
+\section{Related Work}\label{sec:related}
 \section{Conclusions}
 
 %\starpar{Bitcoin uses ECDSA}~\cite{nakamoto--bitcoin}
