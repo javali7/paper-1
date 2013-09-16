@@ -1,0 +1,96 @@
+\begin{thebibliography}{10}
+
+\bibitem{ansi962}
+American National Standards Institute:
+\newblock {ANSI X9.62}, Public Key Cryptography for the Financial Services
+  Industry: The Elliptic Curve Digital Signature Algorithm. (1999)
+
+\bibitem{brumley11remote}
+Brumley, B.B., Tuveri, N.:
+\newblock Remote timing attacks are still practical.
+\newblock In Atluri, V., Diaz, C., eds.: Computer Security - ESORICS 2011.
+  Volume 6879 of Lecture Notes in Computer Science., Springer-Verlag (2011)
+  355--371
+
+\bibitem{intel12optimization}
+Intel Corporation:
+\newblock Intel 64 and {IA-32} Architecture Optimization Reference Manual.
+  (April 2012)
+
+\bibitem{johnson01elliptic}
+Johnson, D., Menezes, A., Vanstone, S.:
+\newblock The elliptic curve digital signature algorithm ({ECDSA}).
+\newblock International Journal of Information Security \textbf{1}(1) (August
+  2001)  36--63
+
+\bibitem{joye03montgomery}
+Joye, M., Yen, S.M.:
+\newblock The {Montgomery} powering ladder.
+\newblock In Kaliski, Jr., B.S., Ko{\c c}, {\c C}.K., Paar, C., eds.:
+  Cryptographic Hardware and Embedded Systems---{CHES} 2002. Volume 2523 of
+  Lecture Notes in Computer Science., Springer-Verlag (2003)  291--302
+
+\bibitem{koblitz87elliptic}
+Koblitz, N.:
+\newblock Elliptic curve cryptosystems.
+\newblock Mathematics of Computation \textbf{48}(177) (January 1987)  203--209
+
+\bibitem{miller85use}
+Miller, V.S.:
+\newblock Use of elliptic curves in cryptography.
+\newblock In Williams, H.C., ed.: Advances in Cryptology - CRYPTO'85. Volume
+  218 of Lecture Notes in Computer Science., Springer-Verlag (1986)  417--426
+
+\bibitem{montgomery87speeding}
+Montgomery, P.L.:
+\newblock Speeding the {Pollard} and elliptic curve methods of factorization.
+\newblock Mathematics of Computation \textbf{48}(177) (January 1987)  243--264
+
+\bibitem{fips186}
+National Institute of Standards and Technology:
+\newblock Digital Signature Standard, FIPS Publication 186-2. (2000)
+
+\bibitem{fips}
+National Institute of Standards and Technology:
+\newblock FIPS PUB 186-4 Digital Signature Standard (DSS). (2013)
+
+\bibitem{nguyen03insecurity}
+Nguyen, P.Q., Shparlinski, I.E.:
+\newblock The insecurity of the elliptic curve digital signature algorithm with
+  partially known nonces.
+\newblock Designs, Codes and Cryptography \textbf{30}(2) (September 2003)
+  201--217
+
+\bibitem{okeya00elliptic}
+Okeya, K., Kurumatani, H., Sakurai, K.:
+\newblock Elliptic curves with the {Montgomery}-form and their cryptographic
+  applications.
+\newblock In: Public Key Cryptography. Volume 1751 of Lecture Notes in Computer
+  Science., Springer-Verlag (2000)  238--257
+
+\bibitem{openssl}
+{OpenSSL}.
+\newblock \url{http://www.openssl.org}
+
+\bibitem{uht95disjoint}
+Uht, A.K., Sindagi, V.:
+\newblock Disjoint eager execution: An optimal form of speculative execution.
+\newblock In: Proceedings of the 28th International Symposium on
+  Microarchitecture, Ann Arbor, Michigan, United States (November 1995)
+  313--325
+
+\bibitem{walter04longer}
+Walter, C.D.:
+\newblock Longer keys may facilitate side channel attacks.
+\newblock In Matsui, M., Zuccherato, R.J., eds.: Selected Areas in
+  Cryptography. Volume 3006 of Lecture Notes in Computer Science.,
+  Springer-Verlag (2004)  42--57
+
+\bibitem{yarom13flush}
+Yarom, Y., Falkner, K.:
+\newblock Flush+reload: a high resolution, low noise, l3 cache side-channel
+  attack.
+\newblock Cryptology ePrint Archive, Report 2013/448 (2013)
+  \url{http://eprint.iacr.org/}.
+
+\end{thebibliography}

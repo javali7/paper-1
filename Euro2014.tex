@@ -6,9 +6,12 @@
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{amsfonts}
+\usepackage{amsmath, amsfonts, url, amssymb, graphics, algorithm2e} 
 
 \usepackage{url}
 \newcommand{\starpar}[1]{\par{\footnotesize $\star$ \hl{#1}\par}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\Z}{{\mathbb Z}}
 
 \lstset{basicstyle=\scriptsize,breaklines=true,breakindent=60pt,xleftmargin=20pt,numberstyle=\tiny,numbersep=5pt,language=C}
 
@@ -22,10 +25,10 @@
 \end{abstract}
 
 \section{Introduction}
-Elliptic curves cryptography~\cite{miller85use,koblitz87elliptic} is a collection of public key cryptographic methods that rely on the computational
-intractability of the elliptic curves discreet logarithm problem.
+Elliptic curve cryptography~\cite{miller85use,koblitz87elliptic} is a collection of public key cryptographic methods that rely on the computational
+intractability of the Elliptic Curve Discrete Logarithm Problem (ECDLP).
 In a nutshell, given an elliptic curve over a finite field and two points on the curve~$G$ and~$H$,
-the discreet logarithm problem is finding a scalar $k$ such that $H=kG$.
+the ECDLP is to find the scalar $k$ such that $H=kG$.
 
 Elliptic curve cryptography offers a higher encryption strength per key-bit than similar methods based on 
 discreet logarithms over finite field or on number factoring.
@@ -42,7 +45,7 @@ Past research indicates that partial exposure of nonce bits can be exploited for
 OpenSSL~\cite{openssl} is a cryptographic software package that implements ECDSA.
 When using elliptic curves over a binary field $\mathbb{F}_{2^m}$, OpenSSL uses the 
 Montgomery ladder~\cite{montgomery87speeding,joye03montgomery} algorithm for multiplying the point by the nonce.
-One of the advantages of the Montgomery ladder is that it has a very regular behaviour performing
+One of the advantages of the Montgomery ladder is that it has regular behaviour, performing
 the same sequence of operations for each nonce bit, irrespective of the value of the bit.
 This regular behaviour makes it more resilient to side-channel attacks~\cite{joye03montgomery,okeya00elliptic}.
 
@@ -72,7 +75,80 @@ We discuss the implications of the attack and suggest techniques for mitigation 
 Section~\ref{sec:related} presents related research.
 \section{Preliminaries}\label{sec:background}
 \subsection{ECDSA}
+
+The ElGamal Signature Scheme is the basis of the US 1994 NIST standard, Digital Signature Algorithm (DSA). The ECDSA is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group over field elements is smaller parameters for the same security level as mentioned above. ***
+
+\emph{Parameters:}\quad An elliptic curve $E$ defined over a finite field $\F_{q}$; a point $G\in E$ of large prime order $n$ (generator of the group of points of order $n$). Paramaters chosen as such are generally believed to offer a security level of $\frac{n}{2}$ given current knowledge and technologies. Parameters are recommended to be generated following \cite{fips}. The field size $q$ is usually taken to be a large, odd prime or a power of $2$. The implementation of OpenSSL uses both prime fields and $q=2^m$ though the results in this paper relate to the binary field case.
+
+\emph{Public-Private Key pairs:}\quad the private key is an integer $d$, $1<d<n-1$ and the public key is the point $Q=dG$. Calculating the private key from the public key requires solving the ECDLP, which is known to be hard in practice for the correctly chosen parameters. The most efficient algorithms currently know which solve the ECDLP have a square root run time in the size of the group, hence the aforementioned security level.
+\vspace{0.5cm}
+
+Suppose Bob, with public-private Key pair $\{d_B,Q_B\}$, wishes to send a signed message $m$ to Alice, he follows the following steps:
+\begin{enumerate}
+\item Using an approved hash algorithm, compute $e=Hash(m),$ take $\bar{e}$ to be the leftmost $n$ bits of $e$. ***check fips is leftmost or mod***
+\item\label{rand_element} Randomly select $k\leftarrow_R\Z_n$ with $1<k<p-1$ and $(k,p-1)=1$.
+\item Compute the point $(x,y)=kG\in E$. ***using montgomery ladder or otherwise***
+\item Take $r=x\mod n$; if $r=0$ then return to step \ref{rand_element}.
+\item Compute $s=k^{-1}(z+rd_B)\mod n$; if $s=0$ then return to step \ref{rand_element}.
+\item Bob sends $(m,r,s)$ to Alice.
+\end{enumerate}
+The message $m$ is not necessarily encrypted, the contents may not be secret, but a valid signature gives Alice strong evidence that the message was indeed sent by Bob. She verifies that the message came from Bob by 
+
+\begin{enumerate}
+\item checking that all received parameters are correct, that $r,s\in\Z_n$ and that Bob's public key is valid, that is $Q_b\neq \mathcal{O}$ and $Q_B\in E$ is of order $n$.
+\item Using the same hash function and method as above, compute $\bar{e}$.
+\item Compute $\bar{s}=s^{-1}\mod n$.
+\item Find the point $(x,y)=\bar{es}G+r\bar{s}Q_B$.
+\item Verify that $r=x\mod n$ otherwise reject the signature.
+\end{enumerate}
+
+Step \ref{rand_element} of the signing algorithm is of vital importance, inapproproate reuse of the random integer is what lead to the highly publicised breaking of PS3 signature scheme implementation. Knowledge of the random value $k$ leads to knowledge of the secret key as all values $(m,r,s)$ can be observed by an eavesdropper, $\bar{e}$ can be found from $m$, $r^{-1}\mod n$ can be easily found from $n$, and if $k$ is discovered then an adversary can find Bob's secret key through the simple calculation $$d_B=(sk-\bar{e})r^{-1}.$$
+
+%Using the same value twice (even while keeping k secret), using a predictable value, or leaking even a few bits of k in each of several signatures, is enough to break DSA.
+
 \subsection{The Montgomery Ladder}
+Scalar multiplication is a common operation in cryptography and in a number of incidences (such as the multiplication by the secret, randomly generated element required in ECDSA), the scalar is intended to remain secret. This scalar multiplication is most efficiently performed using a square-and-multiply method (or the related Right-to-left method) as outlined in Algorithm \ref{d_and_a}
+
+\begin{algorithm}[S]\label{d_and_a}
+\SetAlgoLined
+{\bf Input:} Point $P$, scalar $n$, $k$ bits\\
+{\bf Output:} Point $nP$\\
+$Q\gets \mathcal{O}$\\
+ \For{$i$ from $k$ to $0$}{
+  $Q\gets 2Q$
+  \If{$n_i$ = 0}{
+   $Q\gets Q+P$
+   }
+ }
+ \caption{Double-and-Add Point Multiplication}
+\end{algorithm}
+Double-and-add methods, though efficient, are vulnerable to simple power analysis. The addition law for points on Weirstrass curves is not complete, that is, the computation of $P+Q$ differs between the cases $P=Q$ and $P\neq Q.$ Consequently, by examining the power consumption of the computation it is possible to distingush when the if loop is executed and hence when a bit of $n$ is 0.
+
+
+
+As described by Montgomery in \cite{montgomery87speeding}
+
+\begin{algorithm}[M]
+ \SetAlgoLined
+% \KwData{this text}
+{\bf Input:} Point $P$, scalar $n$, $k$ bits\\
+{\bf Output:} Point $nP$\\
+% \KwResult{how to write algorithm with \LaTeX2e }
+% initialization\;
+$R_0\gets \mathcal{O}$\\
+$R_1\gets P$\\
+ \For{$i$ from $k$ to $0$}{
+  \eIf{$n_i$ = 0}{
+   $R_1\gets R_0+R_1$\\
+   $R_0\gets 2R_0$
+   }{
+   $R_0\gets R_0+R_1$\\
+   $R_1\gets 2R_1$
+  }
+ }
+ \caption{Montgomery Ladder Point Multiplication}
+\end{algorithm}
+
 \subsection{The \textsc{Flush+Reload} attack}
 \section{Attacking OpenSSL ECDSA}\label{sec:attack}
 OpenSSL is one of the most common open-source cryptographic libraries.
