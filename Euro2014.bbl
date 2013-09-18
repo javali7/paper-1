@@ -12,6 +12,13 @@ Brumley, B.B., Tuveri, N.:
   Volume 6879 of Lecture Notes in Computer Science., Springer-Verlag (2011)
   355--371
 
+\bibitem{cipsero10software}
+Cipresso, T., Stamp, M.:
+\newblock Software reverse engineering.
+\newblock In Stavroulakis, P., Stamp, M., eds.: Handbook of Information and
+  Communication Security.
+\newblock Springer (2010)  659--696
+
 \bibitem{intel12optimization}
 Intel Corporation:
 \newblock Intel 64 and {IA-32} Architecture Optimization Reference Manual.

@@ -109,7 +109,7 @@ Step \ref{rand_element} of the signing algorithm is of vital importance, inappro
 \subsection{The Montgomery Ladder}
 Scalar multiplication is a common operation in cryptography and in a number of incidences (such as the multiplication by the secret, randomly generated element required in ECDSA), the scalar is intended to remain secret. This scalar multiplication is most efficiently performed using a square-and-multiply method (or the related Right-to-left method) as outlined in Algorithm \ref{d_and_a}
 
-\begin{algorithm}[S]\label{d_and_a}
+\begin{algorithm}[htb]\label{d_and_a}
 \SetAlgoLined
 {\bf Input:} Point $P$, scalar $n$, $k$ bits\\
 {\bf Output:} Point $nP$\\
@@ -128,7 +128,7 @@ Double-and-add methods, though efficient, are vulnerable to simple power analysi
 
 As described by Montgomery in \cite{montgomery87speeding}
 
-\begin{algorithm}[M]
+\begin{algorithm}[htb]
  \SetAlgoLined
 % \KwData{this text}
 {\bf Input:} Point $P$, scalar $n$, $k$ bits\\
@@ -150,6 +150,18 @@ $R_1\gets P$\\
 \end{algorithm}
 
 \subsection{The \textsc{Flush+Reload} attack}
+
+Spatial prefetching limits the spatial resolution of the \textsc{Flush+Reload} attack.
+When probing a cache line, \textsc{Flush+Reload} issues a read from the line.  
+The spatial prefetcher, then, prefetches the pair of the cache line. 
+This prefetching prevents using \textsc{Flush+Reload} on the pair of the line,
+forcing the spatial resolution to be lower than a probe per two cache lines.
+
+The wait period between flushing and reloading imposes a limit on the temporal resolution of \textsc{Flush+Reload}.
+The order of memory accesses occuring during a single wait period cannot be observed.
+Thus, shorter wait periods pprovide a higher observation resolution.
+On the other hand, with a short wait, a more 
+
 \section{Attacking OpenSSL ECDSA}\label{sec:attack}
 OpenSSL is one of the most common open-source cryptographic libraries.
 It provides a set of cryptographic services, including public and shared key encryption 
@@ -194,18 +206,28 @@ for (; i >= 0; i--)
 As the listing demonstrates, the Implementation is very regular.
 For each bit, the implementation executes exactly the same sequence of operations.
 The only differences between set and clear bit are the lines that invoke these operations.
-Our attack exploits this difference.
-The attack probes the cache lines used by OpenSSL to identify the branch taken by the \texttt{if}
+While this is a small difference, it is sufficient for mounting an attack that recovers 
+the values of the bits.
+
+
+Our spy program uses the \textsc{Flush+Reload} technique to monitor the execution of the \texttt{if}
 statement in line~273.
-From this information we can deduce the value of the bit and by repeating the attack throughout
-the execution of the scalar multiplication we can recover most of the bits of the nonce.
+We distinguish between executing the \texttt{then} and the \texttt{else} blocks of the \texttt{if}
+statement.
+This information reveals the value of the bit tested by the \texttt{if} statement.
+
+\textsc{Flush+Reload} monitors execution by placing probes on shared memory lines.
+For \textsc{Flush+Reload} to recover the bit value, it must distinguish memory lines access sequences
+that result from a set bit from those resulting from a clear bit.
+Achieveing this depends on several factors: the mapping of source code to memory lines, 
+the sequence of accesses to these memory lines when executing the code and 
+\textsc{Flush+Reload}'s ability to accurately capture the sequences.
 
 
 The mapping of source lines to cache lines in our build of OpenSSL is depicted in Diagram~\ref{dgm:memory}.
 The machine code created from source lines~273 to~282 covers the virtual memory address range 0x0812130C
 to 0x081213e8.
 This range spans four cache lines, marked $A$, $B$, $C$ and $D$.
-The attacks observes the sequence of cache access made by the processor when executing the code.
 
 
 \begin{figure}[htb]
@@ -214,41 +236,74 @@ The attacks observes the sequence of cache access made by the processor when exe
 \end{figure}
 
 
-\starpar{required, actual and observed cache access sequences}
-
+The minimum sequence of memory line accesses required for executing this code can now be constructed.
 The \texttt{if} statement at line~273 is executed for each bit.  
-The code of this statement is in cache line $A$, hence this line is accessed when processing of a bit starts.
-For set bit, the processing continues with source line~275, which maps to cache lines~$A$ and~$B$.
+The code of this statement is in memory line $A$, hence this line is accessed when processing of a bit starts.
+For set bit, the processing continues with source line~275, which maps to memory lines~$A$ and~$B$.
 The actual call to the group add function occurs at address 0x08121347.
 (See mark in Diagram~\ref{dgm:memory}.)
-After a delay for computing the group add, execution continues in cache line~$B$ to process the return value and 
+After a delay for computing the group add, execution continues in memory line~$B$ to process the return value and 
 to invoke the group doubling function.
-The group doubling function returns to cache line~$B$ and execution leaves the \texttt{if} body at cache line~$D$.
+The group doubling function returns to memory line~$B$ and execution leaves the \texttt{if} body at memory line~$D$.
 
-Hence, the sequence of cache line accesses required for a set bit is: $A$, $B$, \textit{add}, $B$, \textit{double}, $B$, $D$.
+Hence, the sequence of memory line accesses required for a set bit is: $A$, $B$, \textit{add}, $B$, \textit{double}, $B$, $D$.
 Similarly, for a clear bit, the sequence is: $A$, $C$, \textit{add}, $C$, $D$, \textit{double}, $D$.
 
-Processor optimisations may add otherwise unrequired cache line accesses.
-The spatial prefetching optimisation~\cite{intel12optimization} pairs adjacent cache lines and tries to bring both cache lines
+Due to the limited temporal resolution of \textsc{Flush+Reload}, the attack can observe the order of memor accesses only
+if they are sufficiently separated in time.
+Hence, in the case of OpenSSL, the attack can only observe the order of memory accesses if they are separated by a call
+to a group operation.
+For example, when the bit is set, the attack cannot decide whether the access to memory line~$A$ precedes or follows the access
+to memory line~$B$.
+Similarly, when observed by \textsc{Flush+Reload}, memory accesses issued after the group double are merged with those 
+issued at the start of processing the following bit.
+Diagram~\ref{dgm:temporal} shows the memory accesses observable by \textsc{Flush+Reload} when processing a set bit followed by
+a clear bit.
+
+\begin{figure}[htb]
+\centering\includegraphics[width=\columnwidth]{images/temporal}
+\caption{Observable Memory Access over Time\label{dgm:temporal}}
+\end{figure}
+
+The diagram also shows memory accessses issued by processor optimisations.
+These optimisations pre-load memory lines into the cache to reduce the time the program waits for these lines.
+For example, when the processor uses speculative execution~\cite{uht95disjoint}, it follows both arms of a conditional
+branch before evaluating the condition.
+When the condition is evaluated, the processor commits to the pre-processed computation of the correct arm,
+disposing of the computation done for the other arm. 
+In the case of OpenSSL this means that even before evaluating the bit, 
+the processor may start processing both line~275 and line~280, triggering memory loads from memory lines~$A$, $B$ and $C$.
+
+Another optimisation that can cause additional memory line access is spatial prefetching~\cite{intel12optimization}.
+The processor pairs adjacent memory lines and tries to bring both memory lines into the cache
 when there is a miss on one of the pair's line.
-For example, when there is a cache miss on cache line~$A$, the spatial prefetcher may attempt to prefetch cache line~$B$
+For example, when there is a cache miss on memory line~$A$, the spatial prefetcher may attempt to prefetch memory line~$B$
 and vice versa.
 
-Another optimisation that can cause additional cache line access is speculative execution~\cite{uht95disjoint}.
-With speculative execution, the processor follows both \hl{arms} of a conditional branch before evaluating
-the condition.
-When the condition is evaluated, the processor commits to the pre-processed computation of the correct \hl{arm},
-disposing of the computation done for the other \hl{arm}. 
-In the case of OpenSSL this means that even before evaluating the bit, 
-the processor may start processing both line~275 and line~280, triggering memory loads from cache lines~$A$, $B$ and $C$.
+Consequently, as demonstrated in Diagram~\ref{dgm:temporal}, the memory lines accessed between computing
+the group add and the group double can be used for recovering the value of the bit.
+Probing any of lines~$A$ and~$B$ gives a positive indication of set bits.  
+Probing and of lines~$C$ and~$D$ gives a positive indication of clear bits.
+For our attack we probe memory lines~$B$ and~$D$.
+The next section describes the details of our experiment with the attack and its results.
 
 
 
 
-\section{Results}\label{sec:results}
+\section{Experimental Setup and Results}\label{sec:results}
 
-\starpar{Test architecture}
-\starpar{Curve - sect571k1}
+To test the attack on OpenSSL we used an HP Elite 8300 
+running Fedora 18.
+As the openssl shipped with Fedora does not support elliptic curves cryptography,
+we used our own build of OpenSSL 1.0.1e. 
+To facilitate the mapping from source lines to memoryaddresses we built OpenSSL with debugging symbols.
+In a real attack settings, the attacker will need to reverse engineer~\cite{cipsero10software}
+the OpenSSL library.
+For the experiment we used the OpenSSL \texttt{sect1571r1} curve (NIST Binary-Curve B-571~\cite{fips}.)
+
+
+
+
 \starpar{Operation times}
 \starpar{Choice of slot size}
 \starpar{Example of results}
@@ -260,6 +315,13 @@ the processor may start processing both line~275 and line~280, triggering memory
 \starpar{Mitigation, Dan Bernstein NaCL}
 \section{Related Work}\label{sec:related}
 \section{Conclusions}
+
+\section{Acknowedgements}
+The authors wish to thank Dr Katrina Falkner for the advice and support.
+
+This research was performed under contract to the Defence
+Science and Technology Organisation (DSTO) Maritime Division,
+Australia.
 
 %\starpar{Bitcoin uses ECDSA}~\cite{nakamoto--bitcoin}
 

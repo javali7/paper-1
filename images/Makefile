@@ -1,4 +1,4 @@
-FIGS=memory.fig
+FIGS=memory.fig temporal.fig
 
 PDFS=${FIGS:.fig=.pdf} ${PLOTS:.plot=.pdf}
 EPSS=${FIGS:.fig=.eps} ${PLOTS:.plot=.eps}
