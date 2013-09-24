@@ -74,7 +74,8 @@ The results of the attack are analysed in Section~\ref{sec:results}.
 We discuss the implications of the attack and suggest techniques for mitigation in Section~\ref{sec:discussion}.
 Section~\ref{sec:related} presents related research.
 \section{Preliminaries}\label{sec:background}
-\subsection{ECDSA}
+
+\subsection{ECDSA}\label{sub:ecdsa}
 
 The ElGamal Signature Scheme is the basis of the US 1994 NIST standard, Digital Signature Algorithm (DSA). The ECDSA is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group over field elements is smaller parameters for the same security level as mentioned above. ***
 
@@ -102,11 +103,11 @@ The message $m$ is not necessarily encrypted, the contents may not be secret, bu
 \item Verify that $r=x\mod n$ otherwise reject the signature.
 \end{enumerate}
 
-Step \ref{rand_element} of the signing algorithm is of vital importance, inapproproate reuse of the random integer is what lead to the highly publicised breaking of PS3 signature scheme implementation. Knowledge of the random value $k$ leads to knowledge of the secret key as all values $(m,r,s)$ can be observed by an eavesdropper, $\bar{e}$ can be found from $m$, $r^{-1}\mod n$ can be easily found from $n$, and if $k$ is discovered then an adversary can find Bob's secret key through the simple calculation $$d_B=(sk-\bar{e})r^{-1}.$$
+Step \ref{rand_element} of the signing algorithm is of vital importance, inapproproate reuse of the random integer is what lead to the highly publicised breaking of Sony PS3 implementation of ECDSA. Knowledge of the random value $k$ leads to knowledge of the secret key as all values $(m,r,s)$ can be observed by an eavesdropper, $\bar{e}$ can be found from $m$, $r^{-1}\mod n$ can be easily found from $n$, and if $k$ is discovered then an adversary can find Bob's secret key through the simple calculation $$d_B=(sk-\bar{e})r^{-1}.$$
 
 %Using the same value twice (even while keeping k secret), using a predictable value, or leaking even a few bits of k in each of several signatures, is enough to break DSA.
 
-\subsection{The Montgomery Ladder}
+\subsection{The Montgomery Ladder}\label{sub:montgomery}
 Scalar multiplication is a common operation in cryptography and in a number of incidences (such as the multiplication by the secret, randomly generated element required in ECDSA), the scalar is intended to remain secret. This scalar multiplication is most efficiently performed using a square-and-multiply method (or the related Right-to-left method) as outlined in Algorithm \ref{d_and_a}
 
 \begin{algorithm}[htb]\label{d_and_a}
@@ -288,6 +289,11 @@ For our attack we probe memory lines~$B$ and~$D$.
 The next section describes the details of our experiment with the attack and its results.
 
 
+\subsection{Full recovery of the nonce}\label{sub:full_nonce}
+There are a number of attacks on ECC protocols which recover the secret key using a small proportion of the leaked nonce. In this attack, the proportion of the nonce recovered by the \textsc{Flush+Reload} attack is significantly higher; using one of the existing atttacks would be unnecessarily (computationally) excesive. Attacks using lattice techniques to solve the related hidden number problem, for example, ... 
+In experiements a basic BSGS implementation sufficed... 
+
+\subsubsection*{Distribution of the missing nonce bits}
 
 
 \section{Experimental Setup and Results}\label{sec:results}
