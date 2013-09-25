@@ -1,48 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/MacPorts 2013_2)
+This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Euro2014.aux
 The style file: splncs.bst
 Database file #1: Euro2014.bib
 Warning--empty title in openssl
-You've used 17 entries,
+You've used 20 entries,
             2410 wiz_defined-function locations,
-            647 strings with 6810 characters,
-and the built_in function-call counts, 6513 in all, are:
-= -- 734
-> -- 192
-< -- 16
-+ -- 76
-- -- 56
-* -- 459
-:= -- 906
-add.period$ -- 29
-call.type$ -- 17
-change.case$ -- 73
+            669 strings with 7475 characters,
+and the built_in function-call counts, 8082 in all, are:
+= -- 912
+> -- 252
+< -- 20
++ -- 99
+- -- 75
+* -- 574
+:= -- 1124
+add.period$ -- 35
+call.type$ -- 20
+change.case$ -- 90
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 306
-empty$ -- 566
-format.name$ -- 56
-if$ -- 1527
+cite$ -- 21
+duplicate$ -- 376
+empty$ -- 689
+format.name$ -- 75
+if$ -- 1899
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 11
-newline$ -- 84
-num.names$ -- 36
-pop$ -- 84
+int.to.str$ -- 20
+missing$ -- 14
+newline$ -- 99
+num.names$ -- 44
+pop$ -- 100
 preamble$ -- 1
-purify$ -- 61
+purify$ -- 75
 quote$ -- 0
-skip$ -- 253
+skip$ -- 314
 stack$ -- 0
-substring$ -- 428
-swap$ -- 149
-text.length$ -- 16
+substring$ -- 536
+swap$ -- 187
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 68
+type$ -- 80
 warning$ -- 1
-while$ -- 64
-width$ -- 19
-write$ -- 190
+while$ -- 79
+width$ -- 22
+write$ -- 229
 (There was 1 warning)

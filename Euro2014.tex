@@ -25,22 +25,16 @@
 \end{abstract}
 
 \section{Introduction}
-Elliptic curve cryptography~\cite{miller85use,koblitz87elliptic} is a collection of public key cryptographic methods that rely on the computational
+Elliptic curve cryptography (ECC)~\cite{miller85use,koblitz87elliptic} is a collection of public key cryptographic methods that rely on the computational
 intractability of the Elliptic Curve Discrete Logarithm Problem (ECDLP).
 In a nutshell, given an elliptic curve over a finite field and two points on the curve~$G$ and~$H$,
 the ECDLP is to find the scalar $k$ such that $H=kG$.
 
-Elliptic curve cryptography offers a higher encryption strength per key-bit than similar methods based on 
-discreet logarithms over finite field or on number factoring.
-Consequently, elliptic curves cryptography uses significantly shorter keys and offers faster operations
-than other methods, contributing to the rising popularity of elliptic curves cryptography.
+ECC offers a higher encryption strength per key-bit than related methods with security reliant on the hardness of computing discrete logarithms in finite field or factoring the product of large primes.
+Consequently, ECC uses significantly shorter keys and offers faster operations than other methods, contributing to its rising popularity.
 
 The Elliptic Curve Digital Signature Algorithm (ECDSA)~\cite{johnson01elliptic,fips186,ansi962} is a standard
-digital signature algorithm based on elliptic curves.
-The core operation of the ECDSA algorithm is multiplying a point on the elliptic curve by a randomly
-or pseudo-randomly chosen secret nonce.
-The confidentiality of the nonce is paramount for the security of the algorithm.
-Past research indicates that partial exposure of nonce bits can be exploited for efficient attacks on the secret key~\cite{nguyen03insecurity,brumley11remote}.
+digital signature algorithm based on elliptic curves. One core operation of the ECDSA algorithm, as in many ECC protocols, the scalar myltiplication of a point on the elliptic curve by a pseudo-randomly generated secret nonce. The confidentiality of the nonce is paramount for the security of the algorithm. Past research indicates that partial exposure of nonce bits can be exploited for efficient attacks on the secret key~\cite{nguyen03insecurity,brumley11remote}.
 
 OpenSSL~\cite{openssl} is a cryptographic software package that implements ECDSA.
 When using elliptic curves over a binary field $\mathbb{F}_{2^m}$, OpenSSL uses the 
@@ -53,26 +47,27 @@ While the operations performed by the algorithm are regular, their targets depen
 To apply the operations to the respective targets, the OpenSSL implementation uses a conditional branch based on the value of the bit.
 By tracing this branch an attacker can recover the values of the nonce bits and, consequently, break the cryptosystem.
 
-In this paper we present our 
-use the \textsc{Flush+Reload} cache side-channel attack~\cite{yarom13flush}
+In this paper we present our use the \textsc{Flush+Reload} cache side-channel attack~\cite{yarom13flush}
 to trace the branch in the OpenSSL implementation.
 \textsc{Flush+Reload} relies on a security weakness in the IA-32 and X86-64 architectures that allows processes
 to monitor other processes read and execute access to shared memory pages.
 Our attack program monitors access to both arms of the conditional branch and uses the information
-collected from these probes to reconstruct the nonce.
+collected from these probes to reconstruct the nonce. This attack is a threat to the security of any cryptographic protocol using this scalar multiplication method, in this paper we illustrate the efficiency by analysing ECDSA and recovering the secret key using only one signature at very little computational cost (in both time and memory).
 
 The paper also presents new information on the limitation of the \textsc{Flush+Reload} attack.
 We discuss spatial limitations, affecting the distance between multiple probes, and 
 temporal limitations, affecting the probe resolution.
 
-\starpar{Analysis of partial nonce exposure?}
+The results of this paper also support the findings of~\cite{walter04longer} that longer keys render a cryptographic algorithm more vulnerable to side-channel analysis.
 
-The rest of this paper is organised as follows.
-The next section presents background information on elliptic curves, ECDSA, the Montgomery ladder and the \textsc{Flush+Reload} attack.
+\starpar{Analysis of partial nonce exposure?}
+\starpar{Discussion of relevance (VM)}
+
+The rest of this paper is organised as follows. The next section presents background information on elliptic curves, ECDSA, the Montgomery ladder and the \textsc{Flush+Reload} attack followed by a short discussion of related research.
 Section~\ref{sec:attack} describes our attack on the OpenSSL implementation of ECDSA.
 The results of the attack are analysed in Section~\ref{sec:results}.
 We discuss the implications of the attack and suggest techniques for mitigation in Section~\ref{sec:discussion}.
-Section~\ref{sec:related} presents related research.
+
 \section{Preliminaries}\label{sec:background}
 
 \subsection{ECDSA}\label{sub:ecdsa}
@@ -162,6 +157,18 @@ The wait period between flushing and reloading imposes a limit on the temporal r
 The order of memory accesses occuring during a single wait period cannot be observed.
 Thus, shorter wait periods pprovide a higher observation resolution.
 On the other hand, with a short wait, a more 
+
+\subsection{Related Work}\label{sec:related}
+\cite{Howgrave-GrahamS01}
+\cite{gopalakrishnan07solving}
+\cite{nguyen03insecurity}
+
+All seeking to recover the nonce, use LLL method to solve the related HNP to find $k$ and thus the secret value. Each of these assumes only a small fraction of $k$ is recovered. Adapting the techniques of \cite{yarom13flush} a large majority of the bits are recovered, for larger key sizes, the higher the proportion...
+
+
+Given a group of order around 160 bits the probabilistic algorithm in~\cite{nguyen03insecurity} would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only 7 consecutive, least significant leaked bits of the nonce.
+
+The method presented in this paper is able to obtain around 560 of the 571 bits of a nonce and thus the secret key is obtained using only less than one second of additional computation time (idle computer).
 
 \section{Attacking OpenSSL ECDSA}\label{sec:attack}
 OpenSSL is one of the most common open-source cryptographic libraries.
@@ -289,13 +296,6 @@ For our attack we probe memory lines~$B$ and~$D$.
 The next section describes the details of our experiment with the attack and its results.
 
 
-\subsection{Full recovery of the nonce}\label{sub:full_nonce}
-There are a number of attacks on ECC protocols which recover the secret key using a small proportion of the leaked nonce. In this attack, the proportion of the nonce recovered by the \textsc{Flush+Reload} attack is significantly higher; using one of the existing atttacks would be unnecessarily (computationally) excesive. Attacks using lattice techniques to solve the related hidden number problem, for example, ... 
-In experiements a basic BSGS implementation sufficed... 
-
-\subsubsection*{Distribution of the missing nonce bits}
-
-
 \section{Experimental Setup and Results}\label{sec:results}
 
 To test the attack on OpenSSL we used an HP Elite 8300 
@@ -308,19 +308,31 @@ the OpenSSL library.
 For the experiment we used the OpenSSL \texttt{sect1571r1} curve (NIST Binary-Curve B-571~\cite{fips}.)
 
 
-
-
 \starpar{Operation times}
 \starpar{Choice of slot size}
 \starpar{Example of results}
 \starpar{Number of lost bits}
+
+\subsection{Full recovery of the nonce}\label{sub:full_nonce}
+There are a number of attacks on ECC protocols which recover the secret key using a small proportion of the leaked nonce. In this attack, the proportion of the nonce recovered by the \textsc{Flush+Reload} attack is significantly higher; using one of the existing atttacks would be unnecessarily (computationally) excesive. Attacks using lattice techniques to solve the related hidden number problem, for example, ... 
+In experiements a basic BSGS implementation sufficed... 
+
+\subsubsection*{Distribution of the missing nonce bits}
+
 \section{Discussion}\label{sec:discussion}
 \starpar{LLL attack}
+\starpar{Distribution of missing bits} analysis for when we are not as successful. 
 \starpar{Expected number of observed signatures to break key}
 \starpar{Smaller keys are more resilient}~\cite{walter04longer}
-\starpar{Mitigation, Dan Bernstein NaCL}
-\section{Related Work}\label{sec:related}
-\section{Conclusions}
+
+\subsection*{Mitigation}
+In the Networking and Cryptography library (NaCl), implemented by Daniel J. Bernstein, Tanja Lange and Peter Schwabe, there is no data flow from secrets to branch conditions, precisely the vulnerability of the OpenSSL implementation targeted by this attack. Analysis of the core security features of NaCl is given in \cite{dan-tan-peter} . The attack presented in this article relies on distinguishing bits of the nonce by observing the branching in traditional Montgomery ladder implementation. As the NaCl library avoids branchiong dependent on secret parameters this attack is not applicable to NaCl's \url{crypto_sign} API. (NaCl is in the public domain and has been made available by the authors of \cite{dan-tan-peter} at \url{http://nacl.cr.yp.to}.)
+
+
+\section{Conclusions and future work}
+Gray codes + BSGS for extending such attacks.\\
+Where is the BSGS vs LLL crossover?
+
 
 \section{Acknowedgements}
 The authors wish to thank Dr Katrina Falkner for the advice and support.

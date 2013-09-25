@@ -5,6 +5,13 @@ American National Standards Institute:
 \newblock {ANSI X9.62}, Public Key Cryptography for the Financial Services
   Industry: The Elliptic Curve Digital Signature Algorithm. (1999)
 
+\bibitem{dan-tan-peter}
+Bernstein, D.J., Lange, T., Schwabe, P.:
+\newblock The security impact of a new cryptographic library.
+\newblock In: Proceedings of the 2nd international conference on Cryptology and
+  Information Security in Latin America. LATINCRYPT'12, Berlin, Heidelberg,
+  Springer-Verlag (2012)  159--176
+
 \bibitem{brumley11remote}
 Brumley, B.B., Tuveri, N.:
 \newblock Remote timing attacks are still practical.
@@ -18,6 +25,18 @@ Cipresso, T., Stamp, M.:
 \newblock In Stavroulakis, P., Stamp, M., eds.: Handbook of Information and
   Communication Security.
 \newblock Springer (2010)  659--696
+
+\bibitem{gopalakrishnan07solving}
+Gopalakrishnan, K., Th\'eriault, N., Yao, C.Z.:
+\newblock Solving discrete logarithms from partial knowledge of the key.
+\newblock In Srinathan, K., Pandu~Rangan, C., Yung, M., eds.: Progress in
+  Cryptology -- INDOCRYPT 2007. Volume 4859 of Lecture Notes in Computer
+  Science., Springer (2007)  224--237
+
+\bibitem{Howgrave-GrahamS01}
+Howgrave-Graham, N., Smart, N.P.:
+\newblock Lattice attacks on digital signature schemes.
+\newblock Des. Codes Cryptography \textbf{23}(3) (2001)  283--290
 
 \bibitem{intel12optimization}
 Intel Corporation:
