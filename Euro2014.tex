@@ -22,6 +22,8 @@
 \maketitle
 
 \begin{abstract}
+In this paper we illustrate a vulnerability introduced to elliptic curve cryptographic protocols when implemented using a function of the OpenSSL cryptographic library. For a given implementaion using an elliptic curve $E$ over a binary field with a point $G\in E$, our attack can recover the majority of the bits of a scaler $k$ when $kG$ is computed using the OpenSSL implementation of the Montgomery ladder. For the Elliptic Curve Digital Signature Algorithm (ECDSA) the scalar $k$ is intended to remain secret. Our attack recovers the scalar $k$ and thus the secret key of the signer and would therefor allow unlimited forgeries. This is possible from snooping on only one signing process and requires computation of less than one second on a quad core desktop when the scalar $k$ is around 571 bits.
+
 \end{abstract}
 
 \section{Introduction}
@@ -159,16 +161,10 @@ Thus, shorter wait periods pprovide a higher observation resolution.
 On the other hand, with a short wait, a more 
 
 \subsection{Related Work}\label{sec:related}
-\cite{Howgrave-GrahamS01}
-\cite{gopalakrishnan07solving}
-\cite{nguyen03insecurity}
+There have been a number of publications adressing the security issues of digital signatures when the nonce is partially leaked, including~\cite{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}. These attacks usually rely on having obtained a relatively small number of bit of the ephemeral keys used for many signatures and then use the LLL method~\cite{LLL} to solve the related hidden number to find the secret value. The attack of~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm in would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only 7 consecutive, least significant leaked bits of the nonce (relying on some reasonable assumptions). Each of these assumes only a small fraction of $k$ is recovered. In these works the reconstruction of the secret information from the partial nonce information is the main contribution. The main contribution of this work is to illustrate the method, the adapted technique of \cite{yarom13flush}, to recover a large majority of the bits, from which the full nonce is then obtained using only one signature. Once the nonce has been fully determined the secret key is obtained using only less than one second of additional computation time (idle computer). 
+For example, we are able to obtain around 560 of the 571 bits of a nonce. Though the goal and approach of the works are similar, the methods are very different.
 
-All seeking to recover the nonce, use LLL method to solve the related HNP to find $k$ and thus the secret value. Each of these assumes only a small fraction of $k$ is recovered. Adapting the techniques of \cite{yarom13flush} a large majority of the bits are recovered, for larger key sizes, the higher the proportion...
-
-
-Given a group of order around 160 bits the probabilistic algorithm in~\cite{nguyen03insecurity} would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only 7 consecutive, least significant leaked bits of the nonce.
-
-The method presented in this paper is able to obtain around 560 of the 571 bits of a nonce and thus the secret key is obtained using only less than one second of additional computation time (idle computer).
+The attack of~\cite{brumley11remote} uses the above methods to highlight specifically a vulnerability in OpenSSL's ladder implementation for curves over binary fields, the same target of our attack. Though the attacks differ, they both illustrate that the OpenSSL implementation of the Montgomery ladder is vulnerable from both remote attacks and attacks launched from virtual machines with access to the memory of the target computer. The countermeasure suggested in~\cite{brumley11remote} will not thwart this attack.
 
 \section{Attacking OpenSSL ECDSA}\label{sec:attack}
 OpenSSL is one of the most common open-source cryptographic libraries.
@@ -323,16 +319,20 @@ In experiements a basic BSGS implementation sufficed...
 \starpar{LLL attack}
 \starpar{Distribution of missing bits} analysis for when we are not as successful. 
 \starpar{Expected number of observed signatures to break key}
-\starpar{Smaller keys are more resilient}~\cite{walter04longer}
+
 
 \subsection*{Mitigation}
+As the ECDLP is not targeted by this attack, the signature protocol it is made no more vulnerable by our results. This attack is targets the scalar multiplication implmentation of OpenSSL and is therfore particular to implementations using 
+
 In the Networking and Cryptography library (NaCl), implemented by Daniel J. Bernstein, Tanja Lange and Peter Schwabe, there is no data flow from secrets to branch conditions, precisely the vulnerability of the OpenSSL implementation targeted by this attack. Analysis of the core security features of NaCl is given in \cite{dan-tan-peter} . The attack presented in this article relies on distinguishing bits of the nonce by observing the branching in traditional Montgomery ladder implementation. As the NaCl library avoids branchiong dependent on secret parameters this attack is not applicable to NaCl's \url{crypto_sign} API. (NaCl is in the public domain and has been made available by the authors of \cite{dan-tan-peter} at \url{http://nacl.cr.yp.to}.)
 
 
 \section{Conclusions and future work}
-Gray codes + BSGS for extending such attacks.\\
-Where is the BSGS vs LLL crossover?
+The results of this work and \cite{remote_attack} imply that the OpenSSL montgomery ladder implementation should be avoided in all implementations of elliptic curve protocols when a scalar multiplication step involves a secret parameter. This attack is applicable when the mallicious party has access to the memory of the targeted device which is not a completely unreasonable assumption ***. 
 
+The results of this work also support the theory of~\cite{walter04longer} that smaller keys are more resilient to side-channel analysis, in this attack a higer proportion of the nonce was obtained for larger key sizes. This implies that as we naturally transition to larger parameters in response to increasing computing capabilities, prevention of side-channel attacks should be incorporated into the implementation design, as adopted by the authors of the NaCl cryptographic library. 
+
+Future directions for this research includes developing the use of Gray codes in improving the BSGS method to extend the efficiency of obtaining the full scalar from a partially obtained secret; it would be interesting to understand what proportion of the nonce should be obtained for the BSGS method to become more practical than the LLL method.
 
 \section{Acknowedgements}
 The authors wish to thank Dr Katrina Falkner for the advice and support.

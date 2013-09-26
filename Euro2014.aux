@@ -5,74 +5,78 @@
 \citation{openssl}
 \citation{montgomery87speeding,joye03montgomery}
 \citation{joye03montgomery,okeya00elliptic}
-\citation{yarom13flush}
 \@writefile{toc}{\contentsline {title}{Recovering OpenSSL ECDSA Nonces Using the \textsc  {Flush+Reload} Cache Side-channel Attack}{1}}
 \@writefile{toc}{\authcount {1}}
 \@writefile{toc}{\contentsline {author}{No Author Given}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\citation{yarom13flush}
 \citation{walter04longer}
 \citation{fips}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{2}}
 \newlabel{sec:background}{{2}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}ECDSA}{2}}
 \newlabel{sub:ecdsa}{{2.1}{2}}
-\citation{montgomery87speeding}
 \newlabel{rand_element}{{2}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The Montgomery Ladder}{3}}
 \newlabel{sub:montgomery}{{2.2}{3}}
-\citation{Howgrave-GrahamS01}
-\citation{gopalakrishnan07solving}
-\citation{nguyen03insecurity}
-\citation{yarom13flush}
-\citation{nguyen03insecurity}
+\citation{montgomery87speeding}
 \newlabel{d_and_a}{{1}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Double-and-Add Point Multiplication}}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Montgomery Ladder Point Multiplication}}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The \textsc  {Flush+Reload} attack}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Related Work}{4}}
-\newlabel{sec:related}{{2.4}{4}}
+\citation{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}
+\citation{LLL}
+\citation{nguyen03insecurity}
+\citation{yarom13flush}
+\citation{brumley11remote}
+\citation{brumley11remote}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Related Work}{5}}
+\newlabel{sec:related}{{2.4}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Attacking OpenSSL ECDSA}{5}}
 \newlabel{sec:attack}{{3}{5}}
-\newlabel{lst:openssl}{{1.1}{5}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {1.1}OpenSSL Implementation of the Montgomery Ladder}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mapping from Source Code to Memory}}{6}}
-\newlabel{dgm:memory}{{1}{6}}
+\newlabel{lst:openssl}{{1.1}{6}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1.1}OpenSSL Implementation of the Montgomery Ladder}{6}}
 \citation{uht95disjoint}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mapping from Source Code to Memory}}{7}}
+\newlabel{dgm:memory}{{1}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Observable Memory Access over Time}}{7}}
+\newlabel{dgm:temporal}{{2}{7}}
 \citation{intel12optimization}
 \citation{cipsero10software}
 \citation{fips}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Observable Memory Access over Time}}{7}}
-\newlabel{dgm:temporal}{{2}{7}}
-\citation{walter04longer}
-\citation{dan-tan-peter}
-\citation{dan-tan-peter}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup and Results}{8}}
 \newlabel{sec:results}{{4}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Full recovery of the nonce}{8}}
 \newlabel{sub:full_nonce}{{4.1}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{8}}
-\newlabel{sec:discussion}{{5}{8}}
+\citation{dan-tan-peter}
+\citation{dan-tan-peter}
+\citation{remote_attack}
+\citation{walter04longer}
 \bibstyle{splncs}
 \bibdata{Euro2014}
 \bibcite{ansi962}{1}
-\bibcite{dan-tan-peter}{2}
-\bibcite{brumley11remote}{3}
-\bibcite{cipsero10software}{4}
-\bibcite{gopalakrishnan07solving}{5}
-\bibcite{Howgrave-GrahamS01}{6}
-\bibcite{intel12optimization}{7}
-\bibcite{johnson01elliptic}{8}
-\bibcite{joye03montgomery}{9}
-\bibcite{koblitz87elliptic}{10}
-\bibcite{miller85use}{11}
-\bibcite{montgomery87speeding}{12}
-\bibcite{fips186}{13}
-\bibcite{fips}{14}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}}
+\newlabel{sec:discussion}{{5}{9}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions and future work}{9}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Acknowedgements}{9}}
-\bibcite{nguyen03insecurity}{15}
-\bibcite{okeya00elliptic}{16}
-\bibcite{openssl}{17}
-\bibcite{uht95disjoint}{18}
-\bibcite{walter04longer}{19}
-\bibcite{yarom13flush}{20}
+\bibcite{dan-tan-peter}{2}
+\bibcite{brumley11remote}{3}
+\bibcite{remote_attack}{4}
+\bibcite{cipsero10software}{5}
+\bibcite{gopalakrishnan07solving}{6}
+\bibcite{Howgrave-GrahamS01}{7}
+\bibcite{intel12optimization}{8}
+\bibcite{johnson01elliptic}{9}
+\bibcite{joye03montgomery}{10}
+\bibcite{koblitz87elliptic}{11}
+\bibcite{LLL}{12}
+\bibcite{miller85use}{13}
+\bibcite{montgomery87speeding}{14}
+\bibcite{fips186}{15}
+\bibcite{fips}{16}
+\bibcite{nguyen03insecurity}{17}
+\bibcite{okeya00elliptic}{18}
+\bibcite{openssl}{19}
+\bibcite{uht95disjoint}{20}
+\bibcite{walter04longer}{21}
+\bibcite{yarom13flush}{22}

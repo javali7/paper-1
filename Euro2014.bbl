@@ -19,6 +19,12 @@ Brumley, B.B., Tuveri, N.:
   Volume 6879 of Lecture Notes in Computer Science., Springer-Verlag (2011)
   355--371
 
+\bibitem{remote_attack}
+Brumley, B.B., Tuveri, N.:
+\newblock Remote timing attacks are still practical.
+\newblock Cryptology ePrint Archive, Report 2011/232 (2011)
+  \url{http://eprint.iacr.org/}.
+
 \bibitem{cipsero10software}
 Cipresso, T., Stamp, M.:
 \newblock Software reverse engineering.
@@ -60,6 +66,11 @@ Joye, M., Yen, S.M.:
 Koblitz, N.:
 \newblock Elliptic curve cryptosystems.
 \newblock Mathematics of Computation \textbf{48}(177) (January 1987)  203--209
+
+\bibitem{LLL}
+Lenstra, A., Lenstra, H., Lov{\'a}sz, L.:
+\newblock Factoring polynomials with rational coefficients.
+\newblock Math. Ann. \textbf{261} (1982)  515 --534
 
 \bibitem{miller85use}
 Miller, V.S.:

@@ -4,45 +4,45 @@ The top-level auxiliary file: Euro2014.aux
 The style file: splncs.bst
 Database file #1: Euro2014.bib
 Warning--empty title in openssl
-You've used 20 entries,
+You've used 22 entries,
             2410 wiz_defined-function locations,
-            669 strings with 7475 characters,
-and the built_in function-call counts, 8082 in all, are:
-= -- 912
-> -- 252
-< -- 20
-+ -- 99
-- -- 75
-* -- 574
-:= -- 1124
-add.period$ -- 35
-call.type$ -- 20
-change.case$ -- 90
+            680 strings with 7706 characters,
+and the built_in function-call counts, 8826 in all, are:
+= -- 992
+> -- 283
+< -- 21
++ -- 111
+- -- 85
+* -- 624
+:= -- 1235
+add.period$ -- 38
+call.type$ -- 22
+change.case$ -- 101
 chr.to.int$ -- 0
-cite$ -- 21
-duplicate$ -- 376
-empty$ -- 689
-format.name$ -- 75
-if$ -- 1899
+cite$ -- 23
+duplicate$ -- 407
+empty$ -- 745
+format.name$ -- 85
+if$ -- 2065
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 14
-newline$ -- 99
-num.names$ -- 44
-pop$ -- 100
+int.to.str$ -- 22
+missing$ -- 15
+newline$ -- 109
+num.names$ -- 48
+pop$ -- 111
 preamble$ -- 1
-purify$ -- 75
+purify$ -- 84
 quote$ -- 0
-skip$ -- 314
+skip$ -- 342
 stack$ -- 0
-substring$ -- 536
-swap$ -- 187
-text.length$ -- 20
+substring$ -- 583
+swap$ -- 202
+text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
+type$ -- 88
 warning$ -- 1
-while$ -- 79
-width$ -- 22
-write$ -- 229
+while$ -- 86
+width$ -- 24
+write$ -- 252
 (There was 1 warning)
