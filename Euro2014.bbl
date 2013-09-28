@@ -19,12 +19,6 @@ Brumley, B.B., Tuveri, N.:
   Volume 6879 of Lecture Notes in Computer Science., Springer-Verlag (2011)
   355--371
 
-\bibitem{remote_attack}
-Brumley, B.B., Tuveri, N.:
-\newblock Remote timing attacks are still practical.
-\newblock Cryptology ePrint Archive, Report 2011/232 (2011)
-  \url{http://eprint.iacr.org/}.
-
 \bibitem{cipsero10software}
 Cipresso, T., Stamp, M.:
 \newblock Software reverse engineering.
@@ -108,6 +102,12 @@ Okeya, K., Kurumatani, H., Sakurai, K.:
 \bibitem{openssl}
 {OpenSSL}.
 \newblock \url{http://www.openssl.org}
+
+\bibitem{shanks71class}
+Shanks, D.:
+\newblock Class number, a theory of factorization, and genera.
+\newblock In: Proceedings of the Symposium of Pure Mathematics 20, American
+  Mathematical Society (1971)  415--440
 
 \bibitem{uht95disjoint}
 Uht, A.K., Sindagi, V.:
