@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  26 SEP 2013 11:50
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 SEP 2013 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -473,39 +473,45 @@ Overfull \hbox (18.45152pt too wide) in paragraph at lines 59--62
 ion of the \OT1/cmr/m/sc/10 Flush+Reload
  []
 
+
+Overfull \hbox (1.59822pt too wide) in paragraph at lines 66--70
+\OT1/cmr/m/n/10 search.Section 3[] de-scribes our at-tack on the OpenSSL im-ple
+-men-ta-tion of ECDSA.
+ []
+
 [2] [3] [4] [5]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 189.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 191.
 
  (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 189.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 190.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 191.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 192.
 
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 192.
 
 <images/memory.pdf, id=38, 663.47874pt x 164.615pt>
 File: images/memory.pdf Graphic file (type pdf)
  <use images/memory.pdf>
-Package pdftex.def Info: images/memory.pdf used on input line 238.
+Package pdftex.def Info: images/memory.pdf used on input line 240.
 (pdftex.def)             Requested size: 347.12354pt x 86.12526pt.
 
 [6] <images/temporal.pdf, id=44, 1068.99374pt x 345.29pt>
 File: images/temporal.pdf Graphic file (type pdf)
 
 <use images/temporal.pdf>
-Package pdftex.def Info: images/temporal.pdf used on input line 268.
+Package pdftex.def Info: images/temporal.pdf used on input line 270.
 (pdftex.def)             Requested size: 347.12354pt x 112.12308pt.
 
 Underfull \vbox (badness 3657) has occurred while \output is active []
 
- [7 <./images/memory.pdf> <./images/temporal.pdf>] [8] (./Euro2014.bbl [9] [10]
+ [7 <./images/memory.pdf> <./images/temporal.pdf>] [8] [9] (./Euro2014.bbl [10]
 ) [11]
 (./Euro2014.aux)
 
@@ -543,7 +549,7 @@ st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2012/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2012/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Euro2014.pdf (11 pages, 293663 bytes).
+Output written on Euro2014.pdf (11 pages, 293418 bytes).
 PDF statistics:
  145 PDF objects out of 1000 (max. 8388607)
  103 compressed objects within 2 object streams

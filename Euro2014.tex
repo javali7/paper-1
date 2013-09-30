@@ -54,7 +54,7 @@ to trace the branch in the OpenSSL implementation.
 \textsc{Flush+Reload} relies on a security weakness in the IA-32 and X86-64 architectures that allows processes
 to monitor other processes read and execute access to shared memory pages.
 Our attack program monitors access to both arms of the conditional branch and uses the information
-collected from these probes to reconstruct the nonce. This attack is a threat to the security of any cryptographic protocol using this scalar multiplication method, in this paper we illustrate the efficiency by analysing ECDSA and recovering the secret key using only one signature at very little computational cost (in both time and memory).
+collected from these probes to reconstruct the nonce. This attack is a threat to the security of any cryptographic protocol using this scalar multiplication method, when the attacker has access to the target computer's memory. In this paper we illustrate the efficiency of the atttack by analysing ECDSA and recovering the secret key using only one signature at very little computational cost (in both time and memory).
 
 The paper also presents new information on the limitation of the \textsc{Flush+Reload} attack.
 We discuss spatial limitations, affecting the distance between multiple probes, and 
@@ -62,15 +62,14 @@ temporal limitations, affecting the probe resolution.
 
 The results of this paper also support the findings of~\cite{walter04longer} that longer keys render a cryptographic algorithm more vulnerable to side-channel analysis.
 
-\starpar{Analysis of partial nonce exposure?}
-\starpar{Discussion of relevance (VM)}
 
-The rest of this paper is organised as follows. The next section presents background information on elliptic curves, ECDSA, the Montgomery ladder and the \textsc{Flush+Reload} attack followed by a short discussion of related research.
+The rest of this paper is organised as follows. The next section presents background information on elliptic curves, ECDSA, the Montgomery ladder and the \textsc{Flush+Reload} attack followed by a short discussion of related research.% and the validity of the assumption that an attacker has access to the computer's memory.
 Section~\ref{sec:attack} describes our attack on the OpenSSL implementation of ECDSA.
 The results of the attack are analysed in Section~\ref{sec:results}.
 We discuss the implications of the attack and suggest techniques for mitigation in Section~\ref{sec:discussion}.
 
 \section{Preliminaries}\label{sec:background}
+In this section we set the scene for our attack.
 
 \subsection{ECDSA}\label{sub:ecdsa}
 
@@ -165,6 +164,9 @@ There have been a number of publications adressing the security issues of digita
 For example, we are able to obtain around 560 of the 571 bits of a nonce. Though the goal and approach of the works are similar, the methods are very different.
 
 The attack of~\cite{brumley11remote} uses the above methods to highlight specifically a vulnerability in OpenSSL's ladder implementation for curves over binary fields, the same target of our attack. Though the attacks differ, they both illustrate that the OpenSSL implementation of the Montgomery ladder is vulnerable from both remote attacks and attacks launched from virtual machines with access to the memory of the target computer. The countermeasure suggested in~\cite{brumley11remote} will not thwart this attack.
+
+%\subsection{Memory Access Assumption}
+%The assumption that an attacker has access to the computer's memory is valid *** relevance of attack etc.
 
 \section{Attacking OpenSSL ECDSA}\label{sec:attack}
 OpenSSL is one of the most common open-source cryptographic libraries.
@@ -317,7 +319,7 @@ In experiements a basic BSGS implementation sufficed...
 
 \section{Discussion}\label{sec:discussion}
 \starpar{LLL attack}
-\starpar{Distribution of missing bits} analysis for when we are not as successful. 
+\starpar{Distribution of missing bits} There is a peak initially then the missing bits appear to 
 \starpar{Expected number of observed signatures to break key}
 
 
@@ -330,9 +332,15 @@ In the Networking and Cryptography library (NaCl), implemented by Daniel J. Bern
 \section{Conclusions and future work}
 The results of this work and \cite{remote_attack} imply that the OpenSSL montgomery ladder implementation should be avoided in all implementations of elliptic curve protocols when a scalar multiplication step involves a secret parameter. This attack is applicable when the mallicious party has access to the memory of the targeted device which is not a completely unreasonable assumption ***. 
 
-The results of this work also support the theory of~\cite{walter04longer} that smaller keys are more resilient to side-channel analysis, in this attack a higer proportion of the nonce was obtained for larger key sizes. This implies that as we naturally transition to larger parameters in response to increasing computing capabilities, prevention of side-channel attacks should be incorporated into the implementation design, as adopted by the authors of the NaCl cryptographic library. 
+The results of this work also support the theory of~\cite{walter04longer} that smaller keys are more resilient to side-channel analysis, in this attack a higer proportion of the nonce was obtained for larger key sizes. This implies that as we naturally transition to larger parameters in response to increasing computing capabilities, prevention of side-channel attacks should be incorporated into the implementation design, as is the methodology adopted by the authors of the NaCl cryptographic library. 
 
-Future directions for this research includes developing the use of Gray codes in improving the BSGS method to extend the efficiency of obtaining the full scalar from a partially obtained secret; it would be interesting to understand what proportion of the nonce should be obtained for the BSGS method to become more practical than the LLL method.
+There are a number of future directions for this research, including the development of the use of Gray codes in improving the BSGS method to extend the efficiency of obtaining the full scalar from a partially obtained secret. It would also be usedful to understand what proportion of the nonce should be obtained for the BSGS method to become more practical than the LLL method. 
+
+Another related area of interest is how to adapt this attack to recover bits when a sliding window is used; using the method presented in this paper we are able to extract the first and last bit of the sliding window (two bits per window) and thus the proportion of bits obtained decreases as the window size increases. 
+
+
+
+
 
 \section{Acknowedgements}
 The authors wish to thank Dr Katrina Falkner for the advice and support.
