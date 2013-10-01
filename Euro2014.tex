@@ -22,39 +22,34 @@
 \maketitle
 
 \begin{abstract}
-In this paper we illustrate a vulnerability introduced to elliptic curve cryptographic protocols when implemented using a function of the OpenSSL cryptographic library. For a given implementaion using an elliptic curve $E$ over a binary field with a point $G\in E$, our attack can recover the majority of the bits of a scaler $k$ when $kG$ is computed using the OpenSSL implementation of the Montgomery ladder. For the Elliptic Curve Digital Signature Algorithm (ECDSA) the scalar $k$ is intended to remain secret. Our attack recovers the scalar $k$ and thus the secret key of the signer and would therefor allow unlimited forgeries. This is possible from snooping on only one signing process and requires computation of less than one second on a quad core desktop when the scalar $k$ is around 571 bits.
+In this paper we illustrate a vulnerability introduced to elliptic curve cryptographic protocols when implemented using a function of the OpenSSL cryptographic library. For a given implementaion using an elliptic curve $E$ over a binary field with a point $G\in E$, our attack can recover the majority of the bits of a scaler $k$ when $kG$ is computed using the OpenSSL implementation of the Montgomery ladder. For the Elliptic Curve Digital Signature Algorithm (ECDSA) the scalar $k$ is intended to remain secret. Our attack recovers the scalar $k$ and thus the secret key of the signer and would therefor allow unlimited forgeries. This is possible from snooping on only one signing process and requires computation of less than one second on a quad core desktop when the scalar $k$ (and secret key) is around 571 bits.
 
 \end{abstract}
 
 \section{Introduction}
-Elliptic curve cryptography (ECC)~\cite{miller85use,koblitz87elliptic} is a collection of public key cryptographic methods that rely on the computational
-intractability of the Elliptic Curve Discrete Logarithm Problem (ECDLP).
-In a nutshell, given an elliptic curve over a finite field and two points on the curve~$G$ and~$H$,
-the ECDLP is to find the scalar $k$ such that $H=kG$.
+Elliptic curve cryptography (ECC)~\cite{miller85use,koblitz87elliptic} includes a number of public-key cryptographic protocols whose security relies on the computational intractability of the Elliptic Curve Discrete Logarithm Problem (ECDLP).
+In a nutshell, given an elliptic curve over a finite field and two points on the curve~$G$ and~$H$, the ECDLP is to find the scalar $k$ such that $H=kG$.
 
 ECC offers a higher encryption strength per key-bit than related methods with security reliant on the hardness of computing discrete logarithms in finite field or factoring the product of large primes.
 Consequently, ECC uses significantly shorter keys and offers faster operations than other methods, contributing to its rising popularity.
 
 The Elliptic Curve Digital Signature Algorithm (ECDSA)~\cite{johnson01elliptic,fips186,ansi962} is a standard
-digital signature algorithm based on elliptic curves. One core operation of the ECDSA algorithm, as in many ECC protocols, the scalar myltiplication of a point on the elliptic curve by a pseudo-randomly generated secret nonce. The confidentiality of the nonce is paramount for the security of the algorithm. Past research indicates that partial exposure of nonce bits can be exploited for efficient attacks on the secret key~\cite{nguyen03insecurity,brumley11remote}.
+digital signature algorithm implemented using elliptic curves. One core operation of the ECDSA algorithm, as in many ECC protocols, is the scalar myltiplication of a point on the elliptic curve by a pseudo-randomly generated secret nonce. The confidentiality of the nonce is paramount for the security of the algorithm. Past research indicates that partial exposure of nonce bits can be exploited for efficient attacks on the secret key~\cite{nguyen03insecurity,brumley11remote}.
 
 OpenSSL~\cite{openssl} is a cryptographic software package that implements ECDSA.
 When using elliptic curves over a binary field $\mathbb{F}_{2^m}$, OpenSSL uses the 
-Montgomery ladder~\cite{montgomery87speeding,joye03montgomery} algorithm for multiplying the point by the nonce.
+Montgomery ladder~\cite{montgomery87speeding,joye03montgomery} algorithm to compute $kG$, scalar multiplication of a publically known point $G$ by the nonce $k$.
 One of the advantages of the Montgomery ladder is that it has regular behaviour, performing
 the same sequence of operations for each nonce bit, irrespective of the value of the bit.
 This regular behaviour makes it more resilient to side-channel attacks~\cite{joye03montgomery,okeya00elliptic}.
 
 While the operations performed by the algorithm are regular, their targets depend on the value of the bits of the nonce.
-To apply the operations to the respective targets, the OpenSSL implementation uses a conditional branch based on the value of the bit.
-By tracing this branch an attacker can recover the values of the nonce bits and, consequently, break the cryptosystem.
+To apply the operations to the respective targets, the OpenSSL implementation uses a conditional branch based on the value of the bit. By tracing this branch an attacker can recover the values of the nonce bits and, consequently, break the cryptosystem. In this paper we present our use of the \textsc{Flush+Reload} cache side-channel attack~\cite{yarom13flush} to trace the branch in the OpenSSL implementation.
 
-In this paper we present our use the \textsc{Flush+Reload} cache side-channel attack~\cite{yarom13flush}
-to trace the branch in the OpenSSL implementation.
-\textsc{Flush+Reload} relies on a security weakness in the IA-32 and X86-64 architectures that allows processes
+The \textsc{Flush+Reload} attack exploits a security weakness in the IA-32 and X86-64 architectures that allows processes
 to monitor other processes read and execute access to shared memory pages.
 Our attack program monitors access to both arms of the conditional branch and uses the information
-collected from these probes to reconstruct the nonce. This attack is a threat to the security of any cryptographic protocol using this scalar multiplication method, when the attacker has access to the target computer's memory. In this paper we illustrate the efficiency of the atttack by analysing ECDSA and recovering the secret key using only one signature at very little computational cost (in both time and memory).
+collected from these probes to reconstruct the nonce. This attack is a threat to the security of any cryptographic protocol implemented using the OpenSSL scalar multiplication method, when the attacker has access to the target computer's memory. In this paper we illustrate the efficiency of the atttack by analysing ECDSA and recovering the secret key using only one signature at very little computational cost (in both time and memory).
 
 The paper also presents new information on the limitation of the \textsc{Flush+Reload} attack.
 We discuss spatial limitations, affecting the distance between multiple probes, and 
@@ -73,18 +68,18 @@ In this section we set the scene for our attack.
 
 \subsection{ECDSA}\label{sub:ecdsa}
 
-The ElGamal Signature Scheme is the basis of the US 1994 NIST standard, Digital Signature Algorithm (DSA). The ECDSA is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group over field elements is smaller parameters for the same security level as mentioned above. ***
-
+The ElGamal Signature Scheme \cite{Elgamal85} is the basis of the US 1994 NIST standard, Digital Signature Algorithm (DSA). The ECDSA is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group as opposed to the multiplicative group of a finite field is that smaller parameters for the same security level \cite{koblitz87elliptic,miller85use} due to the fact that the current best known algorithms to solve the discrete logarithm problem in the finite field are subexponential and theose used to solve the ECDLP are exponential, see \cite{balasubramanian-koblitz,adelman-demarrais}, and developments thereof, for more details. 
+\subsubsection{ECDSA}
 \emph{Parameters:}\quad An elliptic curve $E$ defined over a finite field $\F_{q}$; a point $G\in E$ of large prime order $n$ (generator of the group of points of order $n$). Paramaters chosen as such are generally believed to offer a security level of $\frac{n}{2}$ given current knowledge and technologies. Parameters are recommended to be generated following \cite{fips}. The field size $q$ is usually taken to be a large, odd prime or a power of $2$. The implementation of OpenSSL uses both prime fields and $q=2^m$ though the results in this paper relate to the binary field case.
 
-\emph{Public-Private Key pairs:}\quad the private key is an integer $d$, $1<d<n-1$ and the public key is the point $Q=dG$. Calculating the private key from the public key requires solving the ECDLP, which is known to be hard in practice for the correctly chosen parameters. The most efficient algorithms currently know which solve the ECDLP have a square root run time in the size of the group, hence the aforementioned security level.
+\emph{Public-Private Key pairs:}\quad the private key is an integer $d$, $1<d<n-1$ and the public key is the point $Q=dG$. Calculating the private key from the public key requires solving the ECDLP, which is known to be hard in practice for the correctly chosen parameters. The most efficient algorithms currently know which solve the ECDLP have a square root run time in the size of the group \cite{WienerZ98,GallantLV00}, hence the aforementioned security level.
 \vspace{0.5cm}
 
 Suppose Bob, with public-private Key pair $\{d_B,Q_B\}$, wishes to send a signed message $m$ to Alice, he follows the following steps:
 \begin{enumerate}
-\item Using an approved hash algorithm, compute $e=Hash(m),$ take $\bar{e}$ to be the leftmost $n$ bits of $e$. ***check fips is leftmost or mod***
+\item Using an approved hash algorithm, compute $e=Hash(m),$ take $\bar{e}$ to be the leftmost $\ell$ bits of $e$ (where $\ell=\min(\log_2(q),$bitlength of the hash$)$). 
 \item\label{rand_element} Randomly select $k\leftarrow_R\Z_n$ with $1<k<p-1$ and $(k,p-1)=1$.
-\item Compute the point $(x,y)=kG\in E$. ***using montgomery ladder or otherwise***
+\item\label{scalar_mult} Compute the point $(x,y)=kG\in E$. 
 \item Take $r=x\mod n$; if $r=0$ then return to step \ref{rand_element}.
 \item Compute $s=k^{-1}(z+rd_B)\mod n$; if $s=0$ then return to step \ref{rand_element}.
 \item Bob sends $(m,r,s)$ to Alice.
@@ -101,11 +96,12 @@ The message $m$ is not necessarily encrypted, the contents may not be secret, bu
 
 Step \ref{rand_element} of the signing algorithm is of vital importance, inapproproate reuse of the random integer is what lead to the highly publicised breaking of Sony PS3 implementation of ECDSA. Knowledge of the random value $k$ leads to knowledge of the secret key as all values $(m,r,s)$ can be observed by an eavesdropper, $\bar{e}$ can be found from $m$, $r^{-1}\mod n$ can be easily found from $n$, and if $k$ is discovered then an adversary can find Bob's secret key through the simple calculation $$d_B=(sk-\bar{e})r^{-1}.$$
 
-%Using the same value twice (even while keeping k secret), using a predictable value, or leaking even a few bits of k in each of several signatures, is enough to break DSA.
+Step \ref{scalar_mult} of the signing algorithm is the stage targeted by this attack, when implemented using OpenSSL's montgomery ladder. % we are able to recover the majority of the bits of $k$ as this computation is executed. We then reconstruct $k$ and use the above calculation to recover the signer's secret key.
 
 \subsection{The Montgomery Ladder}\label{sub:montgomery}
-Scalar multiplication is a common operation in cryptography and in a number of incidences (such as the multiplication by the secret, randomly generated element required in ECDSA), the scalar is intended to remain secret. This scalar multiplication is most efficiently performed using a square-and-multiply method (or the related Right-to-left method) as outlined in Algorithm \ref{d_and_a}
+Scalar multiplication is a common operation in cryptography and in a number of incidences (such as the multiplication by the secret, randomly generated element required in ECDSA), the scalar is intended to remain secret. This scalar multiplication is most efficiently performed using a square-and-multiply method (or the related Right-to-left method) as outlined in Algorithm \ref{d_and_a}.\\
 
+\vspace{-0.8cm}
 \begin{algorithm}[htb]\label{d_and_a}
 \SetAlgoLined
 {\bf Input:} Point $P$, scalar $n$, $k$ bits\\
@@ -117,15 +113,14 @@ $Q\gets \mathcal{O}$\\
    $Q\gets Q+P$
    }
  }
- \caption{Double-and-Add Point Multiplication}
-\end{algorithm}
+ \caption{Double-and-Add Point Scalar Multiplication}
+\end{algorithm}\vspace{-0.5cm}
 Double-and-add methods, though efficient, are vulnerable to simple power analysis. The addition law for points on Weirstrass curves is not complete, that is, the computation of $P+Q$ differs between the cases $P=Q$ and $P\neq Q.$ Consequently, by examining the power consumption of the computation it is possible to distingush when the if loop is executed and hence when a bit of $n$ is 0.
 
+As described by Montgomery in \cite{montgomery87speeding}, the Montgomery ladder is presented in Algorithm \ref{mont}. It differs from Algorithm \ref{d_and_a} in that both a doubling and addition of points occurs at each step, regardless of the bit value of $k$. Thus, the Montgomery ladder thwarts side channel attacks which measure the computation at each bit and thus determine if an addition operation was executed. The branching in Algorithm \ref{mont} controls which point is doubled and where the addition of points is stored. The attack presented in this paper uses a different method to determine which branch of the algorithm was executed, described in the following section.
 
-
-As described by Montgomery in \cite{montgomery87speeding}
-
-\begin{algorithm}[htb]
+\vspace{-0.5cm}
+\begin{algorithm}[htb]\label{mont}
  \SetAlgoLined
 % \KwData{this text}
 {\bf Input:} Point $P$, scalar $n$, $k$ bits\\
@@ -143,8 +138,13 @@ $R_1\gets P$\\
    $R_1\gets 2R_1$
   }
  }
- \caption{Montgomery Ladder Point Multiplication}
-\end{algorithm}
+ \caption{Montgomery Ladder Point Scalar Multiplication}
+\end{algorithm}\vspace{-0.5cm}
+
+
+
+
+\newpage
 
 \subsection{The \textsc{Flush+Reload} attack}
 
@@ -330,7 +330,7 @@ In the Networking and Cryptography library (NaCl), implemented by Daniel J. Bern
 
 
 \section{Conclusions and future work}
-The results of this work and \cite{remote_attack} imply that the OpenSSL montgomery ladder implementation should be avoided in all implementations of elliptic curve protocols when a scalar multiplication step involves a secret parameter. This attack is applicable when the mallicious party has access to the memory of the targeted device which is not a completely unreasonable assumption ***. 
+The results of this work and \cite{brumley11remote} imply that the OpenSSL montgomery ladder implementation should be avoided in all implementations of elliptic curve protocols when a scalar multiplication step involves a secret parameter. This attack is applicable when the mallicious party has access to the memory of the targeted device which is not a completely unreasonable assumption ***. 
 
 The results of this work also support the theory of~\cite{walter04longer} that smaller keys are more resilient to side-channel analysis, in this attack a higer proportion of the nonce was obtained for larger key sizes. This implies that as we naturally transition to larger parameters in response to increasing computing capabilities, prevention of side-channel attacks should be incorporated into the implementation design, as is the methodology adopted by the authors of the NaCl cryptographic library. 
 

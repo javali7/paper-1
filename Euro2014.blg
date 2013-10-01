@@ -3,46 +3,48 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Euro2014.aux
 The style file: splncs.bst
 Database file #1: Euro2014.bib
+Warning--I didn't find a database entry for "remote_attack"
+Warning--can't use both volume and number fields in miller85use
 Warning--empty title in openssl
-You've used 22 entries,
+You've used 26 entries,
             2410 wiz_defined-function locations,
-            680 strings with 7706 characters,
-and the built_in function-call counts, 8826 in all, are:
-= -- 992
-> -- 283
-< -- 21
-+ -- 111
-- -- 85
-* -- 624
-:= -- 1235
-add.period$ -- 38
-call.type$ -- 22
-change.case$ -- 101
+            720 strings with 8762 characters,
+and the built_in function-call counts, 10828 in all, are:
+= -- 1209
+> -- 342
+< -- 27
++ -- 136
+- -- 103
+* -- 780
+:= -- 1502
+add.period$ -- 43
+call.type$ -- 26
+change.case$ -- 121
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 407
-empty$ -- 745
-format.name$ -- 85
-if$ -- 2065
+cite$ -- 28
+duplicate$ -- 506
+empty$ -- 901
+format.name$ -- 103
+if$ -- 2536
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 15
-newline$ -- 109
-num.names$ -- 48
-pop$ -- 111
+int.to.str$ -- 26
+missing$ -- 20
+newline$ -- 129
+num.names$ -- 58
+pop$ -- 121
 preamble$ -- 1
-purify$ -- 84
+purify$ -- 100
 quote$ -- 0
-skip$ -- 342
+skip$ -- 430
 stack$ -- 0
-substring$ -- 583
-swap$ -- 202
-text.length$ -- 21
+substring$ -- 745
+swap$ -- 266
+text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 88
-warning$ -- 1
-while$ -- 86
-width$ -- 24
-write$ -- 252
-(There was 1 warning)
+type$ -- 104
+warning$ -- 2
+while$ -- 106
+width$ -- 28
+write$ -- 302
+(There were 3 warnings)

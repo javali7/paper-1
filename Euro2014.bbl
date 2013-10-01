@@ -1,9 +1,22 @@
 \begin{thebibliography}{10}
 
+\bibitem{adelman-demarrais}
+Adleman, L.M., Demarrais, J.:
+\newblock A {S}ubexponential {A}lgorithm for {D}iscrete {L}ogarithms over all
+  {F}inite {F}ields.
+\newblock Mathematics of computation \textbf{61}(203) (1993)  1--15
+
 \bibitem{ansi962}
 American National Standards Institute:
 \newblock {ANSI X9.62}, Public Key Cryptography for the Financial Services
   Industry: The Elliptic Curve Digital Signature Algorithm. (1999)
+
+\bibitem{balasubramanian-koblitz}
+Balasubramanian, R., Koblitz, N.:
+\newblock The {I}mprobability that an {E}lliptic {C}urve has {S}ubexponential
+  {D}iscrete {L}og {P}roblem under the {M}enezes - {O}kamoto - {V}anstone
+  {A}lgorithm.
+\newblock Journal of Cryptology \textbf{11}(2) (1998)  141--145
 
 \bibitem{dan-tan-peter}
 Bernstein, D.J., Lange, T., Schwabe, P.:
@@ -19,18 +32,25 @@ Brumley, B.B., Tuveri, N.:
   Volume 6879 of Lecture Notes in Computer Science., Springer-Verlag (2011)
   355--371
 
-\bibitem{remote_attack}
-Brumley, B.B., Tuveri, N.:
-\newblock Remote timing attacks are still practical.
-\newblock Cryptology ePrint Archive, Report 2011/232 (2011)
-  \url{http://eprint.iacr.org/}.
-
 \bibitem{cipsero10software}
 Cipresso, T., Stamp, M.:
 \newblock Software reverse engineering.
 \newblock In Stavroulakis, P., Stamp, M., eds.: Handbook of Information and
   Communication Security.
 \newblock Springer (2010)  659--696
+
+\bibitem{GallantLV00}
+Gallant, R.P., Lambert, R.J., Vanstone, S.A.:
+\newblock Improving the parallelized pollard lambda search on anomalous binary
+  curves.
+\newblock Math. Comput. \textbf{69}(232) (2000)  1699--1705
+
+\bibitem{Elgamal85}
+Gamal, T.E.:
+\newblock A public key cryptosystem and a signature scheme based on discrete
+  logarithms.
+\newblock IEEE Transactions on Information Theory \textbf{31}(4) (1985)
+  469--472
 
 \bibitem{gopalakrishnan07solving}
 Gopalakrishnan, K., Th\'eriault, N., Yao, C.Z.:
@@ -74,9 +94,9 @@ Lenstra, A., Lenstra, H., Lov{\'a}sz, L.:
 
 \bibitem{miller85use}
 Miller, V.S.:
-\newblock Use of elliptic curves in cryptography.
-\newblock In Williams, H.C., ed.: Advances in Cryptology - CRYPTO'85. Volume
-  218 of Lecture Notes in Computer Science., Springer-Verlag (1986)  417--426
+\newblock Use of {E}lliptic {C}urves in {C}ryptography.
+\newblock In Williams, H.C., ed.: Advances in Cryptology - Crypto '85. Volume
+  218 of Lecture Notes in Computer Science., Springer (1985)  417--426
 
 \bibitem{montgomery87speeding}
 Montgomery, P.L.:
@@ -122,6 +142,12 @@ Walter, C.D.:
 \newblock In Matsui, M., Zuccherato, R.J., eds.: Selected Areas in
   Cryptography. Volume 3006 of Lecture Notes in Computer Science.,
   Springer-Verlag (2004)  42--57
+
+\bibitem{WienerZ98}
+Wiener, M.J., Zuccherato, R.J.:
+\newblock Faster attacks on elliptic curve cryptosystems.
+\newblock In Tavares, S.E., Meijer, H., eds.: Selected Areas in Cryptography.
+  Volume 1556 of Lecture Notes in Computer Science., Springer (1998)  190--200
 
 \bibitem{yarom13flush}
 Yarom, Y., Falkner, K.:

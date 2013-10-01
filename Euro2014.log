@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 SEP 2013 15:18
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  1 OCT 2013 11:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -468,18 +468,23 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (18.45152pt too wide) in paragraph at lines 59--62
+Overfull \hbox (18.45152pt too wide) in paragraph at lines 54--57
 []\OT1/cmr/m/n/10 The pa-per also presents new in-for-ma-tion on the lim-i-ta-t
 ion of the \OT1/cmr/m/sc/10 Flush+Reload
  []
 
 
-Overfull \hbox (1.59822pt too wide) in paragraph at lines 66--70
+Overfull \hbox (1.59822pt too wide) in paragraph at lines 61--65
 \OT1/cmr/m/n/10 search.Section 3[] de-scribes our at-tack on the OpenSSL im-ple
 -men-ta-tion of ECDSA.
  []
 
-[2] [3] [4] [5]
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
+
+ []
+
+[3] [4] [5]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 191.
 
  (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omlcmr.fd
@@ -495,37 +500,33 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 192.
-
-<images/memory.pdf, id=38, 663.47874pt x 164.615pt>
+ [6]
+<images/memory.pdf, id=43, 663.47874pt x 164.615pt>
 File: images/memory.pdf Graphic file (type pdf)
  <use images/memory.pdf>
 Package pdftex.def Info: images/memory.pdf used on input line 240.
 (pdftex.def)             Requested size: 347.12354pt x 86.12526pt.
 
-[6] <images/temporal.pdf, id=44, 1068.99374pt x 345.29pt>
+<images/temporal.pdf, id=44, 1068.99374pt x 345.29pt>
 File: images/temporal.pdf Graphic file (type pdf)
 
 <use images/temporal.pdf>
 Package pdftex.def Info: images/temporal.pdf used on input line 270.
 (pdftex.def)             Requested size: 347.12354pt x 112.12308pt.
-
-Underfull \vbox (badness 3657) has occurred while \output is active []
-
- [7 <./images/memory.pdf> <./images/temporal.pdf>] [8] [9] (./Euro2014.bbl [10]
-) [11]
-(./Euro2014.aux)
+ [7 <./images/memory.pdf>] [8 <./images/temporal.pdf>] [9] (./Euro2014.bbl [10]
+) [11] (./Euro2014.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6019 strings out of 493488
- 82008 string characters out of 3141326
- 233412 words of memory out of 3000000
- 9220 multiletter control sequences out of 15000+200000
+ 6025 strings out of 493488
+ 82091 string characters out of 3141326
+ 232412 words of memory out of 3000000
+ 9226 multiletter control sequences out of 15000+200000
  12217 words of font info for 47 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,13n,49p,1397b,1298s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,13n,49p,1397b,1299s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
@@ -549,7 +550,7 @@ st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2012/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2012/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Euro2014.pdf (11 pages, 293418 bytes).
+Output written on Euro2014.pdf (11 pages, 295456 bytes).
 PDF statistics:
  145 PDF objects out of 1000 (max. 8388607)
  103 compressed objects within 2 object streams
