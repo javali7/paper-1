@@ -129,6 +129,12 @@ Okeya, K., Kurumatani, H., Sakurai, K.:
 {OpenSSL}.
 \newblock \url{http://www.openssl.org}
 
+\bibitem{shanks71class}
+Shanks, D.:
+\newblock Class number, a theory of factorization, and genera.
+\newblock In: Proceedings of the Symposium of Pure Mathematics 20, American
+  Mathematical Society (1971)  415--440
+
 \bibitem{uht95disjoint}
 Uht, A.K., Sindagi, V.:
 \newblock Disjoint eager execution: An optimal form of speculative execution.

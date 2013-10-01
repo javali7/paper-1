@@ -6,8 +6,8 @@
 \citation{montgomery87speeding,joye03montgomery}
 \citation{joye03montgomery,okeya00elliptic}
 \@writefile{toc}{\contentsline {title}{Recovering OpenSSL ECDSA Nonces Using the \textsc  {Flush+Reload} Cache Side-channel Attack}{1}}
-\@writefile{toc}{\authcount {1}}
-\@writefile{toc}{\contentsline {author}{No Author Given}{1}}
+\@writefile{toc}{\authcount {2}}
+\@writefile{toc}{\contentsline {author}{Yuval Yarom \and Naomi Benger}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \citation{yarom13flush}
 \citation{walter04longer}
@@ -24,12 +24,21 @@
 \newlabel{rand_element}{{2}{3}}
 \newlabel{scalar_mult}{{3}{3}}
 \citation{montgomery87speeding}
+<<<<<<< HEAD
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The Montgomery Ladder}{4}}
 \newlabel{sub:montgomery}{{2.2}{4}}
 \newlabel{d_and_a}{{1}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Double-and-Add Point Scalar Multiplication}}{4}}
 \newlabel{mont}{{2}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Montgomery Ladder Point Scalar Multiplication}}{4}}
+=======
+\citation{yarom13flush}
+\newlabel{d_and_a}{{1}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Double-and-Add Point Multiplication}}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Montgomery Ladder Point Multiplication}}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The \textsc  {Flush+Reload} attack}{4}}
+\citation{yarom13flush}
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 \citation{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}
 \citation{LLL}
 \citation{nguyen03insecurity}
@@ -39,24 +48,40 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The \textsc  {Flush+Reload} attack}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Related Work}{5}}
 \newlabel{sec:related}{{2.4}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Attacking OpenSSL ECDSA}{5}}
-\newlabel{sec:attack}{{3}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Attacking OpenSSL ECDSA}{6}}
+\newlabel{sec:attack}{{3}{6}}
 \newlabel{lst:openssl}{{1.1}{6}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {1.1}OpenSSL Implementation of the Montgomery Ladder}{6}}
-\citation{uht95disjoint}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mapping from Source Code to Memory}}{7}}
 \newlabel{dgm:memory}{{1}{7}}
+<<<<<<< HEAD
+=======
+\citation{uht95disjoint}
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 \citation{intel12optimization}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Observable Memory Access over Time}}{8}}
+\newlabel{dgm:temporal}{{2}{8}}
 \citation{cipsero10software}
 \citation{fips}
+<<<<<<< HEAD
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Observable Memory Access over Time}}{8}}
 \newlabel{dgm:temporal}{{2}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup and Results}{8}}
 \newlabel{sec:results}{{4}{8}}
+=======
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup and Results}{9}}
+\newlabel{sec:results}{{4}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Probe Timing During Signing}}{10}}
+\newlabel{dgm:timing}{{3}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Distributions of missing bits: (A) per signature (B) per bit position}}{10}}
+\newlabel{dgm:dist}{{4}{10}}
+\citation{shanks71class}
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 \citation{dan-tan-peter}
 \citation{dan-tan-peter}
 \citation{brumley11remote}
 \citation{walter04longer}
+<<<<<<< HEAD
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Full recovery of the nonce}{9}}
 \newlabel{sub:full_nonce}{{4.1}{9}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}}
@@ -91,3 +116,34 @@
 \bibcite{walter04longer}{24}
 \bibcite{WienerZ98}{25}
 \bibcite{yarom13flush}{26}
+=======
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{11}}
+\newlabel{sec:discussion}{{5}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Full Recovery of the Nonce}{11}}
+\newlabel{sub:full_nonce}{{5.1}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions and future work}{11}}
+\bibstyle{splncs}
+\bibdata{Euro2014}
+\bibcite{ansi962}{1}
+\bibcite{dan-tan-peter}{2}
+\bibcite{brumley11remote}{3}
+\bibcite{cipsero10software}{4}
+\bibcite{gopalakrishnan07solving}{5}
+\bibcite{Howgrave-GrahamS01}{6}
+\bibcite{intel12optimization}{7}
+\bibcite{johnson01elliptic}{8}
+\bibcite{joye03montgomery}{9}
+\bibcite{koblitz87elliptic}{10}
+\bibcite{LLL}{11}
+\bibcite{miller85use}{12}
+\bibcite{montgomery87speeding}{13}
+\bibcite{fips186}{14}
+\bibcite{fips}{15}
+\bibcite{nguyen03insecurity}{16}
+\bibcite{okeya00elliptic}{17}
+\bibcite{openssl}{18}
+\bibcite{shanks71class}{19}
+\bibcite{uht95disjoint}{20}
+\bibcite{walter04longer}{21}
+\bibcite{yarom13flush}{22}
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22

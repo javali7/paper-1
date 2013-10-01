@@ -1,27 +1,18 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  1 OCT 2013 11:46
+=======
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_2) (format=pdflatex 2013.8.30)  28 SEP 2013 22:12
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Euro2014.tex
-(./Euro2014.tex
-LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
-rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
-c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
-h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
-h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
-ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
-rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
-kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
- polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbianc, s
-lovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, 
-welsh, loaded.
-(./llncs.cls
+**\input Euro2014.tex
+(./Euro2014.tex (./llncs.cls
 Document Class: llncs 2010/07/12 v2.17 
  LaTeX document class for Lecture Notes in Computer Science
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/article.cls
+(/opt/local/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/size10.clo
+(/opt/local/share/texmf-texlive/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -36,7 +27,7 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/multicol.sty
+(/opt/local/share/texmf-texlive/tex/latex/tools/multicol.sty
 Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \c@tracingmulticols=\count87
 \mult@box=\box26
@@ -84,10 +75,10 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \colbreak@box=\box51
 \multicol@sort@counter=\count95
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/aliascnt.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/aliascnt.sty
 Package: aliascnt 2009/09/08 v1.3 Alias counters (HO)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/carlisle/remreset.sty))
+(/opt/local/share/texmf-texlive/tex/latex/carlisle/remreset.sty))
 \c@chapter=\count96
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
@@ -139,26 +130,26 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \c@remark=\count115
 \headlineindent=\dimen123
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/color.sty
+(/opt/local/share/texmf-texlive/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/opt/local/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count116
 ))
-(/usr/local/texlive/2012/texmf-dist/tex/latex/soul/soul.sty
+(/opt/local/share/texmf-texlive/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@word=\toks18
 \SOUL@lasttoken=\toks19
@@ -170,12 +161,12 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@uldp=\dimen125
 \SOUL@ulht=\dimen126
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/cite/cite.sty
+(/opt/local/share/texmf-texlive/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/array.sty
+(/opt/local/share/texmf-texlive/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen127
 \extrarowheight=\dimen128
@@ -183,8 +174,8 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \extratabsurround=\skip46
 \backup@length=\skip47
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/listings.sty
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+(/opt/local/share/texmf-texlive/tex/latex/listings/listings.sty
+(/opt/local/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks24
 )
@@ -201,27 +192,27 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \lst@lineno=\count122
 \lst@maxwidth=\dimen132
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstmisc.sty
+(/opt/local/share/texmf-texlive/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 \c@lstnumber=\count123
 \lst@skipnumbers=\count124
 \lst@framebox=\box55
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/listings.cfg
+(/opt/local/share/texmf-texlive/tex/latex/listings/listings.cfg
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+(/opt/local/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
+(/opt/local/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
+(/opt/local/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
@@ -229,49 +220,49 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 \Gin@req@height=\dimen133
 \Gin@req@width=\dimen134
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks26
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2000/07/18 v2.13 AMS math features
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks27
 \ex@=\dimen135
 ))
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen136
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count125
-LaTeX Info: Redefining \frac on input line 211.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count126
 \leftroot@=\count127
-LaTeX Info: Redefining \overline on input line 307.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count128
 \DOTSCASE@=\count129
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box56
 \strutbox@=\box57
 \big@size=\dimen137
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 
 
 Package amsmath Warning: Unable to redefine math accent \vec.
@@ -296,38 +287,27 @@ Package amsmath Warning: Unable to redefine math accent \vec.
 \multlinegap=\skip49
 \multlinetaggap=\skip50
 \mathdisplay@stack=\toks31
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
-) (/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+) (/opt/local/share/texmf-texlive/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2009/06/22 v3.00
+(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
 (./algorithm2e.sty
 Package: algorithm2e 2013/01/06 v5.00 algorithms environments
 \c@AlgoLine=\count137
-
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/ifthen.sty
+ (/opt/local/share/texmf-texlive/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/xspace.sty
+(/opt/local/share/texmf-texlive/tex/latex/tools/xspace.sty
 Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/relsize/relsize.sty
-Package: relsize 2011/09/21 ver 4.0
-
-Examine \normalsize starts \@setfontsize size may be \@xpt. 
-Examine \small starts \@setfontsize size may be \@ixpt. 
-Examine \footnotesize starts \@setfontsize size may be \@ixpt. 
-Examine \large starts \@setfontsize size may be \@xiipt. 
-Examine \Large starts \@setfontsize size may be \@xivpt. 
-Examine \LARGE starts \@setfontsize size may be \@xviipt. 
-Examine \scriptsize starts \@setfontsize size may be \@viipt. 
-Examine \tiny starts \@setfontsize size may be \@vpt. 
-Examine \huge starts \@setfontsize size may be \@xxpt. 
-Examine \Huge starts \@setfontsize size may be \@xxvpt. )
+(/opt/local/share/texmf-texlive/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
 ********************************************************
 Package `algorithm2e' Release 5.0 -- january 06 2013 --
 - algorithm2e-announce@lirmm.fr mailing list for announcement about releases
@@ -368,13 +348,12 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count140
 \algocf@algoframe=\box64
 \algocf@algobox=\box65
-) (/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang1.sty
+) (/opt/local/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstmisc.sty
+(/opt/local/share/texmf-texlive/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-)
-(./Euro2014.aux)
+) (./Euro2014.aux)
 \openout1 = `Euro2014.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -389,8 +368,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
-
-(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/opt/local/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count141
 \scratchdimen=\dimen150
@@ -405,15 +383,15 @@ LaTeX Font Info:    ... okay on input line 18.
 \everyMPtoPDFconversion=\toks33
 )
 \c@lstlisting=\count147
- (/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+ (/opt/local/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
@@ -422,22 +400,22 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 ))
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -449,30 +427,36 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 22.
+(Font)              using `OT1/cmr/bx/n' instead on input line 24.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 22.
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+(/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 22.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+(/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
+<<<<<<< HEAD
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \hbox (18.45152pt too wide) in paragraph at lines 54--57
+=======
+{/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (18.45152pt too wide) in paragraph at lines 61--64
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 []\OT1/cmr/m/n/10 The pa-per also presents new in-for-ma-tion on the lim-i-ta-t
 ion of the \OT1/cmr/m/sc/10 Flush+Reload
  []
 
+<<<<<<< HEAD
 
 Overfull \hbox (1.59822pt too wide) in paragraph at lines 61--65
 \OT1/cmr/m/n/10 search.Section 3[] de-scribes our at-tack on the OpenSSL im-ple
@@ -486,24 +470,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
 [3] [4] [5]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 191.
+=======
+[2] [3] [4] [5]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 214.
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 
- (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omlcmr.fd
+ (/opt/local/share/texmf-texlive/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
+<<<<<<< HEAD
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 191.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 192.
+=======
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 214.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 215.
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
+(/opt/local/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
+<<<<<<< HEAD
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 192.
+=======
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 215.
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
  [6]
 <images/memory.pdf, id=43, 663.47874pt x 164.615pt>
 File: images/memory.pdf Graphic file (type pdf)
  <use images/memory.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: images/memory.pdf used on input line 240.
 (pdftex.def)             Requested size: 347.12354pt x 86.12526pt.
 
@@ -515,11 +513,56 @@ Package pdftex.def Info: images/temporal.pdf used on input line 270.
 (pdftex.def)             Requested size: 347.12354pt x 112.12308pt.
  [7 <./images/memory.pdf>] [8 <./images/temporal.pdf>] [9] (./Euro2014.bbl [10]
 ) [11] (./Euro2014.aux)
+=======
+Package pdftex.def Info: images/memory.pdf used on input line 263.
+(pdftex.def)             Requested size: 347.12354pt x 86.12526pt.
+
+[7 <./images/memory.pdf>]
+<images/temporal.pdf, id=53, 1068.99374pt x 345.29pt>
+File: images/temporal.pdf Graphic file (type pdf)
+
+<use images/temporal.pdf>
+Package pdftex.def Info: images/temporal.pdf used on input line 293.
+(pdftex.def)             Requested size: 347.12354pt x 112.12308pt.
+ [8 <./images/temporal.pdf>]
+<images/timing.pdf, id=62, 505.89pt x 216.81pt>
+File: images/timing.pdf Graphic file (type pdf)
+ <use images/timing.pdf>
+Package pdftex.def Info: images/timing.pdf used on input line 366.
+(pdftex.def)             Requested size: 347.12354pt x 148.76868pt.
+
+[9] <images/missing.pdf, id=66, 361.35pt x 216.81pt>
+File: images/missing.pdf Graphic file (type pdf)
+ <use images/missing.pdf>
+Package pdftex.def Info: images/missing.pdf used on input line 392.
+(pdftex.def)             Requested size: 173.44756pt x 104.06761pt.
+
+<images/positions.pdf, id=67, 361.35pt x 216.81pt>
+File: images/positions.pdf Graphic file (type pdf)
+ <use images/positions.pdf>
+Package pdftex.def Info: images/positions.pdf used on input line 392.
+(pdftex.def)             Requested size: 173.44756pt x 104.06761pt.
+
+Overfull \hbox (8.17154pt too wide) in paragraph at lines 391--395
+[][] 
+ []
+
+[10 <./images/timing.pdf> <./images/missing.pdf> <./images/positions.pdf>]
+
+LaTeX Warning: Citation `remote_attack' on page 11 undefined on input line 430.
+
+
+[11] (./Euro2014.bbl [12]) [13] (./Euro2014.aux)
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  6025 strings out of 493488
  82091 string characters out of 3141326
  232412 words of memory out of 3000000
@@ -551,9 +594,41 @@ st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/texmf-dist
 fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2012/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on Euro2014.pdf (11 pages, 295456 bytes).
+=======
+ 6051 strings out of 494181
+ 82106 string characters out of 6156676
+ 233406 words of memory out of 5000000
+ 9225 multiletter control sequences out of 15000+600000
+ 12217 words of font info for 47 fonts, out of 8000000 for 9000
+ 470 hyphenation exceptions out of 8191
+ 38i,13n,49p,1405b,1298s stack positions out of 5000i,500n,10000p,200000b,80000s
+</opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></o
+pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/lo
+cal/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx7.pfb></opt/local/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></opt/local/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></opt/local/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/local/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/local/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmmi6.pfb></opt/local/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmmi7.pfb></opt/local/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmmi9.pfb></opt/local/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmr10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmr5.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr
+6.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+/opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></opt/lo
+cal/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></opt/local/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></opt/local/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmti9.pfb></opt/local/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmtt10.pfb></opt/local/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmtt9.pfb></opt/local/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/symbols/msbm10.pfb>
+Output written on Euro2014.pdf (13 pages, 316553 bytes).
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
+ 170 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

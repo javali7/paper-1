@@ -1,4 +1,5 @@
-FIGS=memory.fig temporal.fig
+FIGS=memory.fig temporal.fig 
+PLOTS=missing.plot timing.plot positions.plot
 
 PDFS=${FIGS:.fig=.pdf} ${PLOTS:.plot=.pdf}
 EPSS=${FIGS:.fig=.eps} ${PLOTS:.plot=.eps}

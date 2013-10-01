@@ -1,13 +1,17 @@
-This is BibTeX, Version 0.99d (TeX Live 2012)
+This is BibTeX, Version 0.99d (TeX Live 2013/MacPorts 2013_2)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Euro2014.aux
 The style file: splncs.bst
 Database file #1: Euro2014.bib
 Warning--I didn't find a database entry for "remote_attack"
+<<<<<<< HEAD
 Warning--can't use both volume and number fields in miller85use
+=======
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 Warning--empty title in openssl
 You've used 26 entries,
             2410 wiz_defined-function locations,
+<<<<<<< HEAD
             720 strings with 8762 characters,
 and the built_in function-call counts, 10828 in all, are:
 = -- 1209
@@ -48,3 +52,45 @@ while$ -- 106
 width$ -- 28
 write$ -- 302
 (There were 3 warnings)
+=======
+            685 strings with 7795 characters,
+and the built_in function-call counts, 9028 in all, are:
+= -- 1021
+> -- 277
+< -- 22
++ -- 109
+- -- 83
+* -- 633
+:= -- 1250
+add.period$ -- 37
+call.type$ -- 22
+change.case$ -- 100
+chr.to.int$ -- 0
+cite$ -- 23
+duplicate$ -- 423
+empty$ -- 769
+format.name$ -- 83
+if$ -- 2125
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 16
+newline$ -- 109
+num.names$ -- 48
+pop$ -- 111
+preamble$ -- 1
+purify$ -- 83
+quote$ -- 0
+skip$ -- 356
+stack$ -- 0
+substring$ -- 615
+swap$ -- 213
+text.length$ -- 22
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 88
+warning$ -- 1
+while$ -- 89
+width$ -- 24
+write$ -- 253
+(There were 2 warnings)
+>>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
