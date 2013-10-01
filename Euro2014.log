@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  1 OCT 2013 11:46
-=======
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_2) (format=pdflatex 2013.8.30)  28 SEP 2013 22:12
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_2) (format=pdflatex 2013.8.30)  1 OCT 2013 14:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -445,76 +441,44 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-<<<<<<< HEAD
-{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (18.45152pt too wide) in paragraph at lines 54--57
-=======
 {/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (18.45152pt too wide) in paragraph at lines 61--64
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
+Overfull \hbox (18.45152pt too wide) in paragraph at lines 56--59
 []\OT1/cmr/m/n/10 The pa-per also presents new in-for-ma-tion on the lim-i-ta-t
 ion of the \OT1/cmr/m/sc/10 Flush+Reload
  []
 
-<<<<<<< HEAD
 
-Overfull \hbox (1.59822pt too wide) in paragraph at lines 61--65
+Overfull \hbox (1.59822pt too wide) in paragraph at lines 63--67
 \OT1/cmr/m/n/10 search.Section 3[] de-scribes our at-tack on the OpenSSL im-ple
 -men-ta-tion of ECDSA.
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
 [3] [4] [5]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 191.
-=======
-[2] [3] [4] [5]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 214.
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 216.
 
  (/opt/local/share/texmf-texlive/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
-<<<<<<< HEAD
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 191.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 192.
-=======
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 214.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 215.
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 216.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 217.
 
 
 (/opt/local/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
-<<<<<<< HEAD
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 192.
-=======
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 215.
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 217.
  [6]
-<images/memory.pdf, id=43, 663.47874pt x 164.615pt>
+<images/memory.pdf, id=41, 663.47874pt x 164.615pt>
 File: images/memory.pdf Graphic file (type pdf)
  <use images/memory.pdf>
-<<<<<<< HEAD
-Package pdftex.def Info: images/memory.pdf used on input line 240.
-(pdftex.def)             Requested size: 347.12354pt x 86.12526pt.
-
-<images/temporal.pdf, id=44, 1068.99374pt x 345.29pt>
-File: images/temporal.pdf Graphic file (type pdf)
-
-<use images/temporal.pdf>
-Package pdftex.def Info: images/temporal.pdf used on input line 270.
-(pdftex.def)             Requested size: 347.12354pt x 112.12308pt.
- [7 <./images/memory.pdf>] [8 <./images/temporal.pdf>] [9] (./Euro2014.bbl [10]
-) [11] (./Euro2014.aux)
-=======
-Package pdftex.def Info: images/memory.pdf used on input line 263.
+Package pdftex.def Info: images/memory.pdf used on input line 265.
 (pdftex.def)             Requested size: 347.12354pt x 86.12526pt.
 
 [7 <./images/memory.pdf>]
@@ -522,86 +486,45 @@ Package pdftex.def Info: images/memory.pdf used on input line 263.
 File: images/temporal.pdf Graphic file (type pdf)
 
 <use images/temporal.pdf>
-Package pdftex.def Info: images/temporal.pdf used on input line 293.
+Package pdftex.def Info: images/temporal.pdf used on input line 295.
 (pdftex.def)             Requested size: 347.12354pt x 112.12308pt.
- [8 <./images/temporal.pdf>]
-<images/timing.pdf, id=62, 505.89pt x 216.81pt>
+ [8 <./images/temporal.pdf>] [9]
+<images/timing.pdf, id=65, 505.89pt x 216.81pt>
 File: images/timing.pdf Graphic file (type pdf)
  <use images/timing.pdf>
-Package pdftex.def Info: images/timing.pdf used on input line 366.
+Package pdftex.def Info: images/timing.pdf used on input line 368.
 (pdftex.def)             Requested size: 347.12354pt x 148.76868pt.
 
-[9] <images/missing.pdf, id=66, 361.35pt x 216.81pt>
+<images/missing.pdf, id=66, 361.35pt x 216.81pt>
 File: images/missing.pdf Graphic file (type pdf)
  <use images/missing.pdf>
-Package pdftex.def Info: images/missing.pdf used on input line 392.
+Package pdftex.def Info: images/missing.pdf used on input line 394.
 (pdftex.def)             Requested size: 173.44756pt x 104.06761pt.
 
 <images/positions.pdf, id=67, 361.35pt x 216.81pt>
 File: images/positions.pdf Graphic file (type pdf)
  <use images/positions.pdf>
-Package pdftex.def Info: images/positions.pdf used on input line 392.
+Package pdftex.def Info: images/positions.pdf used on input line 394.
 (pdftex.def)             Requested size: 173.44756pt x 104.06761pt.
 
-Overfull \hbox (8.17154pt too wide) in paragraph at lines 391--395
+Overfull \hbox (8.17154pt too wide) in paragraph at lines 393--397
 [][] 
  []
 
-[10 <./images/timing.pdf> <./images/missing.pdf> <./images/positions.pdf>]
-
-LaTeX Warning: Citation `remote_attack' on page 11 undefined on input line 430.
-
-
-[11] (./Euro2014.bbl [12]) [13] (./Euro2014.aux)
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
+[10 <./images/timing.pdf>] [11 <./images/missing.pdf> <./images/positions.pdf>]
+(./Euro2014.bbl [12] [13]) [14] (./Euro2014.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 6025 strings out of 493488
- 82091 string characters out of 3141326
- 232412 words of memory out of 3000000
- 9226 multiletter control sequences out of 15000+200000
- 12217 words of font info for 47 fonts, out of 3000000 for 9000
- 957 hyphenation exceptions out of 8191
- 38i,13n,49p,1397b,1299s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
-ocal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/loc
-al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local
-/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/t
-exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
-012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2012
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2012/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2012/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2012/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2012/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2012/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2012/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2012/texmf-dist/fo
-nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Euro2014.pdf (11 pages, 295456 bytes).
-=======
- 6051 strings out of 494181
- 82106 string characters out of 6156676
- 233406 words of memory out of 5000000
- 9225 multiletter control sequences out of 15000+600000
+ 6057 strings out of 494181
+ 82189 string characters out of 6156676
+ 235406 words of memory out of 5000000
+ 9231 multiletter control sequences out of 15000+600000
  12217 words of font info for 47 fonts, out of 8000000 for 9000
  470 hyphenation exceptions out of 8191
- 38i,13n,49p,1405b,1298s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,13n,49p,1405b,1299s stack positions out of 5000i,500n,10000p,200000b,80000s
 </opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></o
 pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/lo
 cal/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx7.pfb></opt/local/sh
@@ -624,11 +547,10 @@ e/fonts/type1/public/amsfonts/cm/cmti9.pfb></opt/local/share/texmf-texlive/font
 s/type1/public/amsfonts/cm/cmtt10.pfb></opt/local/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/cm/cmtt9.pfb></opt/local/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb>
-Output written on Euro2014.pdf (13 pages, 316553 bytes).
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
+Output written on Euro2014.pdf (14 pages, 319100 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 120 compressed objects within 2 object streams
+ 173 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
