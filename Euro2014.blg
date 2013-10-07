@@ -9,45 +9,45 @@ Repeated entry---line 123 of file Euro2014.bib
 I'm skipping whatever remains of this entry
 Warning--can't use both volume and number fields in miller85use
 Warning--empty title in openssl
-You've used 27 entries,
+You've used 26 entries,
             2410 wiz_defined-function locations,
-            726 strings with 8915 characters,
-and the built_in function-call counts, 11279 in all, are:
-= -- 1263
-> -- 349
+            724 strings with 8858 characters,
+and the built_in function-call counts, 11107 in all, are:
+= -- 1240
+> -- 348
 < -- 28
-+ -- 139
++ -- 138
 - -- 105
-* -- 804
-:= -- 1560
-add.period$ -- 44
-call.type$ -- 27
-change.case$ -- 125
+* -- 794
+:= -- 1538
+add.period$ -- 43
+call.type$ -- 26
+change.case$ -- 122
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 530
-empty$ -- 946
+cite$ -- 28
+duplicate$ -- 521
+empty$ -- 927
 format.name$ -- 105
-if$ -- 2649
+if$ -- 2606
 int.to.chr$ -- 0
-int.to.str$ -- 27
+int.to.str$ -- 26
 missing$ -- 21
-newline$ -- 134
+newline$ -- 130
 num.names$ -- 60
-pop$ -- 128
+pop$ -- 125
 preamble$ -- 1
-purify$ -- 103
+purify$ -- 100
 quote$ -- 0
-skip$ -- 450
+skip$ -- 444
 stack$ -- 0
-substring$ -- 782
-swap$ -- 278
+substring$ -- 776
+swap$ -- 276
 text.length$ -- 28
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
+type$ -- 104
 warning$ -- 2
 while$ -- 111
-width$ -- 29
-write$ -- 314
+width$ -- 28
+write$ -- 306
 (There was 1 error message)
