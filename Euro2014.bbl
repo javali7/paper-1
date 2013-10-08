@@ -103,10 +103,6 @@ Montgomery, P.L.:
 \newblock Speeding the {Pollard} and elliptic curve methods of factorization.
 \newblock Mathematics of Computation \textbf{48}(177) (January 1987)  243--264
 
-\bibitem{fips186}
-National Institute of Standards and Technology:
-\newblock Digital Signature Standard, FIPS Publication 186-2. (2000)
-
 \bibitem{fips}
 National Institute of Standards and Technology:
 \newblock FIPS PUB 186-4 Digital Signature Standard (DSS). (2013)

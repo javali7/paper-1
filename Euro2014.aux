@@ -1,67 +1,64 @@
 \relax 
 \citation{miller85use,koblitz87elliptic}
-\citation{johnson01elliptic,fips186,ansi962}
+\citation{johnson01elliptic,fips,ansi962}
 \citation{nguyen03insecurity,brumley11remote}
 \citation{openssl}
 \citation{montgomery87speeding,joye03montgomery}
 \citation{joye03montgomery,okeya00elliptic}
-\@writefile{toc}{\contentsline {title}{Recovering OpenSSL ECDSA Nonces Using the \textsc  {Flush+Reload} Cache Side-channel Attack}{1}}
-\@writefile{toc}{\authcount {2}}
-\@writefile{toc}{\contentsline {author}{Yuval Yarom \and Naomi Benger}{1}}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \citation{yarom13flush}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \citation{walter04longer}
 \citation{Elgamal85}
 \citation{koblitz87elliptic,miller85use}
 \citation{balasubramanian-koblitz,adelman-demarrais}
+\citation{fips}
+\citation{WienerZ98,GallantLV00}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{2}}
 \newlabel{sec:background}{{2}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}ECDSA}{2}}
 \newlabel{sub:ecdsa}{{2.1}{2}}
-\citation{fips}
-\citation{WienerZ98,GallantLV00}
-\newlabel{rand_element}{{2}{3}}
-\newlabel{scalar_mult}{{3}{3}}
+\newlabel{rand_element}{{2}{2}}
+\newlabel{scalar_mult}{{3}{2}}
 \citation{montgomery87speeding}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The Montgomery Ladder}{4}}
-\newlabel{sub:montgomery}{{2.2}{4}}
-\newlabel{d_and_a}{{1}{4}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Double-and-Add Point Scalar Multiplication}}{4}}
 \citation{yarom13flush}
 \citation{yarom13flush}
-\newlabel{mont}{{2}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Montgomery Ladder Point Scalar Multiplication}}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The \textsc  {Flush+Reload} attack}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The Montgomery Ladder}{3}}
+\newlabel{sub:montgomery}{{2.2}{3}}
+\newlabel{d_and_a}{{1}{3}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Double-and-Add Point Scalar Multiplication}}{3}}
+\newlabel{mont}{{2}{3}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Montgomery Ladder Point Scalar Multiplication}}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The \textsc  {Flush+Reload} attack}{3}}
 \citation{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}
 \citation{LLL}
 \citation{nguyen03insecurity}
 \citation{yarom13flush}
 \citation{brumley11remote}
 \citation{brumley11remote}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Related Work}{6}}
-\newlabel{sec:related}{{2.4}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Attacking OpenSSL ECDSA}{6}}
-\newlabel{sec:attack}{{3}{6}}
-\newlabel{lst:openssl}{{1.1}{7}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {1.1}OpenSSL Implementation of the Montgomery Ladder}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Related Work}{4}}
+\newlabel{sec:related}{{2.4}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Attacking OpenSSL ECDSA}{4}}
+\newlabel{sec:attack}{{3}{4}}
+\newlabel{lst:openssl}{{1}{4}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}OpenSSL Implementation of the Montgomery Ladder}{4}}
 \citation{uht95disjoint}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mapping from Source Code to Memory}}{8}}
-\newlabel{dgm:memory}{{1}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Observable Memory Access over Time}}{8}}
-\newlabel{dgm:temporal}{{2}{8}}
 \citation{intel12optimization}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mapping from Source Code to Memory}}{5}}
+\newlabel{dgm:memory}{{1}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Observable Memory Access over Time}}{5}}
+\newlabel{dgm:temporal}{{2}{5}}
 \citation{cipsero10software}
 \citation{fips}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup and Results}{10}}
-\newlabel{sec:results}{{4}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Probe Timing During Signing}}{10}}
-\newlabel{dgm:timing}{{3}{10}}
 \citation{shanks71class}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Distributions of missing bits: (A) per signature (B) per bit position}}{11}}
-\newlabel{dgm:dist}{{4}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{11}}
-\newlabel{sec:discussion}{{5}{11}}
-\newlabel{sub:full_nonce}{{5}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup and Results}{6}}
+\newlabel{sec:results}{{4}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Missing Bits per Signature}}{6}}
+\newlabel{dgm:dist}{{4}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Missing Bits per Bit Position}}{6}}
+\newlabel{dgm:missed}{{5}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{6}}
+\newlabel{sec:discussion}{{5}{6}}
+\newlabel{sub:full_nonce}{{5}{6}}
 \citation{dan-tan-peter}
 \citation{dan-tan-peter}
 \citation{brumley11remote}
@@ -71,8 +68,10 @@
 \bibdata{Euro2014}
 \bibcite{adelman-demarrais}{1}
 \bibcite{ansi962}{2}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions and future work}{12}}
 \bibcite{balasubramanian-koblitz}{3}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Probe Timing During Signing}}{7}}
+\newlabel{dgm:timing}{{3}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions and future work}{7}}
 \bibcite{dan-tan-peter}{4}
 \bibcite{brumley11remote}{5}
 \bibcite{cipsero10software}{6}
@@ -87,13 +86,12 @@
 \bibcite{LLL}{15}
 \bibcite{miller85use}{16}
 \bibcite{montgomery87speeding}{17}
-\bibcite{fips186}{18}
-\bibcite{fips}{19}
-\bibcite{nguyen03insecurity}{20}
-\bibcite{okeya00elliptic}{21}
-\bibcite{openssl}{22}
-\bibcite{shanks71class}{23}
-\bibcite{uht95disjoint}{24}
-\bibcite{walter04longer}{25}
-\bibcite{WienerZ98}{26}
-\bibcite{yarom13flush}{27}
+\bibcite{fips}{18}
+\bibcite{nguyen03insecurity}{19}
+\bibcite{okeya00elliptic}{20}
+\bibcite{openssl}{21}
+\bibcite{shanks71class}{22}
+\bibcite{uht95disjoint}{23}
+\bibcite{walter04longer}{24}
+\bibcite{WienerZ98}{25}
+\bibcite{yarom13flush}{26}
