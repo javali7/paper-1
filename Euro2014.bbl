@@ -125,6 +125,11 @@ Okeya, K., Kurumatani, H., Sakurai, K.:
 {OpenSSL}.
 \newblock \url{http://www.openssl.org}
 
+\bibitem{cert}
+Rauf, A.:
+\newblock Vulnerability note {VU\#976534} l3 cpu shared cache architecture is
+  susceptible to a {Flush+Reload} side-channel attack (October 2013)
+
 \bibitem{shanks71class}
 Shanks, D.:
 \newblock Class number, a theory of factorization, and genera.

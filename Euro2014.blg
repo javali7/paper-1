@@ -1,53 +1,55 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/MacPorts 2013_2)
+This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Euro2014.aux
 The style file: splncs.bst
 Database file #1: Euro2014.bib
-Repeated entry---line 123 of file Euro2014.bib
+Warning--entry type for "cert" isn't style-file defined
+--line 11 of file Euro2014.bib
+Repeated entry---line 131 of file Euro2014.bib
  : @article{LLL
  :             ,
 I'm skipping whatever remains of this entry
 Warning--can't use both volume and number fields in miller85use
 Warning--empty title in openssl
-You've used 26 entries,
+You've used 27 entries,
             2410 wiz_defined-function locations,
-            724 strings with 8858 characters,
-and the built_in function-call counts, 11107 in all, are:
-= -- 1240
-> -- 348
+            727 strings with 8991 characters,
+and the built_in function-call counts, 11307 in all, are:
+= -- 1258
+> -- 355
 < -- 28
-+ -- 138
-- -- 105
-* -- 794
-:= -- 1538
++ -- 141
+- -- 107
+* -- 805
+:= -- 1571
 add.period$ -- 43
-call.type$ -- 26
-change.case$ -- 122
+call.type$ -- 27
+change.case$ -- 126
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 521
-empty$ -- 927
-format.name$ -- 105
-if$ -- 2606
+cite$ -- 29
+duplicate$ -- 529
+empty$ -- 948
+format.name$ -- 107
+if$ -- 2648
 int.to.chr$ -- 0
-int.to.str$ -- 26
+int.to.str$ -- 27
 missing$ -- 21
-newline$ -- 130
-num.names$ -- 60
-pop$ -- 125
+newline$ -- 134
+num.names$ -- 62
+pop$ -- 132
 preamble$ -- 1
-purify$ -- 100
+purify$ -- 103
 quote$ -- 0
-skip$ -- 444
+skip$ -- 453
 stack$ -- 0
-substring$ -- 776
-swap$ -- 276
+substring$ -- 781
+swap$ -- 277
 text.length$ -- 28
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 104
+type$ -- 108
 warning$ -- 2
-while$ -- 111
-width$ -- 28
-write$ -- 306
+while$ -- 113
+width$ -- 29
+write$ -- 314
 (There was 1 error message)
