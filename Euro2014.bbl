@@ -26,7 +26,7 @@ Ac\i{}i{\c c}mez, O., Schindler, W.:
 Adleman, L.M., Demarrais, J.:
 \newblock A {S}ubexponential {A}lgorithm for {D}iscrete {L}ogarithms over all
   {F}inite {F}ields.
-\newblock Mathematics of computation \textbf{61}(203) (1993)  1--15
+\newblock Mathematics of Computation \textbf{61}(203) (1993)  1--15
 
 \bibitem{ansi962}
 American National Standards Institute:
@@ -76,7 +76,7 @@ Cipresso, T., Stamp, M.:
 Gallant, R.P., Lambert, R.J., Vanstone, S.A.:
 \newblock Improving the parallelized pollard lambda search on anomalous binary
   curves.
-\newblock Math. Comput. \textbf{69}(232) (2000)  1699--1705
+\newblock Mathematics of Computation \textbf{69}(232) (2000)  1699--1705
 
 \bibitem{Elgamal85}
 Gamal, T.E.:
@@ -107,7 +107,7 @@ Gullasch, D., Bangerter, E., Krenn, S.:
 \bibitem{Howgrave-GrahamS01}
 Howgrave-Graham, N., Smart, N.P.:
 \newblock Lattice attacks on digital signature schemes.
-\newblock Des. Codes Cryptography \textbf{23}(3) (2001)  283--290
+\newblock Designs, Codes and Cryptography \textbf{23}(3) (2001)  283--290
 
 \bibitem{intel12optimization}
 Intel Corporation:
@@ -135,7 +135,7 @@ Koblitz, N.:
 \bibitem{LLL}
 Lenstra, A., Lenstra, H., Lov{\'a}sz, L.:
 \newblock Factoring polynomials with rational coefficients.
-\newblock Math. Ann. \textbf{261} (1982)  515 --534
+\newblock Mathematische Annalen \textbf{261}(4) (1982)  515 --534
 
 \bibitem{miller85use}
 Miller, V.S.:
@@ -172,8 +172,8 @@ Okeya, K., Kurumatani, H., Sakurai, K.:
 
 \bibitem{cert}
 Rauf, A.:
-\newblock Vulnerability note {VU\#976534} l3 cpu shared cache architecture is
-  susceptible to a {Flush+Reload} side-channel attack (October 2013)
+\newblock Vulnerability note {VU\#976534} {L3} {CPU} shared cache architecture
+  is susceptible to a \textsc{Flush+Reload} side-channel attack (October 2013)
 
 \bibitem{shanks71class}
 Shanks, D.:

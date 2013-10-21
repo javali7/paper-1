@@ -5,19 +5,18 @@ The style file: splncs.bst
 Database file #1: Euro2014.bib
 Warning--entry type for "cert" isn't style-file defined
 --line 121 of file Euro2014.bib
-Warning--I didn't find a database entry for "Howgrave-GrahamS01s"
 Warning--can't use both volume and number fields in miller85use
 Warning--empty title in openssl
 You've used 36 entries,
             2410 wiz_defined-function locations,
-            786 strings with 10975 characters,
-and the built_in function-call counts, 15579 in all, are:
+            781 strings with 10897 characters,
+and the built_in function-call counts, 15583 in all, are:
 = -- 1711
 > -- 536
 < -- 37
 + -- 210
 - -- 165
-* -- 1126
+* -- 1129
 := -- 2187
 add.period$ -- 52
 call.type$ -- 36
@@ -40,7 +39,7 @@ quote$ -- 0
 skip$ -- 616
 stack$ -- 0
 substring$ -- 1064
-swap$ -- 369
+swap$ -- 370
 text.length$ -- 37
 text.prefix$ -- 0
 top$ -- 0
@@ -49,4 +48,4 @@ warning$ -- 2
 while$ -- 158
 width$ -- 38
 write$ -- 421
-(There were 4 warnings)
+(There were 3 warnings)
