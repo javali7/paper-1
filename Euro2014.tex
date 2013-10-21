@@ -63,7 +63,7 @@ This is  a reasonable assumption as could be the case when using, for example, a
 The paper also presents new information on the limitation of the \textsc{Flush+Reload} attack.
 We discuss spatial limitations, affecting the distance between multiple probes, and 
 temporal limitations, affecting the probe resolution.
-The results of this paper support the findings of~\cite{walter04longer} that longer keys render a cryptographic algorithm more vulnerable to side-channel analysis.
+The results of this paper support the findings of Walter~\cite{walter04longer} that longer keys render a cryptographic algorithm more vulnerable to side-channel analysis.
 
 
 The rest of this paper is organised as follows: The next section presents background information on ECDSA, the Montgomery ladder and the \textsc{Flush+Reload} attack followed by a short discussion of related research. % and the validity of the assumption that an attacker has access to the computer's memory.
@@ -76,17 +76,17 @@ In this section we present the relevant, general background information about th
 
 \subsection{ECDSA}\label{sub:ecdsa}
 
-The ElGamal Signature Scheme \cite{Elgamal85} is the basis of the US 1994 NIST standard, Digital Signature Algorithm (DSA). The ECDSA is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group as opposed to the multiplicative group of a finite field is that smaller parameters for the same security level \cite{koblitz87elliptic,miller85use} due to the fact that the current best known algorithms to solve the discrete logarithm problem in the finite field are subexponential and theose used to solve the ECDLP are exponential, see \cite{balasubramanian-koblitz,adelman-demarrais}, and developments thereof, for more details. 
+The ElGamal Signature Scheme \cite{Elgamal85} is the basis of the US 1994 NIST standard, Digital Signature Algorithm (DSA). The ECDSA is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group as opposed to the multiplicative group of a finite field is that smaller parameters for the same security level \cite{koblitz87elliptic,miller85use} due to the fact that the current best known algorithms to solve the discrete logarithm problem in the finite field are subexponential and theose used to solve the ECDLP are exponential, see Balasubramanian and Koblitz~\cite{balasubramanian-koblitz}, Adleman and Demarrais~\cite{adelman-demarrais} and developments thereof, for more details. 
 
 
-{\bf{Parameters:}} An elliptic curve $E$ defined over a finite field $\F_{q}$; a point $G\in E$ of large prime order $n$ (generator of the group of points of order $n$). Paramaters chosen as such are generally believed to offer a security level of $\sqrt{n}$ given current knowledge and technologies. Parameters are recommended to be generated following \cite{fips}. The field size $q$ is usually taken to be a large, odd prime or a power of $2$. The implementation of OpenSSL uses both prime fields and $q=2^m$; the results in this paper relate to the binary field case.
+{\bf{Parameters:}} An elliptic curve $E$ defined over a finite field $\F_{q}$; a point $G\in E$ of large prime order $n$ (generator of the group of points of order $n$). Paramaters chosen as such are generally believed to offer a security level of $\sqrt{n}$ given current knowledge and technologies. Parameters are recommended to be generated following the Digital Signature Standard~\cite{fips}. The field size $q$ is usually taken to be a large, odd prime or a power of $2$. The implementation of OpenSSL uses both prime fields and $q=2^m$; the results in this paper relate to the binary field case.
 
 {\bf{Public-Private Key pairs:}} The private key is an integer $d$, $1<d<n-1$ and the public key is the point $Q=dG$. Calculating the private key from the public key requires solving the ECDLP, which is known to be hard in practice for the correctly chosen parameters. The most efficient algorithms currently know which solve the ECDLP have a square root run time in the size of the group \cite{WienerZ98,GallantLV00}, hence the aforementioned security level.
 \vspace{0.5cm}
 
 Suppose Bob, with public-private key pair $\{d_B,Q_B\}$, wishes to send a signed message $m$ to Alice, he follows the following steps:
 \begin{enumerate}
-\item Using an approved hash algorithm, compute $e=Hash(m),$ take $\bar{e}$ to be the leftmost $\ell$ bits of $e$ (where $\ell=\min(\log_2(q),$bitlength of the hash$)$). 
+\item Using an approved hash algorithm, compute $e=Hash(m),$ take $\bar{e}$ to be the leftmost $\ell$ bits of $e$ (where $\ell=\min(\log_2(q),$ bit\-length of the hash$)$). 
 \item\label{rand_element} Randomly select $k\leftarrow_R\Z_n$ with $1<k<p-1$ and $(k,p-1)=1$.
 \item\label{scalar_mult} Compute the point $(x,y)=kG\in E$. 
 \item Take $r=x\mod n$; if $r=0$ then return to step \ref{rand_element}.
@@ -129,7 +129,7 @@ The addition law for points on Weirstrass curves is not complete, that is, the c
 %by examining the power consumption of the computation 
 it is possible to distingush when the if loop is executed and hence when a bit of $n$ is~0.
 
-As described by Montgomery in \cite{montgomery87speeding}, the Montgomery ladder is presented in Algorithm \ref{mont}. It differs from Algorithm \ref{d_and_a} in that both a doubling and addition of points occurs at each step, regardless of the bit value of $k$. Thus, the Montgomery ladder thwarts side channel attacks which measure the computation at each bit and thus determine if an addition operation was executed. The branching in Algorithm \ref{mont} controls which point is doubled and where the addition of points is stored. The attack presented in this paper uses a different method to determine which branch of the algorithm was executed.
+As described in Montgomery~\cite{montgomery87speeding}, the Montgomery ladder is presented in Algorithm \ref{mont}. It differs from Algorithm \ref{d_and_a} in that both a doubling and addition of points occurs at each step, regardless of the bit value of $k$. Thus, the Montgomery ladder thwarts side channel attacks which measure the computation at each bit and thus determine if an addition operation was executed. The branching in Algorithm \ref{mont} controls which point is doubled and where the addition of points is stored. The attack presented in this paper uses a different method to determine which branch of the algorithm was executed.
 This method is described in the following section.
 
 \vspace{-0.5cm}
@@ -171,7 +171,7 @@ By monitoring the victim access to specific locations in these pages, the spy pr
 executes the code in the monitored memory locations.
 From this information the spy program can infer information on the data processed by the victim.
 
-The spy program described in~\cite{yarom13flush} uses the \textsc{Flush+Reload} attack to retrieve
+The spy program described in Yarom and Falkner~\cite{yarom13flush} uses the \textsc{Flush+Reload} attack to retrieve
 the secret key from the GnuPG RSA decryption.
 The spy program monitors the phases of the square-and-multiply exponentiation used by GnuPG.  
 As these phases depend on the values of the bits of the exponent, monitoring them
@@ -196,15 +196,30 @@ and the probability of missing a memory access.
 
 
 \subsection{Related Work}\label{sec:related}
-There have been a number of publications addressing the security issues of digital signatures when partial information is leaked, including~\cite{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}. 
+There have been a number of publications addressing the security issues of digital signatures when partial information is leaked~\cite{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}. 
 
-In~\cite{gopalakrishnan07solving} algorithms for solving the ECDLP using the additional information of some consecutive bits of the private key are presented. These algorithms outperform the currently best known methods of solving the ECDLP without the extra information or using exhaustive search on the remaining key space. In this work we do not focus on the ECDLP, we instead used leaked information about the ephemeral keys. 
+In Gopalakrishnan et al.~\cite{gopalakrishnan07solving} algorithms for solving the ECDLP using the additional information of some consecutive bits of the private key are presented. These algorithms outperform the currently best known methods of solving the ECDLP without the extra information or using exhaustive search on the remaining key space. In this work we do not focus on the ECDLP, we instead used leaked information about the ephemeral keys. 
 
-The attacks~\cite{Howgrave-GrahamS01,nguyen03insecurity} rely on having obtained a relatively small number of bit of the ephemeral keys used for many signatures and then use the LLL method~\cite{LLL} to solve the related hidden number problem to find the secret value. The attack of~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm in would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only 7 consecutive, least significant leaked bits of the nonce (relying on some reasonable assumptions). Each of these assumes only a small fraction of $k$ is recovered. The main contribution of this work is to illustrate the method, the adapted technique of \cite{yarom13flush}, to recover a large majority of the bits, from which the full nonce is then obtained using only one signature. Once the nonce has been fully determined the secret key is obtained using only less than one second of additional computation time (idle computer). 
+The attacks in Howgrave-Graham and Smart~\cite{Howgrave-GrahamS01} and in Nguyen and Shparlinski~\cite{nguyen03insecurity} 
+rely on having obtained a relatively small number of bit of the ephemeral keys used for many signatures and then use the LLL method~\cite{LLL} to solve the related hidden number problem to find the secret value.
+ The attack of Nguyen and Shparlinsky~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm in would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only 7 consecutive, least significant leaked bits of the nonce (relying on some reasonable assumptions). Each of these assumes only a small fraction of $k$ is recovered. The main contribution of this work is to illustrate the method, the adapted technique of Yarom and Falkner~\cite{yarom13flush}, to recover a large majority of the bits, from which the full nonce is then obtained using only one signature. Once the nonce has been fully determined the secret key is obtained using only less than one second of additional computation time (idle computer). 
 For example, we are able to obtain around 546 of the 571 bits of a nonce. Though the goal and approach of the works are similar, the methods are very different.
 
-The attack of~\cite{brumley11remote} uses the above methods to highlight specifically a vulnerability in earlier versions of OpenSSL's ladder implementation for curves over binary fields. %, the same target of our attack. 
-Though the attacks differ, they both illustrate that the OpenSSL implementation of the Montgomery ladder is vulnerable from both remote attacks and attacks launched from virtual machines with access to the memory of the target computer. The countermeasure suggested in~\cite{brumley11remote} will not thwart this attack.
+The attack of Brumley and Tuveri~\cite{brumley11remote} uses the above methods to highlight specifically a vulnerability in earlier versions of OpenSSL's ladder implementation for curves over binary fields. %, the same target of our attack. 
+Though the attacks differ, they both illustrate that the OpenSSL implementation of the Montgomery ladder is vulnerable from both remote attacks and attacks launched from virtual machines with access to the memory of the target computer. 
+The countermeasure suggested in Brumley and Tuveri~\cite{brumley11remote} will not thwart this attack.
+
+Cache side-channel attacks have been used against cryptosystems~\cite{aciicmez07yet,aciicmez10new,aciicmez08vulnerability,chen13improvement,canteaut06understanding,tromer10efficient,zhang12cross}.
+These attacks use the \textsc{Prime+Probe} to target the L1 cache level.
+Consequently, the spy program and the victim must execute on the same execution core of the processor.
+This is in contrast to our attack, which targets the last-level-cache, and can, therefore, be mounted between different cores.
+
+The \textsc{Flush+Reload} attack has been used by Gullasch et al.~\cite{gullasch11cache} and by Yarom and Falkner~\cite{yarom13flush}.
+Gullasch et al.~\cite{gullasch11cache} uses this attack as a replacement to the \textsc{Prime+Probe} attack,
+relying on a scheduler bug to interrupt the victim and gain control of the core it executes on.
+Yarom and Falkner~\cite{yarom13flush} uses \textsc{Flush+Reload} to attack the square-and-multiply exponentiation~\cite{gordon98survey} 
+in the GnuPG implementation of RSA.
+Unlike the Montgomery Ladder, square-and-multiply is known to be vulnerable to side-channel attacks.
 
 %\subsection{Memory Access Assumption}
 %The assumption that an attacker has access to the computer's memory is valid *** relevance of attack etc.
@@ -221,7 +236,8 @@ susceptible to the \textsc{Flush+Reload} attack.
 
 Listing~\ref{lst:openssl} shows the relevant section of the implementation of the Montgomery ladder in OpenSSL version 1.0.1e.
 The bits of the multiplication scalar are stored in the word array \texttt{scalar->d}.
-The outer loop, at lines~268 to~286 traverses over the words representing the scalar (One word is 16 bits or 32 bits for IA-32 and X86-64 architectures respectively).
+The outer loop, at lines~268 to~286 traverses over the words representing the scalar,
+where the word size is defined by the architecture, e.g.\ 32 bits for the IA-32 architecture and 64 bits for the X86-64 architecture.
 The inner loop, at lines~271 to~284 traverses the bits in each word.
 Line~273 tests the bit. 
 For each bit the implementation executes a group add followed by a group double.
@@ -382,7 +398,9 @@ Based on the discussion in Section~\ref{sec:attack}, we picked a slot length of 
 
 Figure~\ref{dgm:timing} shows the results of the probes during 50 time slots.
 Probes taking less than the threshold of 120 clock cycles indicate a victim access to the probed line.
-The diagram also indicates the time slots in which the victim program executed the group add and the group double operations.
+The shaded areas in the diagram indicate the computation of the group double operation, identified
+by probing for group double start and end.
+These probes are omitted for clarity.
 
 
 \begin{figure*}[htb]
@@ -400,7 +418,7 @@ Access to line~$B$ between the group add and the group double operations indicat
 Processing the next bit starts at time slot~8 and ends in time slot~16.
 The access to memory line~$D$ in time slot~13 indicates that the second bit is clear.
 
-In the absence access to memory lines~$B$ or~$D$ in time slot~42, the captured access to the group double start indicates
+In the absence access to memory lines~$B$ or~$D$ in time slot~42, the start of a group double indicates
 that the spy process missed a value of a bit.
 However, the fact that a bit was processed at that time slot is not missed,
 demonstrating the value of probing the start of the group double operation.
@@ -412,7 +430,7 @@ The number of missing bits ranges from 10 to 34, with the median at 25 missing b
 
 
 \begin{figure}[htb]
-\includegraphics[width=2.4in]{images/missing}
+\includegraphics[width=\columnwidth]{images/missing}
 \caption{Missing Bits per Signature\label{dgm:dist}}
 \end{figure}
 
@@ -424,7 +442,7 @@ scalar.
 Around 15\% of bits in positions~1 to~20 are missed, compared with 3.6\% of bits from position 50 onward (where the distribution of missing bits is approximately uniform).
 
 \begin{figure}[htb]
-\includegraphics[width=2.4in]{images/positions}
+\includegraphics[width=\columnwidth]{images/positions}
 \caption{Missing Bits per Bit Position\label{dgm:missed}}
 \end{figure}
 
@@ -435,7 +453,7 @@ Around 15\% of bits in positions~1 to~20 are missed, compared with 3.6\% of bits
 \section{Discussion}\label{sec:discussion}
 
 \subsubsection*{Full Recovery of the Nonce}\label{sub:full_nonce}
-Given the high proportion of nonce bits recovered by the \textsc{Flush+Reload} attack, using the LLL based techniques of~\cite{Howgrave-GrahamS01,nguyen03insecurity} described in Sect.~\ref{sec:related} seems computationally excessive. 
+Given the high proportion of nonce bits recovered by the \textsc{Flush+Reload} attack, using the LLL based techniques~\cite{Howgrave-GrahamS01,nguyen03insecurity} described in Sect.~\ref{sec:related} seems computationally excessive. 
 With a worst case of 34 bits missing, the baby steps giant steps algorithm~\cite{shanks71class} would require less then 10 Megabytes of memory
 and less than one second of computation to complete the nonce.
 
@@ -449,13 +467,13 @@ This attack targets the scalar multiplication implementation of OpenSSL and is t
 
 \subsubsection*{Mitigation}
 
-In the Networking and Cryptography library (NaCl), implemented by Daniel J. Bernstein, Tanja Lange and Peter Schwabe, there is no data flow from secrets to branch conditions, precisely the vulnerability of the OpenSSL implementation targeted by this attack. Analysis of the core security features of NaCl is given in \cite{dan-tan-peter}. The attack presented in this article relies on distinguishing bits of the nonce by observing the branching in traditional Montgomery ladder implementation. As the NaCl library avoids branching dependent on secret parameters this attack is not applicable to NaCl's \url{crypto_sign} API. (NaCl is in the public domain and has been made available by the authors of \cite{dan-tan-peter} at \url{http://nacl.cr.yp.to}.)
+In the Networking and Cryptography library (NaCl), implemented by Daniel J. Bernstein, Tanja Lange and Peter Schwabe, there is no data flow from secrets to branch conditions, precisely the vulnerability of the OpenSSL implementation targeted by this attack. Analysis of the core security features of NaCl is given in Bernstein et al.~\cite{dan-tan-peter}. The attack presented in this article relies on distinguishing bits of the nonce by observing the branching in traditional Montgomery ladder implementation. As the NaCl library avoids branching dependent on secret parameters this attack is not applicable to NaCl's \url{crypto_sign} API. (NaCl is in the public domain and has been made available by the authors of Bernstein et al.~\cite{dan-tan-peter} at \url{http://nacl.cr.yp.to}.)
 
 
 \section{Conclusions and future work}
-The results of this work and \cite{brumley11remote} imply that the OpenSSL montgomery ladder implementation should be avoided in all implementations of elliptic curve protocols when a scalar multiplication step involves a secret parameter. This attack is applicable when the mallicious party has access to the memory of the targeted device, a completely reasonable assumption, possible when using a virtual machine, a computer in multiuser mode, cloud computing or a computer victim to malware. 
+The results of this work and of Brumley and Tuveri~\cite{brumley11remote} imply that the OpenSSL montgomery ladder implementation should be avoided in all implementations of elliptic curve protocols when a scalar multiplication step involves a secret parameter. This attack is applicable when the mallicious party has access to the memory of the targeted device, a completely reasonable assumption, possible when using a virtual machine, a computer in multiuser mode, cloud computing or a computer victim to malware. 
 
-The results of this work also support the theory of~\cite{walter04longer} that smaller keys are more resilient to side-channel analysis, in this attack a higer proportion of the nonce was obtained for larger key sizes. This implies that as we naturally transition to larger parameters in response to increasing computing capabilities, prevention of side-channel attacks should be incorporated into the implementation design, as is the methodology adopted by the authors of the NaCl cryptographic library \cite{dan-tan-peter}. 
+The results of this work also support the theory of Walter~\cite{walter04longer} that smaller keys are more resilient to side-channel analysis, in this attack a higer proportion of the nonce was obtained for larger key sizes. This implies that as we naturally transition to larger parameters in response to increasing computing capabilities, prevention of side-channel attacks should be incorporated into the implementation design, as is the methodology adopted by the authors of the NaCl cryptographic library \cite{dan-tan-peter}. 
 
 Future work in this line of research is to adapt this attack to recover more bits when a sliding window is used; using the method presented in this paper we are able to extract the first few bits of the sliding window and thus the proportion of bits obtained decreases as the window size increases. We aim to develop the attack to improve on this proportion. 
 

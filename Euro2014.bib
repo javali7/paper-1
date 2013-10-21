@@ -2,112 +2,203 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for Yuval Yarom at 2013-09-28 22:02:06 +0930 
+%% Created for Yuval Yarom at 2013-10-21 22:16:14 +1030 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
-<<<<<<< HEAD
-@ONLINE{cert,
-author = {Rauf, Adam},
-title = {Vulnerability Note {VU\#976534} L3 CPU shared cache architecture is susceptible to a {Flush+Reload} side-channel attack},
-month = Oct,
-year = {2013},
-url = {http://www.kb.cert.org/vuls/id/976534}
-}
+
+
+@article{gordon98survey,
+	Author = {Gordon, Daniel M.},
+	Date-Added = {2013-10-21 11:46:11 +0000},
+	Date-Modified = {2013-10-21 11:46:11 +0000},
+	Journal = {Journal of Algorithms},
+	Keywords = {Cryptography},
+	Month = {April},
+	Number = {1},
+	Pages = {129--146},
+	Title = {A Survey of Fast Exponentiation Methods},
+	Volume = {27},
+	Year = {1998}}
+
+@inproceedings{gullasch11cache,
+	Address = {Oakland, California, United States},
+	Author = {Gullasch, David and Bangerter, Endre and Krenn, Stephan},
+	Booktitle = {Proceedings of the {IEEE} Symposium on Security and Privacy},
+	Date-Added = {2013-10-21 11:45:24 +0000},
+	Date-Modified = {2013-10-21 11:45:58 +0000},
+	Month = {May},
+	Pages = {490--595},
+	Title = {Cache Games --- Bringing Access-Based Cache Attacks on {AES} to Practice},
+	Year = {2011}}
+
+@inproceedings{zhang12cross,
+	Address = {Raleigh, North Carolina, United States},
+	Author = {Zhang, Yinqian and Jules, Ari and Reiter, Michael K. and Ristenpart, Thomas},
+	Booktitle = {Proceedings of the 19th ACM Conference on Computer and Communication Security},
+	Date-Added = {2013-10-21 11:44:20 +0000},
+	Date-Modified = {2013-10-21 11:44:58 +0000},
+	Editor = {Yu, Ting and Danezis, George and Gligor, Virgil D.},
+	Month = {October},
+	Pages = {305--316},
+	Title = {Cross-{VM} Side Channels and Their Use to Extract Private Keys},
+	Year = {2012}}
+
+@article{tromer10efficient,
+	Author = {Tromer, Eran and Osvik, Dag Arne and Shamir, Adi},
+	Date-Added = {2013-10-21 11:44:06 +0000},
+	Date-Modified = {2013-10-21 11:44:06 +0000},
+	Journal = {Journal of Cryptology},
+	Keywords = {Cache Side Channel},
+	Month = {January},
+	Number = {2},
+	Pages = {37--71},
+	Title = {Efficient Cache Attacks in {AES}, and Countermeasures},
+	Volume = {23},
+	Year = {2010}}
+
+@techreport{canteaut06understanding,
+	Author = {Canteaut, Anne and Lauradoux, C{\'e}dric and Seznec, Andr{\'e}},
+	Date-Added = {2013-10-21 11:43:52 +0000},
+	Date-Modified = {2013-10-21 11:43:52 +0000},
+	Institution = {INRIA},
+	Keywords = {Cache Side Channel},
+	Month = {April},
+	Number = {5881},
+	Title = {Understanding Cache Attacks},
+	Year = {2006}}
+
+@article{chen13improvement,
+	Author = {Chen, CaiSen and Wang, Tao and Kou, YingZhan and Chen, XiaoCen and Li, Xiong},
+	Date-Added = {2013-10-21 11:43:33 +0000},
+	Date-Modified = {2013-10-21 11:43:33 +0000},
+	Journal = {The Journal of Systems and Software},
+	Keywords = {Cache Side Channel,--ReadingList},
+	Number = {1},
+	Pages = {100--107},
+	Title = {Improvement of Trace-driven {I-Cache} Timing Attack on the {RSA} Algorithm},
+	Volume = {86},
+	Year = {2013}}
+
+@inproceedings{aciicmez10new,
+	Address = {Santa Barbara, California, United States},
+	Author = {Ac\i{}i{\c c}mez, Onur and Brumley, Billy Bob and Grabher, Philipp},
+	Booktitle = {Proceedings of the Workshop on Cryptographic Hardware and Embedded Systems},
+	Date-Added = {2013-10-21 11:42:41 +0000},
+	Date-Modified = {2013-10-21 11:43:14 +0000},
+	Editor = {Mangard, Stefan and Standaert, Fran{\c c}ois-Xavier},
+	Month = {August},
+	Pages = {110-124},
+	Title = {New Results on Instruction Cache Attacks},
+	Year = {2010}}
+
+@inproceedings{aciicmez08vulnerability,
+	Address = {San Francisco, California, United States},
+	Author = {Ac\i{}i{\c c}mez, Onur and Schindler, Werner},
+	Booktitle = {Proceedings of the Cryptographers' Track at the {RSA} Conference},
+	Date-Added = {2013-10-21 11:40:31 +0000},
+	Date-Modified = {2013-10-21 11:41:31 +0000},
+	Editor = {Malkin, Tal},
+	Month = {April},
+	Pages = {256--273},
+	Title = {A Vulnerability in {RSA} Implementations Due to Instruction Cache Analysis and Its Demonstration on {OpenSSL}},
+	Year = {2008}}
+
+@inproceedings{aciicmez07yet,
+	Address = {Fairfax, Virginia, United States},
+	Author = {Ac\i{}i{\c c}mez, Onur},
+	Booktitle = {Proceedings of the ACM Workshop on Computer Security Architecture},
+	Date-Added = {2013-10-21 11:39:18 +0000},
+	Date-Modified = {2013-10-21 11:40:11 +0000},
+	Editor = {Ning, Peng and Atluri, Vijay},
+	Keywords = {Cache Side Channel, --ReadingList},
+	Month = {November},
+	Pages = {11--18},
+	Title = {Yet Another MicroArchitectural Attack: exploiting {I-Cache}},
+	Year = {2007}}
+
+@online{cert,
+	Author = {Rauf, Adam},
+	Month = Oct,
+	Title = {Vulnerability Note {VU\#976534} L3 CPU shared cache architecture is susceptible to a {Flush+Reload} side-channel attack},
+	Url = {http://www.kb.cert.org/vuls/id/976534},
+	Year = {2013},
+	Bdsk-Url-1 = {http://www.kb.cert.org/vuls/id/976534}}
 
 @article{GallantLV00,
-  added-at = {2011-02-14T00:00:00.000+0100},
-  author = {Gallant, Robert P. and Lambert, Robert J. and Vanstone, Scott A.},
-  journal = {Math. Comput.},
-  number = 232,
-  pages = {1699-1705},
-  timestamp = {2011-02-14T00:00:00.000+0100},
-  title = {Improving the parallelized Pollard lambda search on anomalous binary curves.},
-  volume = 69,
-  year = 2000
-}
+	Added-At = {2011-02-14T00:00:00.000+0100},
+	Author = {Gallant, Robert P. and Lambert, Robert J. and Vanstone, Scott A.},
+	Journal = {Math. Comput.},
+	Number = 232,
+	Pages = {1699-1705},
+	Timestamp = {2011-02-14T00:00:00.000+0100},
+	Title = {Improving the parallelized Pollard lambda search on anomalous binary curves.},
+	Volume = 69,
+	Year = 2000}
 
 @inproceedings{WienerZ98,
-  added-at = {2011-06-17T00:00:00.000+0200},
-  author = {Wiener, Michael J. and Zuccherato, Robert J.},
-  booktitle = {Selected Areas in Cryptography},
-  crossref = {conf/sacrypt/1998},
-  editor = {Tavares, Stafford E. and Meijer, Henk},
-  isbn = {3-540-65894-7},
-  pages = {190-200},
-  publisher = {Springer},
-  series = {Lecture Notes in Computer Science},
-  timestamp = {2011-06-17T00:00:00.000+0200},
-  title = {Faster Attacks on Elliptic Curve Cryptosystems.},
-  volume = 1556,
-  year = 1998
-}
+	Added-At = {2011-06-17T00:00:00.000+0200},
+	Author = {Wiener, Michael J. and Zuccherato, Robert J.},
+	Booktitle = {Selected Areas in Cryptography},
+	Crossref = {conf/sacrypt/1998},
+	Editor = {Tavares, Stafford E. and Meijer, Henk},
+	Isbn = {3-540-65894-7},
+	Pages = {190-200},
+	Publisher = {Springer},
+	Series = {Lecture Notes in Computer Science},
+	Timestamp = {2011-06-17T00:00:00.000+0200},
+	Title = {Faster Attacks on Elliptic Curve Cryptosystems.},
+	Volume = 1556,
+	Year = 1998}
 
 @proceedings{conf/sacrypt/1998,
-  editor    = {Stafford E. Tavares and Henk Meijer},
-  title     = {Selected Areas in Cryptography '98, SAC'98, Kingston, Ontario, Canada, August 17-18, 1998, Proceedings},
-  booktitle = {Selected Areas in Cryptography},
-  publisher = {Springer},
-  series    = {Lecture Notes in Computer Science},
-  volume    = {1556},
-  year      = {1999},
-  isbn      = {3-540-65894-7}
-}
+	Booktitle = {Selected Areas in Cryptography},
+	Editor = {Stafford E. Tavares and Henk Meijer},
+	Isbn = {3-540-65894-7},
+	Publisher = {Springer},
+	Series = {Lecture Notes in Computer Science},
+	Title = {Selected Areas in Cryptography '98, SAC'98, Kingston, Ontario, Canada, August 17-18, 1998, Proceedings},
+	Volume = {1556},
+	Year = {1999}}
 
 @article{adelman-demarrais,
-author = {Adleman, L. M. and Demarrais, J.},
-title = {A {S}ubexponential {A}lgorithm for {D}iscrete {L}ogarithms over all {F}inite {F}ields},
-journal = {Mathematics of computation},
-year = {1993},
-volume = {61},
-number = {203},
-pages = {1-15}
-}
+	Author = {Adleman, L. M. and Demarrais, J.},
+	Journal = {Mathematics of computation},
+	Number = {203},
+	Pages = {1-15},
+	Title = {A {S}ubexponential {A}lgorithm for {D}iscrete {L}ogarithms over all {F}inite {F}ields},
+	Volume = {61},
+	Year = {1993}}
 
 @article{balasubramanian-koblitz,
-author = {Balasubramanian, R. and Koblitz, N.},
-title = {The {I}mprobability that an {E}lliptic {C}urve has {S}ubexponential {D}iscrete {L}og {P}roblem under the {M}enezes - {O}kamoto - {V}anstone {A}lgorithm.},
-journal = {Journal of Cryptology},
-volume = {11},
-number = {2},
-pages = {141--145},
-year = {1998}
-}
+	Author = {Balasubramanian, R. and Koblitz, N.},
+	Journal = {Journal of Cryptology},
+	Number = {2},
+	Pages = {141--145},
+	Title = {The {I}mprobability that an {E}lliptic {C}urve has {S}ubexponential {D}iscrete {L}og {P}roblem under the {M}enezes - {O}kamoto - {V}anstone {A}lgorithm.},
+	Volume = {11},
+	Year = {1998}}
 
-@Inproceedings{millerECC,
-author = {Miller, V. S.},
-title = {Use of {E}lliptic {C}urves in {C}ryptography},
-booktitle = {Advances in Cryptology - Crypto '85},
-publisher = {Springer},
-series = {Lecture Notes in Computer Science},
-number = {218},
-editor = {Williams, H. C.},
-year = {1985},
-pages = {417}
-}
+@inproceedings{millerECC,
+	Author = {Miller, V. S.},
+	Booktitle = {Advances in Cryptology - Crypto '85},
+	Editor = {Williams, H. C.},
+	Number = {218},
+	Pages = {417},
+	Publisher = {Springer},
+	Series = {Lecture Notes in Computer Science},
+	Title = {Use of {E}lliptic {C}urves in {C}ryptography},
+	Year = {1985}}
 
 @article{Elgamal85,
-  author    = {Taher El Gamal},
-  title     = {A public key cryptosystem and a signature scheme based on discrete logarithms},
-  journal   = {IEEE Transactions on Information Theory},
-  volume    = {31},
-  number    = {4},
-  year      = {1985},
-  pages     = {469-472}
-}
-
-
-@Article{LLL,
-author = {Lenstra, A.K. and Lenstra, H.W.jun. and L{\'a}szlo Lov{\'a}sz}, 
-title = {Factoring polynomials with rational coefficients},
-journal = {Math. Ann.},
-year = 1982,
-volume = 261,
-pages = {515 --534}
-}
-=======
-
+	Author = {Taher El Gamal},
+	Journal = {IEEE Transactions on Information Theory},
+	Number = {4},
+	Pages = {469-472},
+	Title = {A public key cryptosystem and a signature scheme based on discrete logarithms},
+	Volume = {31},
+	Year = {1985}}
 
 @inproceedings{shanks71class,
 	Author = {Shanks, D.},
@@ -135,7 +226,6 @@ pages = {515 --534}
 	Title = {Factoring polynomials with rational coefficients},
 	Volume = 261,
 	Year = 1982}
->>>>>>> 5aff1691280461ac6cd6e8d08fd2c2f6029fbf22
 
 @inproceedings{dan-tan-peter,
 	Address = {Berlin, Heidelberg},
@@ -266,17 +356,17 @@ pages = {515 --534}
 
 @inproceedings{miller85use,
 	Author = {Miller, Victor S.},
+	Booktitle = {Advances in Cryptology - Crypto '85},
 	Crossref = {crypto85},
 	Date-Added = {2013-09-10 11:28:11 +0000},
 	Date-Modified = {2013-09-10 11:30:09 +0000},
+	Editor = {Williams, H. C.},
+	Number = {218},
 	Pages = {417--426},
-	title = {Use of {E}lliptic {C}urves in {C}ryptography},
-	publisher = {Springer},
-    series = {Lecture Notes in Computer Science},
-    number = {218},
-    editor = {Williams, H. C.},
-    year = {1985},
-    booktitle = {Advances in Cryptology - Crypto '85}}
+	Publisher = {Springer},
+	Series = {Lecture Notes in Computer Science},
+	Title = {Use of {E}lliptic {C}urves in {C}ryptography},
+	Year = {1985}}
 
 @book{CRYPTO85,
 	Booktitle = {Advances in Cryptology - CRYPTO'85},
