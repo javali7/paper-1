@@ -3,49 +3,47 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Euro2014.aux
 The style file: splncs.bst
 Database file #1: Euro2014.bib
-Warning--entry type for "cert" isn't style-file defined
---line 121 of file Euro2014.bib
 Warning--can't use both volume and number fields in miller85use
 Warning--empty title in openssl
-You've used 36 entries,
+You've used 38 entries,
             2410 wiz_defined-function locations,
-            781 strings with 10897 characters,
-and the built_in function-call counts, 15583 in all, are:
-= -- 1711
-> -- 536
-< -- 37
-+ -- 210
-- -- 165
-* -- 1129
-:= -- 2187
-add.period$ -- 52
-call.type$ -- 36
-change.case$ -- 178
+            800 strings with 11485 characters,
+and the built_in function-call counts, 16912 in all, are:
+= -- 1854
+> -- 600
+< -- 41
++ -- 232
+- -- 185
+* -- 1230
+:= -- 2377
+add.period$ -- 56
+call.type$ -- 38
+change.case$ -- 191
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 718
-empty$ -- 1279
-format.name$ -- 165
-if$ -- 3621
+cite$ -- 40
+duplicate$ -- 778
+empty$ -- 1382
+format.name$ -- 185
+if$ -- 3936
 int.to.chr$ -- 0
-int.to.str$ -- 36
-missing$ -- 29
-newline$ -- 179
-num.names$ -- 88
-pop$ -- 192
+int.to.str$ -- 38
+missing$ -- 32
+newline$ -- 190
+num.names$ -- 98
+pop$ -- 209
 preamble$ -- 1
-purify$ -- 146
+purify$ -- 157
 quote$ -- 0
-skip$ -- 616
+skip$ -- 663
 stack$ -- 0
-substring$ -- 1064
-swap$ -- 370
-text.length$ -- 37
+substring$ -- 1142
+swap$ -- 400
+text.length$ -- 41
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 144
+type$ -- 152
 warning$ -- 2
-while$ -- 158
-width$ -- 38
-write$ -- 421
-(There were 3 warnings)
+while$ -- 172
+width$ -- 40
+write$ -- 450
+(There were 2 warnings)

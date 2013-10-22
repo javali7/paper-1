@@ -143,6 +143,13 @@ Miller, V.S.:
 \newblock In Williams, H.C., ed.: Advances in Cryptology - Crypto '85. Volume
   218 of Lecture Notes in Computer Science., Springer (1985)  417--426
 
+\bibitem{moller03improved}
+M\"oller, B.:
+\newblock Improved techniques for fast exponentiation.
+\newblock In Lee, P.J., Lim, C.H., eds.: Information Security and Cryptology -
+  ICISC 2002. Number 2587 in Lecture Notes in Computer Science, Springer-Verlag
+  (2003)  298--312
+
 \bibitem{montgomery87speeding}
 Montgomery, P.L.:
 \newblock Speeding the {Pollard} and elliptic curve methods of factorization.
@@ -170,16 +177,25 @@ Okeya, K., Kurumatani, H., Sakurai, K.:
 {OpenSSL}.
 \newblock \url{http://www.openssl.org}
 
-\bibitem{cert}
-Rauf, A.:
-\newblock Vulnerability note {VU\#976534} {L3} {CPU} shared cache architecture
-  is susceptible to a \textsc{Flush+Reload} side-channel attack (October 2013)
+\bibitem{ristenpart09hey}
+Ristenpart, T., Tromer, E., Shacham, H., Savage, S.:
+\newblock Hey, you, get off my cloud: Exploring information leakage in
+  third-party compute clouds.
+\newblock In Al-Shaer, E., Jha, S., Keromytis, A.D., eds.: Proceedings of the
+  16th {ACM} Conference on Computer and Communication Security, Chicago,
+  Illinois, United States (November 2009)  199--212
 
 \bibitem{shanks71class}
 Shanks, D.:
 \newblock Class number, a theory of factorization, and genera.
 \newblock In: Proceedings of the Symposium of Pure Mathematics 20, American
   Mathematical Society (1971)  415--440
+
+\bibitem{song01timing}
+Song, D.X., Wagner, D., Tian, X.:
+\newblock Timing analysis of keystrokes and timing attacks on {SSH}.
+\newblock In Wallach, D.S., ed.: Proceedings of the 10th {USENIX} Security
+  Symposium, Washington, DC, United States (August 2001) ~25
 
 \bibitem{tromer10efficient}
 Tromer, E., Osvik, D.A., Shamir, A.:
