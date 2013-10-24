@@ -27,22 +27,22 @@
 
 \begin{abstract}
 We illustrate a vulnerability introduced to elliptic curve cryptographic protocols when implemented using a function of the OpenSSL cryptographic library.
-For a given implementation using an elliptic curve $E$ over a binary field with a point $G\in E$, our attack can recover the majority of the bits of a scaler $k$ when $kG$ is computed using the OpenSSL implementation of the Montgomery ladder. 
-For the Elliptic Curve Digital Signature Algorithm (ECDSA) the scalar $k$ is intended to remain secret. 
+For a given implementation using an elliptic curve $E$ over a binary field with a point $G\in E$, our attack can recover the majority of the bits of a scalar $k$ when $kG$ is computed using the OpenSSL implementation of the Montgomery ladder. 
+For the Elliptic Curve Digital Signature Algorithm (\textsc{ecdsa}) the scalar $k$ is intended to remain secret. 
 Our attack recovers the scalar $k$ and thus the secret key of the signer and would therefore allow unlimited forgeries. 
 This is possible from snooping on only one signing process and requires computation of less than one second on a quad core desktop when the scalar $k$ (and secret key) is around 571 bits.
 
 \end{abstract}
 
 \section{Introduction}
-Elliptic curve cryptography (ECC)~\cite{miller85use,koblitz87elliptic} includes a number of public-key cryptographic protocols whose security relies on the computational intractability of the Elliptic Curve Discrete Logarithm Problem (ECDLP): Given an elliptic curve over a finite field and two points on the curve~$G$ and~$H$, find the scalar $k$ such that $H=kG$.
+Elliptic curve cryptography (\textsc{ecc})~\cite{miller85use,koblitz87elliptic} includes a number of public-key cryptographic protocols whose security relies on the computational intractability of the Elliptic Curve Discrete Logarithm Problem (\textsc{ecdlp}): Given an elliptic curve over a finite field and two points on the curve~$G$ and~$H$, find the scalar $k$ such that $H=kG$.
 
-ECC offers a higher encryption strength per key-bit than related methods whose security is reliant on the hardness of computing discrete logarithms in a finite field or factoring the product of large primes. Consequently, ECC uses significantly shorter keys and offers faster operations than other methods, contributing to its rising popularity.
+\textsc{ecc} offers a higher encryption strength per key-bit than related methods whose security is reliant on the hardness of computing discrete logarithms in a finite field or factoring the product of large primes. Consequently, \textsc{ecc} uses significantly shorter keys and offers faster operations than other methods, contributing to its rising popularity.
 
-The Elliptic Curve Digital Signature Algorithm (ECDSA)~\cite{johnson01elliptic,fips,ansi962} is a standard
-digital signature algorithm implemented using elliptic curves. One core operation of the ECDSA algorithm, as in many ECC protocols, is the scalar multiplication of a point on the elliptic curve by a pseudo-randomly generated secret nonce. The confidentiality of the nonce is paramount for the security of the algorithm. Past research indicates that partial exposure of nonce bits can be exploited for efficient attacks on the secret key~\cite{nguyen03insecurity,brumley11remote}.
+The Elliptic Curve Digital Signature Algorithm (\textsc{ecdsa}) \cite{johnson01elliptic,fips,ansi962} is a standard
+digital signature algorithm implemented using elliptic curves. One core operation of the \textsc{ecdsa} algorithm, as in many \textsc{ecc} protocols, is the scalar multiplication of a point on the elliptic curve by a pseudo-randomly generated secret nonce. The confidentiality of the nonce is paramount for the security of the algorithm. Past research indicates that partial exposure of nonce bits can be exploited for efficient attacks on the secret key~\cite{nguyen03insecurity,brumley11remote}.
 
-OpenSSL~\cite{openssl} is a cryptographic software package that implements ECDSA.
+OpenSSL~\cite{openssl} is a cryptographic software package that implements \textsc{ecdsa}.
 When using elliptic curves over a binary field $\mathbb{F}_{2^m}$, OpenSSL uses the 
 Montgomery ladder~\cite{montgomery87speeding,joye03montgomery} algorithm to compute $kG$, the scalar multiplication of a publically known point $G$ by the secret nonce $k$.
 One of the advantages of the Montgomery ladder is that it has regular behaviour, performing
@@ -57,7 +57,7 @@ to monitor other processes read and execute access to shared memory pages.
 Our spy program monitors access to both arms of the conditional branch and uses the information
 collected from these probes to reconstruct the nonce. This attack is a threat to the security of any cryptographic protocol implemented using the OpenSSL scalar multiplication method when the scalar is intended to remain secret.
 
-In this paper we illustrate the efficiency of the attack by analysing ECDSA and recovering the secret key using only one signature at very little computational cost (in both time and memory). This attack is applicable when the malicious party has access to the memory of the targeted device.
+In this paper we illustrate the efficiency of the attack by analysing \textsc{ecdsa} and recovering the secret key using only one signature at very little computational cost (in both time and memory). This attack is applicable when the malicious party has access to the memory of the targeted device.
 This is  a reasonable assumption as could be the case when using, for example, a multi-user operating system, co-hosted virtual machines in a cloud computing environment or a computer victim to malware. 
 
 The paper also presents new information on the limitation of the \textsc{Flush+Reload} attack.
@@ -66,8 +66,8 @@ temporal limitations, affecting the probe resolution.
 The results of this paper support the findings of Walter~\cite{walter04longer} that longer keys render a cryptographic algorithm more vulnerable to side-channel analysis.
 
 
-The rest of this paper is organised as follows: The next section presents background information on ECDSA, the Montgomery ladder and the \textsc{Flush+Reload} attack followed by a short discussion of related research. % and the validity of the assumption that an attacker has access to the computer's memory.
-Section~\ref{sec:attack} describes our attack on the OpenSSL implementation of ECDSA.
+The rest of this paper is organised as follows: The next section presents background information on \textsc{ecdsa}, the Montgomery ladder and the \textsc{Flush+Reload} attack followed by a short discussion of related research. % and the validity of the assumption that an attacker has access to the computer's memory.
+Section~\ref{sec:attack} describes our attack on the OpenSSL implementation of \textsc{ecdsa}.
 The results of the attack are analysed in Section~\ref{sec:results}.
 We discuss the implications of the attack and suggest techniques for mitigation in Section~\ref{sec:discussion}.
 
@@ -76,7 +76,7 @@ In this section we present the relevant, general background information about th
 
 \subsection{ECDSA}\label{sub:ecdsa}
 
-The ElGamal Signature Scheme \cite{Elgamal85} is the basis of the US 1994 NIST standard, Digital Signature Algorithm (DSA). The ECDSA is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group as opposed to the multiplicative group of a finite field is that smaller parameters for the same security level \cite{koblitz87elliptic,miller85use} due to the fact that the current best known algorithms to solve the discrete logarithm problem in the finite field are sub-exponential and those used to solve the ECDLP are exponential, see Balasubramanian and Koblitz~\cite{balasubramanian-koblitz}, Adleman and Demarrais~\cite{adelman-demarrais} and developments thereof, for more details. 
+The ElGamal Signature Scheme \cite{Elgamal85} is the basis of the US 1994 NIST standard, Digital Signature Algorithm (\textsc{dsa}). The \textsc{ecdsa} is the adaptation of one step of the algorithm from the multiplicative group of a finite field to the group of points on an elliptic cure. The main benefit of using this group as opposed to the multiplicative group of a finite field is that smaller parameters can be used to achiveve the same security level \cite{koblitz87elliptic,miller85use} due to the fact that the current best known algorithms to solve the discrete logarithm problem in the finite field are sub-exponential and those used to solve the \textsc{ecdlp} are exponential, see Balasubramanian and Koblitz \cite{balasubramanian-koblitz}, Adleman and Demarrais~\cite{adelman-demarrais} and developments thereof, for more details. 
 
 
 {\bf{Parameters:}} An elliptic curve $E$ defined over a finite field $\F_{q}$; a point $G\in E$ of large prime order $n$ (generator of the group of points of order $n$). Parameters chosen as such are generally believed to offer a security level of $\sqrt{n}$ given current knowledge and technologies. Parameters are recommended to be generated following the Digital Signature Standard~\cite{fips}. The field size $q$ is usually taken to be a large, odd prime or a power of $2$. The implementation of OpenSSL uses both prime fields and $q=2^m$; the results in this paper relate to the binary field case.
@@ -103,12 +103,12 @@ The message $m$ is not necessarily encrypted, the contents may not be secret, bu
 \item Verify that $r=x\mod n$ otherwise reject the signature.
 \end{enumerate}
 
-Step \ref{rand_element} of the signing algorithm is of vital importance, inappropriate reuse of the random integer is what lead to the highly publicised breaking of Sony PS3 implementation of ECDSA. Knowledge of the random value $k$ leads to knowledge of the secret key; all values $(m,r,s)$ can be observed by an eavesdropper, $\bar{e}$ can be found from $m$, $r^{-1}\mod n$ can be easily found from $n$, and if $k$ is discovered then an adversary can find Bob's secret key through the simple calculation $$d_B=(sk-\bar{e})r^{-1}.$$
+Step \ref{rand_element} of the signing algorithm is of vital importance, inappropriate reuse of the random integer is what lead to the highly publicised breaking of Sony PS3 implementation of \textsc{ecdsa}. Knowledge of the random value $k$ leads to knowledge of the secret key; all values $(m,r,s)$ can be observed by an eavesdropper, $\bar{e}$ can be found from $m$, $r^{-1}\mod n$ can be easily computed from $n$ and $r$, and if $k$ is discovered then an adversary can find Bob's secret key through the simple calculation $$d_B=(sk-\bar{e})r^{-1}.$$
 
 Step \ref{scalar_mult} of the signing algorithm is the stage targeted by this attack, when implemented using OpenSSL's Montgomery ladder. % we are able to recover the majority of the bits of $k$ as this computation is executed. We then reconstruct $k$ and use the above calculation to recover the signer's secret key.
 
 \subsection{The Montgomery Ladder}\label{sub:montgomery}
-Scalar multiplication is a common operation in cryptography and in a number of incidences (such as step 2 of ECDSA as above), the scalar is intended to remain secret. This scalar multiplication is most efficiently performed using a square-and-multiply method (or the related Right-to-left method) as outlined in Algorithm \ref{d_and_a}.\\
+Scalar multiplication is a common operation in cryptography and in a number of incidences (such as step 2 of \textsc{ecdsa} as above) the scalar is intended to remain secret. This scalar multiplication is most efficiently performed using a square-and-multiply method (or the related Right-to-left method) as outlined in Algorithm \ref{d_and_a}.\\
 
 \vspace{-0.8cm}
 \begin{algorithm}[htb]\label{d_and_a}
@@ -201,8 +201,8 @@ There have been a number of publications addressing the security issues of digit
 In Gopalakrishnan et al.~\cite{gopalakrishnan07solving} algorithms for solving the ECDLP using the additional information of some consecutive bits of the private key are presented. These algorithms outperform the currently best known methods of solving the ECDLP without the extra information or using exhaustive search on the remaining key space. In this work we do not focus on the ECDLP, we instead used leaked information about the ephemeral keys. 
 
 The attacks in Howgrave-Graham and Smart~\cite{Howgrave-GrahamS01} and in Nguyen and Shparlinski~\cite{nguyen03insecurity} 
-rely on having obtained a relatively small number of bit of the ephemeral keys used for many signatures and then use the LLL method~\cite{LLL} to solve the related hidden number problem to find the secret value.
- The attack of Nguyen and Shparlinski~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm in would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only 7 consecutive, least significant leaked bits of the nonce (relying on some reasonable assumptions). Each of these assumes only a small fraction of $k$ is recovered. The main contribution of this work is to illustrate the method, the adapted technique of Yarom and Falkner~\cite{yarom13flush}, to recover a large majority of the bits, from which the full nonce is then obtained using only one signature. Once the nonce has been fully determined the secret key is obtained using only less than one second of additional computation time (idle computer). 
+rely on having obtained a relatively small number of bit of the ephemeral keys used for many signatures and then use the LLL method~\cite{LLL} to solve the related hidden number problem to find the secret key.
+ The attack of Nguyen and Shparlinski~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only 7 consecutive, least significant leaked bits of each nonce (relying on some reasonable assumptions). Each of these assumes only a small fraction of $k$ is recovered. The main contribution of this work is to illustrate the method, the adapted technique of Yarom and Falkner~\cite{yarom13flush}, to recover a large majority of the bits, from which the full nonce is then obtained using only one signature. Once the nonce has been fully determined the secret key is obtained using only less than one second of additional computation time (idle computer). 
 For example, we are able to obtain around 546 of the 571 bits of a nonce. Though the goal and approach of the works are similar, the methods are very different.
 
 The attack of Brumley and Tuveri~\cite{brumley11remote} uses the above methods to highlight specifically a vulnerability in earlier versions of OpenSSL's ladder implementation for curves over binary fields. %, the same target of our attack. 
@@ -229,7 +229,7 @@ OpenSSL is one of the most common open-source cryptographic libraries.
 It provides a set of cryptographic services, including public key and symmetric encryption 
 algorithms, and public key signature algorithms.
 
-OpenSSL's implementation of ECDSA uses the Montgomery ladder algorithm for scalar multiplication
+OpenSSL's implementation of \textsc{ecdsa} uses the Montgomery ladder algorithm for scalar multiplication
 on the Elliptic Curve.
 We use this implementation to demonstrate that na{\"\i}ve implementations of the Montgomery ladder are
 susceptible to the \textsc{Flush+Reload} attack.
@@ -385,7 +385,7 @@ The next section describes the details of our experimentation with the attack an
 
 To test the attack on OpenSSL we used an HP Elite 8300 
 running Fedora 18.
-As the OpenSSL package shipped with Fedora does not support ECC,
+As the OpenSSL package shipped with Fedora does not support \textsc{ecc},
 we used our own build of OpenSSL 1.0.1e. 
 To facilitate the mapping from source lines to memory addresses we built OpenSSL with debugging symbols.
 In real attack settings, the attacker will need to reverse engineer~\cite{cipsero10software}
@@ -418,7 +418,7 @@ Access to line~$B$ between the group add and the group double operations indicat
 Processing the next bit starts at time slot~8 and ends in time slot~16.
 The access to memory line~$D$ in time slot~13 indicates that the second bit is clear.
 
-In the absence access to memory lines~$B$ or~$D$ in time slot~42, the start of a group double indicates
+In the absence of access to memory lines~$B$ or~$D$ in time slot~42, the start of a group double indicates
 that the spy process missed a value of a bit.
 However, the fact that a bit was processed at that time slot is not missed,
 demonstrating the value of probing the start of the group double operation.
@@ -454,22 +454,19 @@ Around 15\% of bits in positions~1 to~20 are missed, compared with 3.6\% of bits
 
 \subsubsection*{Full Recovery of the Nonce}\label{sub:full_nonce}
 Given the high proportion of nonce bits recovered by the \textsc{Flush+Reload} attack, using the LLL based techniques~\cite{Howgrave-GrahamS01,nguyen03insecurity} described in Sect.~\ref{sec:related} seems computationally excessive. 
-With a worst case of 34 bits missing, the baby steps giant steps algorithm~\cite{shanks71class} would require less then 10 Megabytes of memory
-and less than one second of computation to complete the nonce.
+With a worst case of 34 bits missing, the baby step giant step algorithm~\cite{shanks71class} would require less then 10 Megabytes of memory and less than one second of computation to complete the nonce.
 
-%There are a number of attacks on ECC protocols which recover the secret key using a small proportion of the leaked nonce. In this attack, the proportion of the nonce recovered by the \textsc{Flush+Reload} attack is significantly higher; using one of the existing attacks would be unnecessarily (computationally) excessive. %Attacks using lattice techniques to solve the related hidden number problem, for example, ... In experiments a basic BSGS implementation sufficed... 
+%There are a number of attacks on \textsc{ecc} protocols which recover the secret key using a small proportion of the leaked nonce. In this attack, the proportion of the nonce recovered by the \textsc{Flush+Reload} attack is significantly higher; using one of the existing attacks would be unnecessarily (computationally) excessive. %Attacks using lattice techniques to solve the related hidden number problem, for example, ... In experiments a basic BSGS implementation sufficed... 
 
 \subsubsection*{Implications}
 
-As the ECDLP is not targeted by this attack, the signature protocol is made no more vulnerable by our results. 
+As the \textsc{ECDLP} is not targeted by this attack, the signature protocol is made no more vulnerable by our results. 
 This attack targets the scalar multiplication implementation of OpenSSL and is therefore particular to implementations using this and similar implementations of the Montgomery ladder. The vulnerability introduced by this implementation is due to the bits of the secret nonce determining which conditional branch is executed. We monitor the branching to determine the value of the bits. This is clearly an attack which needs to be combated by both software and hardware cooperatively: Our spy program is able to determine how the algorithm executes by having access to the victim's memory and used this knowledge to reconstruct values used by the software.
 
 Our work extends the work of Yarom and Falkner~\cite{yarom13flush}.
 We demonstrate that \textsc{Flush+Reload} applies across multiple cryptographic schemes and that it applies
 to implementation hitherto not considered vulnerable to side-channel attacks.
 The attack can be adapted to other cryptosystems and can apply to other applications, such as performing keystroke timing attacks~\cite{song01timing,ristenpart09hey}.
-
-
 
 \subsubsection*{Mitigation}
 
@@ -478,17 +475,16 @@ The attack can be adapted to other cryptosystems and can apply to other applicat
 %Breaking any of these three dependency mitigates the attack.
 
 Preventing data flow from secrets to branch conditions is one way for mitigating the attack.
-The Networking and Cryptography library (NaCl), implemented by Bernstein, Lange and Scwabe~\cite{dan-tan-peter}, 
+The Networking and Cryptography library (NaCl), implemented by Bernstein, Lange and Schwabe~\cite{dan-tan-peter}, 
 provides an implementation of the Montgomery ladder that is not vulnerable to our attack.
-Instead of using branches, NaCl uses bit manipulations to select the arguments and targets of the operation.
+Instead of using branches, NaCl uses arithmetic operations to select the arguments and targets of the operation.
 Consequently, NaCl's use of the cache is independent of the values of the bits in the nonce.
 Fixing OpenSSL by using methods similar to those used in NaCl will provide protection against the attack.
 
 While fixing OpenSSL would prevent the attack we describe, it is not a panacea for the \textsc{Flush+Reload} attack.
 As discussed above, the attack is generic and can apply to other software.
-It is hard to expect every software that manipulates sensitive data to be re-written to
-avoid any data flow from the sensitive data to branch conditions.
-Consequently, a hardware fix to prevent the unfettered use of the \texttt{clflush} instruction is required.
+%It is hard to expect every software that manipulates sensitive data to be re-written to avoid any data flow from the sensitive data to branch conditions. Consequently, a hardware fix to prevent the unfettered use of the \texttt{clflush} instruction is required.
+It would be advisable for implementors of cryptographic software to avoid using secret information to determine which operations or values are accessed when the memory locations can be distinguished by an eavesdropper. It would also be advisable for hardware designers to be wary of the damage which can result from eavesdropping and to prevent the unfettered use of the \texttt{clflush} instruction.
 
 
 %In the Networking and Cryptography library (NaCl), implemented by Daniel J. Bernstein, Tanja Lange and Peter Schwabe, there is no data flow from secrets to branch conditions, precisely the vulnerability of the OpenSSL implementation targeted by this attack. Analysis of the core security features of NaCl is given in Bernstein et al.~\cite{dan-tan-peter}. The attack presented in this article relies on distinguishing bits of the nonce by observing the branching in traditional Montgomery ladder implementation. As the NaCl library avoids branching dependent on secret parameters this attack is not applicable to NaCl's \url{crypto_sign} API. (NaCl is in the public domain and has been made available by the authors of Bernstein et al.~\cite{dan-tan-peter} at \url{http://nacl.cr.yp.to}.)
