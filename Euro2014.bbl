@@ -28,6 +28,12 @@ Adleman, L.M., Demarrais, J.:
   {F}inite {F}ields.
 \newblock Mathematics of Computation \textbf{61}(203) (1993)  1--15
 
+\bibitem{alfardan12plaintext}
+AlFardan, N.J., Paterson, K.G.:
+\newblock Plaintext-recovery attacks against datagram {TLS}.
+\newblock In: Proceedings of the 19th Annual Network \& Distributed Systems
+  Security Symposium, San Diego, California, United States (February 2012)
+
 \bibitem{ansi962}
 American National Standards Institute:
 \newblock {ANSI X9.62}, Public Key Cryptography for the Financial Services
@@ -114,6 +120,11 @@ Intel Corporation:
 \newblock Intel 64 and {IA-32} Architecture Optimization Reference Manual.
   (April 2012)
 
+\bibitem{intel13architecture:3a}
+Intel Corporation:
+\newblock Intel 64 and {IA-32} Architectures Software Developer's Manual Volume
+  3A: System Programming Guide, Part 1. (March 2013)
+
 \bibitem{johnson01elliptic}
 Johnson, D., Menezes, A., Vanstone, S.:
 \newblock The elliptic curve digital signature algorithm ({ECDSA}).
@@ -142,13 +153,6 @@ Miller, V.S.:
 \newblock Use of {E}lliptic {C}urves in {C}ryptography.
 \newblock In Williams, H.C., ed.: Advances in Cryptology - Crypto '85. Volume
   218 of Lecture Notes in Computer Science., Springer (1985)  417--426
-
-\bibitem{moller03improved}
-M\"oller, B.:
-\newblock Improved techniques for fast exponentiation.
-\newblock In Lee, P.J., Lim, C.H., eds.: Information Security and Cryptology -
-  ICISC 2002. Number 2587 in Lecture Notes in Computer Science, Springer-Verlag
-  (2003)  298--312
 
 \bibitem{montgomery87speeding}
 Montgomery, P.L.:
@@ -208,6 +212,14 @@ Uht, A.K., Sindagi, V.:
 \newblock In: Proceedings of the 28th International Symposium on
   Microarchitecture, Ann Arbor, Michigan, United States (November 1995)
   313--325
+
+\bibitem{vaudenay02security}
+Vaudenay, S.:
+\newblock Security flaws induced by {CBC} padding. applications to {SSL},
+  {IPSEC}, {WTLS}\ldots.
+\newblock In: EUROCRYPT 2002, Proceedings of the International Conference on
+  the Theory and Applications of Cryptographic Techniques, Amsterdam, The
+  Netherlands (April 2002)  534--546
 
 \bibitem{walter04longer}
 Walter, C.D.:

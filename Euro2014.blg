@@ -5,45 +5,45 @@ The style file: splncs.bst
 Database file #1: Euro2014.bib
 Warning--can't use both volume and number fields in miller85use
 Warning--empty title in openssl
-You've used 38 entries,
+You've used 40 entries,
             2410 wiz_defined-function locations,
-            800 strings with 11485 characters,
-and the built_in function-call counts, 16912 in all, are:
-= -- 1854
-> -- 600
-< -- 41
-+ -- 232
-- -- 185
-* -- 1230
-:= -- 2377
-add.period$ -- 56
-call.type$ -- 38
-change.case$ -- 191
+            807 strings with 11957 characters,
+and the built_in function-call counts, 17315 in all, are:
+= -- 1899
+> -- 606
+< -- 40
++ -- 236
+- -- 187
+* -- 1253
+:= -- 2433
+add.period$ -- 57
+call.type$ -- 40
+change.case$ -- 199
 chr.to.int$ -- 0
-cite$ -- 40
-duplicate$ -- 778
-empty$ -- 1382
-format.name$ -- 185
-if$ -- 3936
+cite$ -- 42
+duplicate$ -- 802
+empty$ -- 1428
+format.name$ -- 187
+if$ -- 4030
 int.to.chr$ -- 0
-int.to.str$ -- 38
-missing$ -- 32
-newline$ -- 190
+int.to.str$ -- 40
+missing$ -- 33
+newline$ -- 199
 num.names$ -- 98
-pop$ -- 209
+pop$ -- 224
 preamble$ -- 1
-purify$ -- 157
+purify$ -- 164
 quote$ -- 0
-skip$ -- 663
+skip$ -- 677
 stack$ -- 0
-substring$ -- 1142
-swap$ -- 400
-text.length$ -- 41
+substring$ -- 1153
+swap$ -- 402
+text.length$ -- 40
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 152
+type$ -- 160
 warning$ -- 2
-while$ -- 172
-width$ -- 40
-write$ -- 450
+while$ -- 173
+width$ -- 42
+write$ -- 468
 (There were 2 warnings)
