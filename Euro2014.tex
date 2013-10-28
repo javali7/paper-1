@@ -75,13 +75,49 @@ temporal limitations, affecting the probe resolution.
 The results of this paper support the findings of Walter~\cite{walter04longer} that longer keys render a cryptographic algorithm more vulnerable to side-channel analysis.
 
 
-The rest of this paper is organised as follows: The next section presents background information on \myupcase{ecdsa}, the Montgomery ladder and the \fl attack followed by a short discussion of related research. % and the validity of the assumption that an attacker has access to the computer's memory.
+The rest of this paper is organised as follows: in the following subsection we discuss related research. The next section presents background information on \myupcase{ecdsa}, the Montgomery ladder and the \fl attack. % and the validity of the assumption that an attacker has access to the computer's memory.
 Section~\ref{sec:attack} describes our attack on the OpenSSL implementation of \myupcase{ecdsa}.
 The results of the attack are analysed in Section~\ref{sec:results}.
 We discuss the implications of the attack and suggest techniques for mitigation in Section~\ref{sec:discussion}.
 
+\subsection{Related Work}\label{sec:related}
+There have been a number of publications addressing the security issues of digital signatures when partial information is leaked~\cite{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}. 
+
+Gopalakrishnan et al.~\cite{gopalakrishnan07solving} presents algorithms for solving the \myupcase{ecdlp} using the additional information of some consecutive bits of the private key. These algorithms outperform the currently best known methods of solving the \myupcase{ecdlp} without the extra information or using exhaustive search on the remaining key space. In this work we do not focus on the \myupcase{ecdlp}.
+Instead, we use leaked information about the nonces. 
+
+The attacks in Howgrave-Graham and Smart~\cite{Howgrave-GrahamS01} and in Nguyen and Shparlinski~\cite{nguyen03insecurity} 
+rely on having obtained a relatively small number of bit of the nonces used for many signatures and then using the LLL method~\cite{LLL} for solving  
+the related hidden number problem to find the secret key.
+ The attack of Nguyen and Shparlinski~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only seven consecutive least significant leaked bits of each nonce.
+(Relying on some reasonable assumptions.) 
+Each of these assumes only a small fraction of $k$ is recovered. The main contribution of this work is to illustrate a method, 
+%the adapted technique of Yarom and Falkner~\cite{yarom13flush}, 
+to recover a large majority of the bits, using only one signature.
+From these, the full nonce is obtained using less than one second of additional computation time.
+Once the nonce has been fully determined the secret key can be  obtained. 
+%For example, we are able to obtain around 546 of the 571 bits of a nonce. 
+Though the goal and approach of the works are similar, the methods are very different.
+
+The attack of Brumley and Tuveri~\cite{brumley11remote} uses the above methods to highlight a specific vulnerability 
+in earlier versions of OpenSSL's Montgomery ladder implementation for curves over binary fields.
+Though the attacks differ, they both illustrate that the OpenSSL implementation of the Montgomery ladder is vulnerable to  both remote attacks and attacks launched from virtual machines with access to the memory of the target computer. 
+The countermeasure suggested in Brumley and Tuveri~\cite{brumley11remote} will not thwart our attack.
+
+Cache side-channel attacks have been used against cryptosystems~\cite{aciicmez07yet,aciicmez10new,aciicmez08vulnerability,chen13improvement,canteaut06understanding,tromer10efficient,zhang12cross}.
+These attacks use the \prpr technique~\cite{tromer10efficient} to target the L1 cache level.
+Consequently, the spy program and the victim must execute on the same execution core of the processor.
+This is in contrast to our attack, which targets the last-level-cache, and can, therefore, be mounted between different cores.
+
+The \fl attack has been used by Gullasch et al.~\cite{gullasch11cache} and by Yarom and Falkner~\cite{yarom13flush}.
+Gullasch et al.~\cite{gullasch11cache} uses this attack as a replacement to the \prpr attack,
+relying on a scheduler bug to interrupt the victim and gain control of the core it executes on.
+Yarom and Falkner~\cite{yarom13flush} uses \fl to attack the square-and-multiply exponentiation
+in the GnuPG implementation of RSA.
+Unlike the Montgomery ladder, square-and-multiply is known to be vulnerable to side-channel attacks.
+
 \section{Preliminaries}\label{sec:background}
-In this section we present the relevant general background information about the attack and also the specific information required to understand the context of the example attack. We also discuss the results of previous related work.
+In this section we present the relevant general background information about the attack and also the specific information required to understand the context of the example attack. %We also discuss the results of previous related work.
 
 \subsection{ECDSA}\label{sub:ecdsa}
 
@@ -89,7 +125,7 @@ The ElGamal Signature Scheme \cite{Elgamal85} is the basis of the US 1994 NIST s
 See Balasubramanian and Kob\-litz \cite{balasubramanian-koblitz}, Adleman and Demarrais~\cite{adelman-demarrais} and developments thereof for more details. 
 
 
-{\bf{Parameters:}} An elliptic curve $E$ defined over a finite field $\F_{q}$; a point $G\in E$ of  a large prime order $n$ (generator of the group of points of order $n$). Parameters chosen as such are generally believed to offer a security level of $\sqrt{n}$ given current knowledge and technologies. Parameters are recommended to be generated following the Digital Signature Standard~\cite{fips}. The field size $q$ is usually taken to be a large odd prime or a power of $2$. The implementation of OpenSSL uses both prime fields and $q=2^m$; the results in this paper relate to the binary field case.
+{\bf{Parameters:}} An elliptic curve $E$ defined over a finite field $\F_{q}$; a point $G\in E$ of a large prime order $n$ (generator of the group of points of order $n$). Parameters chosen as such are generally believed to offer a security level of $\sqrt{n}$ given current knowledge and technologies. Parameters are recommended to be generated following the Digital Signature Standard~\cite{fips}. The field size $q$ is usually taken to be a large odd prime or a power of $2$. The implementation of OpenSSL uses both prime fields and $q=2^m$; the results in this paper relate to the binary field case.
 
 {\bf{Public-Private Key pairs:}} The private key is an integer $d$, $1<d<n-1$ and the public key is the point $Q=dG$.
  Calculating the private key from the public key requires solving the \myupcase{ecdlp}, which is known to be hard in practice for the correctly chosen parameters.
@@ -100,19 +136,19 @@ group \cite{WienerZ98,GallantLV00}, hence the aforementioned security level.
 Suppose Bob, with private-public key pair $\{d_B,Q_B\}$, wi\-shes to send a signed message $m$ to Alice, he follows the following steps:
 \begin{enumerate}
 \item Using an approved hash algorithm, compute $e=Hash(m),$ take $\bar{e}$ to be the leftmost $\ell$ bits of $e$ (where $\ell=\min(\log_2(q),$ bitlength of the hash$)$). 
-\item\label{rand_element} Randomly select $k\leftarrow_R\Z_n$ with $1<k<p-1$ and $(k,p-1)=1$.
+\item\label{rand_element} Randomly select $k\leftarrow_R\Z_n$.
 \item\label{scalar_mult} Compute the point $(x,y)=kG\in E$. 
 \item Take $r=x\bmod n$; if $r=0$ then return to step \ref{rand_element}.
-\item Compute $s=k^{-1}(z+rd_B)\bmod n$; if $s=0$ then return to step \ref{rand_element}.
+\item Compute $s=k^{-1}(\bar{e}+rd_B)\bmod n$; if $s=0$ then return to step \ref{rand_element}.
 \item Bob sends $(m,r,s)$ to Alice.
 \end{enumerate}
 The message $m$ is not necessarily encrypted, the contents may not be secret, but a valid signature gives Alice strong evidence that the message was indeed sent by Bob. She verifies that the message came from Bob by 
 
 \begin{enumerate}
-\item checking that all received parameters are correct, that $r,s\in\Z_n$ and that Bob's public key is valid, that is $Q_b\neq \mathcal{O}$ and $Q_B\in E$ is of order $n$.
+\item checking that all received parameters are correct, that $r,s\in\Z_n$ and that Bob's public key is valid, that is $Q_B\neq \mathcal{O}$ and $Q_B\in E$ is of order $n$.
 \item Using the same hash function and method as above, compute $\bar{e}$.
 \item Compute $\bar{s}=s^{-1}\bmod n$.
-\item Find the point $(x,y)=\bar{es}G+r\bar{s}Q_B$.
+\item Find the point $(x,y)=\bar{e}\bar{s}G+r\bar{s}Q_B$.
 \item Verify that $r=x\bmod n$ otherwise reject the signature.
 \end{enumerate}
 
@@ -140,7 +176,7 @@ $Q\gets \mathcal{O}$\\
  \caption{Double-and-add point scalar multiplication}
 \end{algorithm}\vspace{-0.5cm}
 Double-and-add methods, though efficient, are vulnerable to side-channel attacks. % simple power analysis. 
-The addition law for points on Weirstrass curves is not complete.
+The addition law for points on commonly used elliptic curves is not complete.
 That is, the computation of $P+Q$ differs between the cases $P=Q$ and $P\neq Q.$ Consequently, 
 %by examining the power consumption of the computation 
 it is possible to distinguish when the \texttt{if} in the  loop is executed and hence when a bit of~$n_i$ is~0.
@@ -214,43 +250,6 @@ It also cannot determine the order of memory accesses to different memory lines 
 Consequently, increasing the time slot reduces the attack's resolution.
 Hence choosing the length of the time slot presents a tradeoff between the attack resolution
 and the probability of missing a memory access.
-
-
-\subsection{Related Work}\label{sec:related}
-There have been a number of publications addressing the security issues of digital signatures when partial information is leaked~\cite{Howgrave-GrahamS01,gopalakrishnan07solving,nguyen03insecurity}. 
-
-Gopalakrishnan et al.~\cite{gopalakrishnan07solving} presents algorithms for solving the \myupcase{ecdlp} using the additional information of some consecutive bits of the private key. These algorithms outperform the currently best known methods of solving the \myupcase{ecdlp} without the extra information or using exhaustive search on the remaining key space. In this work we do not focus on the \myupcase{ecdlp}.
-Instead, we use leaked information about the nonces. 
-
-The attacks in Howgrave-Graham and Smart~\cite{Howgrave-GrahamS01} and in Nguyen and Shparlinski~\cite{nguyen03insecurity} 
-rely on having obtained a relatively small number of bit of the nonces used for many signatures and then using the LLL method~\cite{LLL} for solving  
-the related hidden number problem to find the secret key.
- The attack of Nguyen and Shparlinski~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only seven consecutive least significant leaked bits of each nonce.
-(Relying on some reasonable assumptions.) 
-Each of these assumes only a small fraction of $k$ is recovered. The main contribution of this work is to illustrate a method, 
-%the adapted technique of Yarom and Falkner~\cite{yarom13flush}, 
-to recover a large majority of the bits, using only one signature.
-From these, the full nonce is obtained using less than one second of additional computation time.
-Once the nonce has been fully determined the secret key can be  obtained. 
-%For example, we are able to obtain around 546 of the 571 bits of a nonce. 
-Though the goal and approach of the works are similar, the methods are very different.
-
-The attack of Brumley and Tuveri~\cite{brumley11remote} uses the above methods to highlight a specific vulnerability 
-in earlier versions of OpenSSL's Montgomery ladder implementation for curves over binary fields.
-Though the attacks differ, they both illustrate that the OpenSSL implementation of the Montgomery ladder is vulnerable to  both remote attacks and attacks launched from virtual machines with access to the memory of the target computer. 
-The countermeasure suggested in Brumley and Tuveri~\cite{brumley11remote} will not thwart our attack.
-
-Cache side-channel attacks have been used against cryptosystems~\cite{aciicmez07yet,aciicmez10new,aciicmez08vulnerability,chen13improvement,canteaut06understanding,tromer10efficient,zhang12cross}.
-These attacks use the \prpr technique~\cite{tromer10efficient} to target the L1 cache level.
-Consequently, the spy program and the victim must execute on the same execution core of the processor.
-This is in contrast to our attack, which targets the last-level-cache, and can, therefore, be mounted between different cores.
-
-The \fl attack has been used by Gullasch et al.~\cite{gullasch11cache} and by Yarom and Falkner~\cite{yarom13flush}.
-Gullasch et al.~\cite{gullasch11cache} uses this attack as a replacement to the \prpr attack,
-relying on a scheduler bug to interrupt the victim and gain control of the core it executes on.
-Yarom and Falkner~\cite{yarom13flush} uses \fl to attack the square-and-multiply exponentiation
-in the GnuPG implementation of RSA.
-Unlike the Montgomery ladder, square-and-multiply is known to be vulnerable to side-channel attacks.
 
 %\subsection{Memory Access Assumption}
 %The assumption that an attacker has access to the computer's memory is valid *** relevance of attack etc.
