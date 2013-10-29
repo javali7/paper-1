@@ -89,7 +89,7 @@ Instead, we use leaked information about the nonces.
 The attacks in Howgrave-Graham and Smart~\cite{Howgrave-GrahamS01} and in Nguyen and Shparlinski~\cite{nguyen03insecurity} 
 rely on having obtained a relatively small number of bit of the nonces used for many signatures and then using the LLL method~\cite{LLL} for solving  
 the related hidden number problem to find the secret key.
- The attack of Nguyen and Shparlinski~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm would obtain the secret key using 23 signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only seven consecutive least significant leaked bits of each nonce.
+ The attack of Nguyen and Shparlinski~\cite{nguyen03insecurity}, for example, given a group of order around 160 bits the probabilistic algorithm would obtain the secret key using an expected $23\times 2^7$ signatures (assuming independent and uniformly at random selected messages) in polynomial time, using only seven consecutive least significant leaked bits of each nonce.
 (Relying on some reasonable assumptions.) 
 Each of these assumes only a small fraction of $k$ is recovered. The main contribution of this work is to illustrate a method, 
 %the adapted technique of Yarom and Falkner~\cite{yarom13flush}, 
