@@ -1,5 +1,5 @@
-PROJ=Euro2014
-SRCS=Euro2014.tex
+PROJ=JCEN
+SRCS=JCEN.tex
 FIGS=memory.fig temporal.fig 
 PLOTS=missing.plot timing.plot positions.plot
 
