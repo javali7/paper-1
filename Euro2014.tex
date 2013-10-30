@@ -104,7 +104,7 @@ in earlier versions of OpenSSL's Montgomery ladder implementation for curves ove
 Though the attacks differ, they both illustrate that the OpenSSL implementation of the Montgomery ladder is vulnerable to  both remote attacks and attacks launched from virtual machines with access to the memory of the target computer. 
 The countermeasure suggested in Brumley and Tuveri~\cite{brumley11remote} will not thwart our attack.
 
-Cache side-channel attacks have been used against cryptosystems~\cite{aciicmez07yet,aciicmez10new,aciicmez08vulnerability,chen13improvement,canteaut06understanding,tromer10efficient,zhang12cross}.
+Cache side-channel attacks have been used against cryptosystems~\cite{aciicmez07yet,aciicmez10new,brumley09cache,aciicmez08vulnerability,chen13improvement,canteaut06understanding,tromer10efficient,zhang12cross}.
 These attacks use the \prpr technique~\cite{tromer10efficient} to target the L1 cache level.
 Consequently, the spy program and the victim must execute on the same execution core of the processor.
 This is in contrast to our attack, which targets the last-level-cache, and can, therefore, be mounted between different cores.
@@ -323,7 +323,7 @@ This range spans four cache lines, marked $A$, $B$, $C$ and $D$.
 
 
 \begin{figure}[htb]
-\centering\includegraphics[width=\columnwidth]{images/memory}
+\centering\includegraphics[width=\columnwidth]{memory}
 \caption{Mapping from source code to memory\label{dgm:memory}}
 \end{figure}
 
@@ -353,7 +353,7 @@ Figure~\ref{dgm:temporal} shows the observable memory accesses when processing a
 a clear bit.
 
 \begin{figure}[htb]
-\centering\includegraphics[width=\columnwidth]{images/temporal}
+\centering\includegraphics[width=\columnwidth]{temporal}
 \caption{Observable memory access over time (processing a set then  a clear bit)\label{dgm:temporal}}
 \end{figure}
 
@@ -433,7 +433,7 @@ Based on the discussion in Section~\ref{sec:attack}, we picked a slot length of 
 
 
 \begin{figure*}[htb]
-\centering\includegraphics[width=\textwidth]{images/timing}
+\centering\includegraphics[width=\textwidth]{timing}
 \caption{Probe timing during signing\label{dgm:timing}}
 \end{figure*}
 
@@ -460,7 +460,7 @@ However, the fact that a bit was processed at that time slot is not missed,
 demonstrating the value of probing the start of the group double operation.
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{images/missing}
+\includegraphics[width=\columnwidth]{missing}
 \caption{Missing bits per signature\label{dgm:dist}}
 \end{figure}
 
@@ -471,7 +471,7 @@ The number of missing bits ranges from 10 to 34, with the median at 25 missing b
 
 
 \begin{figure}[htb]
-\includegraphics[width=\columnwidth]{images/positions}
+\includegraphics[width=\columnwidth]{positions}
 \caption{Missing bits per bit position\label{dgm:missed}}
 \end{figure}
 
