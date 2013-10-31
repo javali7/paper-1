@@ -36,7 +36,7 @@
 
 \begin{abstract}
 We illustrate a vulnerability introduced to elliptic curve cryptographic protocols when implemented using a function of the OpenSSL cryptographic library.
-For the given implementation using an elliptic curve $E$ over a binary field with a point $G\in E$, our attack can recover the majority of the bits of a scalar $k$ when $kG$ is computed using the OpenSSL implementation of the Montgomery ladder. 
+For the given implementation using an elliptic curve $E$ over a binary field with a point $G\in E$, our attack recovers the majority of the bits of a scalar $k$ when $kG$ is computed using the OpenSSL implementation of the Montgomery ladder. 
 For the Elliptic Curve Digital Signature Algorithm (\myupcase{ecdsa}) the scalar $k$ is intended to remain secret. 
 Our attack recovers the scalar $k$ and thus the secret key of the signer and would therefore allow unlimited forgeries. 
 This is possible from snooping on only one signing process and requires computation of less than one second on a quad core desktop when the scalar $k$ (and secret key) is around 571 bits.
